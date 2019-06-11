@@ -1,107 +1,81 @@
-﻿//patate
-
-interface Respond {
-    displayRespond(): string;
-
-    getPossibilities(): Answer[];
-    getPath(): number;
-}
-
-class Question implements Respond {
-    private question: string;
-    private possibilities: Answer[];
-    constructor(question: string, path: number, ...possibilities: Answer[]) {
+//patate
+var Question = /** @class */ (function () {
+    function Question(question, path) {
+        var possibilities = [];
+        for (var _i = 2; _i < arguments.length; _i++) {
+            possibilities[_i - 2] = arguments[_i];
+        }
         this.question = question;
         this.possibilities = possibilities;
     }
-
-    displayRespond(): string {
+    Question.prototype.displayRespond = function () {
         return this.question;
-    }
-
-    getPossibilities(): Answer[] {
+    };
+    Question.prototype.getPossibilities = function () {
         return this.possibilities;
-    }
-
-    getPossibilityContent(possibility: Answer): string {
+    };
+    Question.prototype.getPossibilityContent = function (possibility) {
         return possibility.getContent();
-    }
-
-    getPath(): number {
+    };
+    Question.prototype.getPath = function () {
         return null;
-    }
-
-}
-
-class Affirmation implements Respond {
-    private affirmation: string;
-    private path: number
-    constructor(affirmation: string, path: number) {
+    };
+    return Question;
+}());
+var Affirmation = /** @class */ (function () {
+    function Affirmation(affirmation, path) {
         this.affirmation = affirmation;
         this.path = path;
     }
-
-    displayRespond(): string {
+    Affirmation.prototype.displayRespond = function () {
         return this.affirmation;
-    }
-
-    getPath(): number {
+    };
+    Affirmation.prototype.getPath = function () {
         return this.path;
-    }
-
-    getPossibilities(): Answer[] {
+    };
+    Affirmation.prototype.getPossibilities = function () {
         return null;
-    }
-}
-
-class Answer {
-    private content: string;
-    private path: number;
-    private isTheRightPath: boolean
-    constructor(content: string, path: number, isTheRightPath: boolean) {
+    };
+    return Affirmation;
+}());
+var Answer = /** @class */ (function () {
+    function Answer(content, path, isTheRightPath) {
         this.content = content;
         this.path = path;
         this.isTheRightPath = isTheRightPath;
     }
-
-    getContent(): string {
+    Answer.prototype.getContent = function () {
         return this.content;
-    }
-
-    getPath(): number {
+    };
+    Answer.prototype.getPath = function () {
         return this.path;
-    }
-
-    isRightPath(): boolean {
+    };
+    Answer.prototype.isRightPath = function () {
         return this.isTheRightPath;
-    }
-}
-
-class UIMaker {
-
-    private isItStart: boolean;
-    constructor() {
+    };
+    return Answer;
+}());
+var UIMaker = /** @class */ (function () {
+    function UIMaker() {
         this.isItStart = true;
     }
-
-    private displayRespond(question: string): void {
+    UIMaker.prototype.displayRespond = function (question) {
         var questionToDisplay = document.createElement('p');
         questionToDisplay.textContent = question;
         document.getElementById("main").appendChild(questionToDisplay);
         document.getElementsByTagName('p')[0].setAttribute('class', 'questionP');
         document.getElementsByClassName('questionP')[0].setAttribute('style', 'text-align:center');
-    }
-
-    private displayAnswers(possibilities: Answer[], beenThere: Answer[]): void {
-        var i: number;
-        var possibilitiesContent: Answer[] = [];
+    };
+    UIMaker.prototype.displayAnswers = function (possibilities, beenThere) {
+        var i;
+        var possibilitiesContent = [];
         possibilities.forEach(function (possibility) {
             possibilitiesContent.push(possibility);
         });
         for (i = 0; i < possibilitiesContent.length; i++) {
             var buttonToCreate = document.createElement('button');
             buttonToCreate.textContent = possibilitiesContent[i].getContent();
-            var j: number;
+            var j;
             for (j = 0; j < beenThere.length; j++) {
                 if (beenThere[j].getContent() == buttonToCreate.textContent) {
                     buttonToCreate.disabled = true;
@@ -109,9 +83,8 @@ class UIMaker {
             }
             document.getElementById("main").appendChild(buttonToCreate);
         }
-    }
-
-    private createQuizFrame(respond: Respond, beenThere: Answer[]) {
+    };
+    UIMaker.prototype.createQuizFrame = function (respond, beenThere) {
         var division = document.createElement("div");
         division.setAttribute("id", "main");
         document.body.appendChild(division);
@@ -121,27 +94,24 @@ class UIMaker {
         var message = document.createElement('p');
         message.innerHTML = "What's your answer?";
         document.getElementById("main").appendChild(message);
-    }
-
-    private comeBackButton(responds: Respond[], path: number, beenThere: Answer[]): void {
+    };
+    UIMaker.prototype.comeBackButton = function (responds, path, beenThere) {
         var button = document.createElement("button");
         button.textContent = "Try again";
         var self = this;
         button.onclick = function () {
             self.deleteEverything("main");
             self.displayRespondUI(responds[path], beenThere, responds);
-        }
+        };
         document.getElementById("main").appendChild(button);
-
-    }
-
-    displayRespondUI(respond: Respond, beenThere: Answer[], responds: Respond[]) {
+    };
+    UIMaker.prototype.displayRespondUI = function (respond, beenThere, responds) {
         if (respond instanceof Question) {
             if (!this.isItStart) {
                 this.deleteEverything("main");
             }
             this.createQuizFrame(respond, beenThere);
-            var possibilities: Answer[] = respond.getPossibilities();
+            var possibilities = respond.getPossibilities();
             this.createPath(possibilities, beenThere, responds);
             this.isItStart = false;
         }
@@ -150,29 +120,26 @@ class UIMaker {
             this.displayRespond(respond.displayRespond());
             this.comeBackButton(responds, respond.getPath(), beenThere);
         }
-    }
-
-    private getPath(path: number, beenThere: Answer[], responds: Respond[]): void {
+    };
+    UIMaker.prototype.getPath = function (path, beenThere, responds) {
         this.displayRespondUI(responds[path], beenThere, responds);
-    }
-
-
-    private createPath(possibilities: Answer[], beenThere: Answer[], responds: Respond[]) {
+    };
+    UIMaker.prototype.createPath = function (possibilities, beenThere, responds) {
         var i;
         var self = this;
         var buttons = document.getElementsByTagName("button");
         for (i = 0; i < buttons.length; i++) {
             (function (button) {
-                var path: number;
+                var path;
                 possibilities.forEach(function (answer) {
                     var content = answer.getContent();
                     if (content == button.textContent) {
                         path = answer.getPath();
                     }
-                })
+                });
                 button.onclick = (function () {
                     var buttonText = button.textContent;
-                    var answerToPush: Answer;
+                    var answerToPush;
                     possibilities.forEach(function (answer) {
                         if (answer.getContent() == buttonText) {
                             answerToPush = answer;
@@ -184,52 +151,41 @@ class UIMaker {
                 });
             })(buttons[i]);
         }
-    }
-
-    private deleteEverything(idName: string) {
+    };
+    UIMaker.prototype.deleteEverything = function (idName) {
         var everything = document.getElementById(idName);
         while (everything.hasChildNodes()) {
             everything.removeChild(everything.firstChild);
         }
-    }
-}
-
-class GameMaster {
-    private ending: Answer[];
-    private arrayRespond: Respond[];
-    private uiMaker: UIMaker;
-    private beenThere: Answer[];
-    private isTheEnd: boolean;
-    constructor(ending: Answer[], arrayRespond: Respond[], uiMaker: UIMaker) {
+    };
+    return UIMaker;
+}());
+var GameMaster = /** @class */ (function () {
+    function GameMaster(ending, arrayRespond, uiMaker) {
         this.ending = ending;
         this.arrayRespond = arrayRespond;
         this.beenThere = [];
         this.uiMaker = uiMaker;
         this.isTheEnd = false;
     }
-
-    getQuestion(path: number): Respond {
+    GameMaster.prototype.getQuestion = function (path) {
         return this.arrayRespond[path];
-    }
-
-    getStartQuestion(): Respond {
+    };
+    GameMaster.prototype.getStartQuestion = function () {
         return this.arrayRespond[0];
-    }
-
-    start(): void {
-        var startQuestion: Respond = this.getStartQuestion();
+    };
+    GameMaster.prototype.start = function () {
+        var startQuestion = this.getStartQuestion();
         this.uiMaker.displayRespondUI(startQuestion, this.beenThere, this.arrayRespond);
-        /*if (this.ending == this.numberOfRightAnswer) { 
+        /*if (this.ending == this.numberOfRightAnswer) {
             var theEnd = document.createElement("p");
             theEnd.innerHTML = "This is the end";
             document.getElementById("main").appendChild(theEnd);
 
         }*/
-
-    }
-}
-
-
+    };
+    return GameMaster;
+}());
 var answer1 = new Answer("A banana is a vegetable", 1, false);
 var answer2 = new Answer("A banana is a fruit", 2, true);
 var answer3 = new Answer("The banana's color is purple", 1, false);
@@ -243,10 +199,8 @@ var affirmation = new Affirmation("You're wrong", 0);
 var affirmation1 = new Affirmation("You're wrong", 2);
 var affirmation2 = new Affirmation("You're right,but there's more!", 0);
 var question2 = new Question("What's my favorite color", 2, answer5, answer6, answer7);
-var Responds: Respond[] = [question, affirmation, question2, affirmation1];
-var arrayRightAnswers: Answer[] = [answer2, answer4];
+var Responds = [question, affirmation, question2, affirmation1];
+var arrayRightAnswers = [answer2, answer4];
 var gameMaster = new GameMaster(arrayRightAnswers, Responds, uiMaker);
-
-
 gameMaster.start();
-
+//# sourceMappingURL=quiz.js.map
