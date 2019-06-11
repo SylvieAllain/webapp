@@ -36,4 +36,4 @@ var answers: Answer[];
 answers.push(new Answer("Reponse", 1, 10));
 answers.push(new Answer("Reponse2", 0, 0));
 
-arceus.addQuestion(questions[0], answers);
+Arceus.addQuestion(questions[0], answers);
