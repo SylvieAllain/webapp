@@ -1,6 +1,4 @@
-﻿//patate
-
-interface Respond {
+﻿interface Respond {
     displayRespond(): string;
 
     getPossibilities(): Answer[];
@@ -35,7 +33,7 @@ class Question implements Respond {
 
 class Affirmation implements Respond {
     private affirmation: string;
-    private path: number
+    private path: number;
     constructor(affirmation: string, path: number) {
         this.affirmation = affirmation;
         this.path = path;
@@ -57,7 +55,7 @@ class Affirmation implements Respond {
 class Answer {
     private content: string;
     private path: number;
-    private isTheRightPath: boolean
+    private isTheRightPath: boolean;
     constructor(content: string, path: number, isTheRightPath: boolean) {
         this.content = content;
         this.path = path;
@@ -80,8 +78,10 @@ class Answer {
 class UIMaker {
 
     private isItStart: boolean;
+    private totalPoints: number;
     constructor() {
         this.isItStart = true;
+        this.totalPoints = 50;
     }
 
     private displayRespond(question: string): void {
@@ -124,6 +124,8 @@ class UIMaker {
     }
 
     private comeBackButton(responds: Respond[], path: number, beenThere: Answer[]): void {
+        this.removePoint();
+        this.changeTotalPointsValue();
         var button = document.createElement("button");
         button.textContent = "Try again";
         var self = this;
@@ -192,6 +194,26 @@ class UIMaker {
             everything.removeChild(everything.firstChild);
         }
     }
+
+    getTotalPoints(): number {
+        return this.totalPoints;
+    }
+
+    displayPoint(): void {
+        var points = document.createElement("p");
+        points.setAttribute("id", "totalPoints");
+        points.innerHTML = "Your total point: " + this.getTotalPoints().toString();
+        document.body.appendChild(points);
+    }
+
+    changeTotalPointsValue(): void {
+        var points = document.getElementById("totalPoints");
+        points.innerHTML = "Your total point : " + this.getTotalPoints().toString();
+    }
+
+    removePoint(): void {
+        this.totalPoints = this.totalPoints - 10;
+    }
 }
 
 class GameMaster {
@@ -200,12 +222,14 @@ class GameMaster {
     private uiMaker: UIMaker;
     private beenThere: Answer[];
     private isTheEnd: boolean;
+    private totalPoint: number;
     constructor(ending: Answer[], arrayRespond: Respond[], uiMaker: UIMaker) {
         this.ending = ending;
         this.arrayRespond = arrayRespond;
         this.beenThere = [];
         this.uiMaker = uiMaker;
         this.isTheEnd = false;
+        this.totalPoint = 50;
     }
 
     getQuestion(path: number): Respond {
@@ -216,7 +240,21 @@ class GameMaster {
         return this.arrayRespond[0];
     }
 
+    removePoint(): void {
+        this.totalPoint = this.totalPoint - 10;
+    }
+
+    displayPoint(): void {
+        this.uiMaker.displayPoint();
+    }
+
+    getTotalPoints(): void {
+        this.totalPoint = uiMaker.getTotalPoints();
+    }
+
     start(): void {
+        this.getTotalPoints();
+        this.displayPoint();
         var startQuestion: Respond = this.getStartQuestion();
         this.uiMaker.displayRespondUI(startQuestion, this.beenThere, this.arrayRespond);
         /*if (this.ending == this.numberOfRightAnswer) { 
@@ -247,6 +285,4 @@ var Responds: Respond[] = [question, affirmation, question2, affirmation1];
 var arrayRightAnswers: Answer[] = [answer2, answer4];
 var gameMaster = new GameMaster(arrayRightAnswers, Responds, uiMaker);
 
-
 gameMaster.start();
-

@@ -10,9 +10,9 @@
 /*
 where we put the question text
 */
-var questions: Question[];
+/*var questions: Question[];
 questions.push(new Question("Question1"));
 questions.push(new Question("Question2"));
 
 var arceus = new Arceus(0);
-arceus.addQuestion(questions[0], answers);
+arceus.addQuestion(questions[0], answers);*/

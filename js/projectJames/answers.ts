@@ -32,8 +32,3 @@ reponse 9is the answer text itself
 the first number is the direction
 the second number is the points that the answer is worth 
 */
-var answers: Answer[];
-answers.push(new Answer("Reponse", 1, 10));
-answers.push(new Answer("Reponse2", 0, 0));
-
-Arceus.addQuestion(questions[0], answers);

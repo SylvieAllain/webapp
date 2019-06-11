@@ -1,7 +1,7 @@
 ﻿class Arceus {
     private initialQuestionIndex: number;
-    private answers: [[]];
-    private questions: [];
+    private answers: Answer[][] = [];
+    private questions: Question[] = [];
     constructor(initialQuestionIndex: number) {
         this.initialQuestionIndex = initialQuestionIndex;
     }
@@ -9,8 +9,9 @@
         this.answers[index];
         this.nextQuestion;
     }
-    addQuestion(questions, answers) {
-
+    addQuestion(question: Question, answers: Answer[]) {
+        this.questions.push(question);
+        this.answers.push(answers);
     }
     getQuestion(index: number) {
         return this.questions[index];
@@ -25,7 +26,7 @@
     addPoints(index: number) {
     }
     getPoints() {
-        return this.answers[2];
+        //return this.answers[2];
     }
     reset() {
     }
