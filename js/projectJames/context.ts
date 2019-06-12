@@ -1,9 +1,9 @@
-﻿class Question {
+﻿class cocntext {
     private text: string;
     constructor(text: string) {
         this.text = text;
     }
-    getQuestion() {
+    getContext() {
         return this.text;
     }
 }
