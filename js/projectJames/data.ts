@@ -1,4 +1,6 @@
-﻿var questions: Question[];
+﻿
+
+var questions: Question[];
 questions.push(new Question("Question1"));
 questions.push(new Question("Question2"));
 var answers: Answer[];
