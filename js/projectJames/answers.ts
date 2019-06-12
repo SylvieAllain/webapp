@@ -26,9 +26,4 @@
     }
 
 }
-/*
-where we put answers
-reponse 9is the answer text itself
-the first number is the direction
-the second number is the points that the answer is worth 
 */
