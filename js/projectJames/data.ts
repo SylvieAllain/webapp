@@ -1,9 +1,9 @@
-﻿var choices1: Choice[];
-var choices2: Choice[];
-var choices3: Choice[];
-var choices4: Choice[];
-var choices5: Choice[];
-var choices6: Choice[];
+﻿var choices1: Choice[] = [];
+var choices2: Choice[] = [];
+var choices3: Choice[] = [];
+var choices4: Choice[] = [];
+var choices5: Choice[] = [];
+var choices6: Choice[] = [];
 
 choices1.push(new Choice("Reponse",0, 0, 0));
 choices1.push(new Choice("Reponse2",1, 1, 10));
@@ -25,7 +25,7 @@ choices5.push(new Choice("Reponse", 1, 0, 10));
 choices5.push(new Choice("Reponse2", 1, 1, 10));
 
 ////////////////////////////////////////////////
-var context: Context[];
+var context: Context[] = [];
 
 context.push(new Context("Context", false, false));
 

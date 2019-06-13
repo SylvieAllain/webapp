@@ -2,14 +2,14 @@
     private text: string;
     private nextDirection: number;
     private nextContext: number;
-    private points: number;
+    static points: number;
     constructor(text: string, nextDirection: number, nextContext :number, points: number) {
         this.text = text;
         this.nextDirection = nextDirection;
         this.nextContext = nextContext;
         this.points = points;
     }
-    getAnswer() {
+    getText() {
         return this.text;
     }
     getPoints() {
