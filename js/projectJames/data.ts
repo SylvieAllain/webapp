@@ -27,7 +27,7 @@ choices5.push(new Choice("Reponse2", 1, 1, 10));
 ////////////////////////////////////////////////
 var context: Context[] = [];
 
-context.push(new Context("Context", false, false));
+context.push(new Context("A customer is reporting that their Query Suggestions component is not providing any suggestions. What do you do first?", false, false, 0));
 
 var arceus = new Arceus();
 arceus.start(0);
