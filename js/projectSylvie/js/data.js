@@ -1,0 +1,16 @@
+var answer1 = new Answer("A banana is a vegetable", 1);
+var answer2 = new Answer("A banana is a fruit", 2);
+var answer3 = new Answer("The banana's color is purple", 1);
+var answer4 = new Answer("The banana's color is green", 1);
+var uiMaker = new UIMaker();
+var answer5 = new Answer("purple", 3);
+var answer6 = new Answer("orange", 3);
+var answer7 = new Answer("blue", 0);
+var question = new Question("What describe a banana?", 0, answer1, answer2, answer3, answer4);
+var affirmation = new Affirmation("You're wrong", 0);
+var affirmation1 = new Affirmation("You're wrong", 2);
+var affirmation2 = new Affirmation("You're right,but there's more!", 0);
+var question2 = new Question("What's my favorite color", 2, answer5, answer6, answer7);
+var Responds = [question, affirmation, question2, affirmation1];
+var arrayRightAnswers = [answer2, answer7];
+var gameMaster = new GameMaster(arrayRightAnswers, Responds, uiMaker);
