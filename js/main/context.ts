@@ -7,7 +7,7 @@
         this.hint = hint;
         this.end = end;
     }
-    getContext(): string  {
+    getContext(): string {
         return this.text;
     }
     isHint(): boolean {

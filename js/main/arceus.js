@@ -1,22 +1,16 @@
-﻿class Arceus {
-    static readonly STARTING_POINTS: number = 500;
-    private initialContextIndex: number;
-    private initialChoicesIndex: number;
-    private choices: Choice[][] = [];
-    private contexts: Context[] = [];
-    private points: number = Arceus.STARTING_POINTS;
-    private currentContextIndex: number;
-    private currentChoicesIndex: number;
-    constructor(choices: Choice[][], contexts: Context[]) {
+var Arceus = /** @class */ (function () {
+    function Arceus(choices, contexts) {
+        this.choices = [];
+        this.contexts = [];
+        this.points = Arceus.STARTING_POINTS;
         this.choices = choices;
         this.contexts = contexts;
         this.currentContextIndex = 0;
         this.currentChoicesIndex = 0;
     }
-
-    setChoices(userIndex: number): void {
-        var currentChoices: Choice[] = this.choices[this.currentChoicesIndex];
-        var userChoice: Choice = currentChoices[userIndex];
+    Arceus.prototype.setChoices = function (userIndex) {
+        var currentChoices = this.choices[this.currentChoicesIndex];
+        var userChoice = currentChoices[userIndex];
         this.removePoints(userChoice.getPoints());
         this.setContext(userChoice);
         console.log(this.currentContextIndex);
@@ -29,55 +23,49 @@
         else {
             this.nextNode();
         }
-    }
-
-    setContext(userChoice: Choice): void {
+    };
+    Arceus.prototype.setContext = function (userChoice) {
         this.currentContextIndex = userChoice.getNextContext();
-    }
-
-    getCurrentContextIndex() {
+    };
+    Arceus.prototype.getCurrentContextIndex = function () {
         return this.currentContextIndex;
-    }
-
-    nextNode() {
+    };
+    Arceus.prototype.nextNode = function () {
         //this.currentContextIndex = contextIndex;
         console.log(this.getContext(this.currentContextIndex));
         //this.currentChoicesIndex = choicesIndex;
-        let currentChoices = this.choices[this.currentContextIndex];
+        var currentChoices = this.choices[this.currentContextIndex];
         currentChoices.forEach(function (choice, i) {
             console.log((i + 1) + ". " + choice.getChoice());
         });
-    }
-
-    isThisAnEnding(): boolean {
+    };
+    Arceus.prototype.isThisAnEnding = function () {
         return this.contexts[this.currentContextIndex].isEnd();
-    }
-
-    getContext(contextIndex: number): string {
+    };
+    Arceus.prototype.getContext = function (contextIndex) {
         var index = contextIndex;
         console.log(index);
         return this.contexts[index].getContext();
-    }
-
-    removePoints(amount: number) {
+    };
+    Arceus.prototype.removePoints = function (amount) {
         this.points = amount - this.points;
         return this.points;
-    }
-
-    getPoints() {
+    };
+    Arceus.prototype.getPoints = function () {
         return this.points;
-    }
-
-    reset() {
+    };
+    Arceus.prototype.reset = function () {
         this.points = Arceus.STARTING_POINTS;
         this.contexts[this.initialContextIndex];
         this.choices[this.initialChoicesIndex];
-    }
-    
-    start(contextIndex: number, choicesIndex: number) {
+    };
+    Arceus.prototype.start = function (contextIndex, choicesIndex) {
         console.log(this.currentChoicesIndex);
         this.initialContextIndex = contextIndex;
         this.initialChoicesIndex = choicesIndex;
         this.nextNode();
-    }
-}
+    };
+    Arceus.STARTING_POINTS = 500;
+    return Arceus;
+}());
+//# sourceMappingURL=arceus.js.map
