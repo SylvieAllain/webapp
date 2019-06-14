@@ -71,6 +71,6 @@ context.push(new Context("Client spent time training new candidates using an ano
 
 var arceus = new Arceus(context, choices);
 arceus.start(0);
-arceus.giveChoice(0);
+//arceus.getChoice(0);
 
 console.log(arceus);

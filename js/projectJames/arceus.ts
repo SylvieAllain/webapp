@@ -4,13 +4,11 @@
     private context: Context[] = [];
     private choice: Choice[][] = [];
     private points: number = 0;
-    private nodes: Node; 
     private currentContextIndex: number = 0;
 
     constructor(context: Context[], choice: Choice[][]) {
         this.context = context;
-        this.choice = choice
-        this.nodes = nodes;
+        this.choice = choice;
     }
 
     giveChoices(index: number) {

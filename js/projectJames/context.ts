@@ -1,12 +1,13 @@
 ﻿class Context {
     private text: string;
     private hint: boolean;
-    private end: boolean
-    private previous: number
+    private end: boolean; 
+    private previous: number;
     constructor(text: string, hint: boolean, end: boolean, previous: number) {
         this.text = text;
         this.hint = hint;
         this.end = end;
+        this.previous = previous;
     }
     getText(): string  {
         return this.text;
