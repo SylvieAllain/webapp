@@ -24,23 +24,13 @@ choices4.push(new Choice("Reponse", 3, 2, 0));
 choices5.push(new Choice("Reponse", 1, 0, 10));
 choices5.push(new Choice("Reponse2", 1, 1, 10));
 
-var finalChoices: Choice[][] = [];
-finalChoices.push(choices1);
-finalChoices.push(choices2);
-finalChoices.push(choices3);
-finalChoices.push(choices4);
-finalChoices.push(choices5);
-
-
 ////////////////////////////////////////////////
 var context: Context[] = [];
 
-context.push(new Context("Context", false, false));
-context.push(new Context("Context2", false, true));
-context.push(new Context("Context3", false, true));
+context.push(new Context("A customer is reporting that their Query Suggestions component is not providing any suggestions. What do you do first?", false, false, 0));
 
-var arceus = new Arceus(finalChoices, context);
-arceus.start(0, 0);
-
+var arceus = new Arceus();
+arceus.start(0);
+arceus.giveAnswer(0);
 
 console.log(arceus);

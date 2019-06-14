@@ -7,6 +7,7 @@
     private points: number = Arceus.STARTING_POINTS;
     private currentContextIndex: number;
     private currentChoicesIndex: number;
+    private path: number[];
     constructor(choices: Choice[][], contexts: Context[]) {
         this.choices = choices;
         this.contexts = contexts;
