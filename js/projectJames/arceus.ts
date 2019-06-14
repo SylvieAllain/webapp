@@ -7,7 +7,7 @@
     private nodes: Node; 
     private currentContextIndex: number = 0;
 
-    constructor(context: Context[], choice: Choice[][], nodes: Node) {
+    constructor(context: Context[], choice: Choice[][]) {
         this.context = context;
         this.choice = choice
         this.nodes = nodes;
