@@ -1,13 +1,15 @@
-﻿class Arceus {
+﻿import { Choice } from "./choices";
+import { Context } from "./context";
+
+export class Arceus {
     static readonly STARTING_POINTS: number = 500;
-    private initialContextIndex: number;
-    private initialChoicesIndex: number;
+    private initialContextIndex: number = 0;
+    private initialChoicesIndex: number = 0;
     private choices: Choice[][] = [];
     private contexts: Context[] = [];
     private points: number = Arceus.STARTING_POINTS;
     private currentContextIndex: number;
     private currentChoicesIndex: number;
-    private path: number[];
     constructor(choices: Choice[][], contexts: Context[]) {
         this.choices = choices;
         this.contexts = contexts;
@@ -21,15 +23,19 @@
         this.removePoints(userChoice.getPoints());
         this.setContext(userChoice);
         this.currentChoicesIndex = userChoice.getNextChoices();
-        if (this.isThisAnEnding()) {
+        /*if (this.isThisAnEnding()) {
             this.reset();
         }
         else {
             this.nextNode();
-        }
+        }*/
     }
 
-    getPrevious():number {
+    getChoices(): Choice[] {
+        return this.choices[this.currentChoicesIndex];
+    }
+
+    getPreviousContext():number {
         var context: Context = this.contexts[this.currentContextIndex];
         return context.getPrevious();
     }
@@ -39,6 +45,10 @@
 
     getCurrentContextIndex() {
         return this.currentContextIndex;
+    }
+
+    getCurrentChoicesIndex() {
+        return this.currentChoicesIndex;
     }
 
     nextNode() {
@@ -60,7 +70,7 @@
     }
 
     removePoints(amount: number) {
-        this.points = amount - this.points;
+        this.points = this.points - amount;
         return this.points;
     }
 

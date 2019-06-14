@@ -1,4 +1,4 @@
-﻿class Context {
+﻿export class Context {
     private text: string;
     private hint: boolean;
     private end: boolean
