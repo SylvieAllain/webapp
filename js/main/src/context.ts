@@ -1,4 +1,4 @@
-﻿class Context {
+﻿export class Context {
     private text: string;
     private hint: boolean;
     private end: boolean
@@ -19,10 +19,7 @@
     isEnd(): boolean {
         return this.end;
     }
-<<<<<<< HEAD:js/main/context.ts
-=======
 
->>>>>>> 46d5b773b9ab09e27642f8cc6231e39ec63a9774:js/main/src/context.ts
     getPrevious(): number {
         return this.previous;
     }

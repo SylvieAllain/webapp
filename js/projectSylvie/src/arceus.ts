@@ -10,11 +10,14 @@ export class Arceus {
     private points: number = Arceus.STARTING_POINTS;
     private currentContextIndex: number;
     private currentChoicesIndex: number;
-    constructor(choices: Choice[][], contexts: Context[]) {
+    private storyIndex: number;
+    private hintsFound: number = 0;
+    constructor(choices: Choice[][], contexts: Context[], storyIndex:number) {
         this.choices = choices;
         this.contexts = contexts;
         this.currentContextIndex = 0;
         this.currentChoicesIndex = 0;
+        this.storyIndex = storyIndex;
     }
 
     setChoices(userIndex: number): void {
@@ -27,7 +30,21 @@ export class Arceus {
             var userChoice: Choice = currentChoices[userIndex];
             this.removePoints(userChoice.getPoints());
             this.setContext(userChoice);
+            var context = this.contexts[this.currentContextIndex];
             this.currentChoicesIndex = userChoice.getNextChoices();
+            switch (this.storyIndex) {
+                case 1:
+                    if (context.isHint() == true) {
+                        this.hintsFound++;
+                        if (this.hintsFound == 3) {
+                            this.currentContextIndex = 11;
+                            this.currentChoicesIndex = 5;
+                        }
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
         if (this.isThisAnEnding()) {
             this.displayEnding();
@@ -53,14 +70,6 @@ export class Arceus {
     }
     setContext(userChoice: Choice): void {
         this.currentContextIndex = userChoice.getNextContext();
-    }
-
-    getCurrentContextIndex():number {
-        return this.currentContextIndex;
-    }
-
-    getCurrentChoicesIndex():number {
-        return this.currentChoicesIndex;
     }
 
     displayEnding(): void {
@@ -125,9 +134,10 @@ export class Arceus {
         this.points = Arceus.STARTING_POINTS;
         var self = this;
         var restartButton = document.createElement("button");
-        restartButton.textContent = "Do you want to try again?";
+        restartButton.textContent = "Next";
         restartButton.onclick = function () {
-            self.start(self.initialContextIndex, self.initialChoicesIndex);
+            window.location.reload();
+            //self.start(self.initialContextIndex, self.initialChoicesIndex);
         }
     }
     

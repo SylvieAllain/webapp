@@ -1,4 +1,5 @@
-﻿class Choice {
+﻿
+export class Choice {
     private text: string;
     private nextChoices: number;
     private nextContext: number;
