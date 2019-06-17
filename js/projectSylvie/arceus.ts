@@ -1,5 +1,6 @@
 ﻿import { Choice } from "./choices";
 import { Context } from "./context";
+import { UIMaker } from "./uimaker";
 
 export class Arceus {
     static readonly STARTING_POINTS: number = 500;
@@ -12,12 +13,14 @@ export class Arceus {
     private currentChoicesIndex: number;
     private storyIndex: number;
     private hintsFound: number = 0;
-    constructor(choices: Choice[][], contexts: Context[], storyIndex:number) {
+    private uiMaker: UIMaker;
+    constructor(choices: Choice[][], contexts: Context[], storyIndex:number,uiMaker:UIMaker) {
         this.choices = choices;
         this.contexts = contexts;
         this.currentContextIndex = 0;
         this.currentChoicesIndex = 0;
         this.storyIndex = storyIndex;
+        this.uiMaker = uiMaker;
     }
 
     setChoices(userIndex: number): void {
@@ -47,11 +50,11 @@ export class Arceus {
             }
         }
         if (this.isThisAnEnding()) {
-            this.displayEnding();
-            this.reset();
+            this.uiMaker.displayEnding(this.contexts, this.currentContextIndex);
+            //this.reset();
         }
         else {
-            this.displayContent();
+            this.uiMaker.displayContent(this, this.contexts, this.currentContextIndex, this.choices, this.currentChoicesIndex);
         }
     }
 
@@ -72,7 +75,7 @@ export class Arceus {
         this.currentContextIndex = userChoice.getNextContext();
     }
 
-    displayEnding(): void {
+    /*displayEnding(): void {
         var ending: string = this.contexts[this.currentContextIndex].getContext();
         document.getElementById("mainContext").innerHTML = ending;
     }
@@ -109,7 +112,7 @@ export class Arceus {
         button.onclick = function () {
             self.setChoices(10);
         }
-    }
+    }*/
 
     isThisAnEnding(): boolean {
         return this.contexts[this.currentContextIndex].isEnd();
@@ -130,7 +133,7 @@ export class Arceus {
         return this.points;
     }
 
-    reset():void {
+    /*reset():void {
         this.points = Arceus.STARTING_POINTS;
         var self = this;
         var restartButton = document.createElement("button");
@@ -139,11 +142,13 @@ export class Arceus {
             window.location.reload();
             //self.start(self.initialContextIndex, self.initialChoicesIndex);
         }
-    }
+    }*/
     
     start(contextIndex: number, choicesIndex: number):void {
         this.initialContextIndex = contextIndex;
         this.initialChoicesIndex = choicesIndex;
-        this.displayContent();
+        this.currentContextIndex = this.initialContextIndex;
+        this.currentChoicesIndex = this.initialChoicesIndex;
+        this.uiMaker.displayContent(this, this.contexts, this.currentContextIndex, this.choices, this.currentChoicesIndex);
     }
 }

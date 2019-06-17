@@ -1,3 +1,5 @@
+"use strict";
+exports.__esModule = true;
 var Context = /** @class */ (function () {
     function Context(text, hint, end, previous) {
         this.text = text;
@@ -19,4 +21,4 @@ var Context = /** @class */ (function () {
     };
     return Context;
 }());
-//# sourceMappingURL=context.js.map
+exports.Context = Context;
