@@ -1,6 +1,5 @@
 ﻿import { Choice } from "./choices";
 import { Context } from "./context";
-
 export class Arceus {
     static readonly STARTING_POINTS: number = 500;
     private initialContextIndex: number = 0;
@@ -41,6 +40,9 @@ export class Arceus {
                 break;
             }
         if (this.isThisAnEnding()) {
+            if (flappeo.clicked) {
+                this.removePoints(-50);
+            }
             this.displayEnding();
             this.reset();
         }
@@ -73,56 +75,14 @@ export class Arceus {
     getBack() {
         this.currentContextIndex = this.getPreviousContext();
         this.currentChoicesIndex = this.getPreviousChoices();
-        this.displayContent();
-    }
-
-    displayEnding(): void {
-        var ending: string = this.contexts[this.currentContextIndex].getContext();
-        document.getElementById("mainContext").innerHTML = ending;
-    }
-
-    displayContent():void {
-        this.displayContext();
-        this.displayChoices();
-    }
-
-    displayContext():void {
-        var context: Context = this.contexts[this.currentContextIndex];
-        var space = document.createElement("p");
-        space.setAttribute("id", "mainContext");
-        space.innerHTML = context.getContext();
-        document.body.appendChild(space);
-    }
-
-    displayChoices():void {
-        var choices: Choice[] = this.choices[this.currentChoicesIndex];
-        var i: number = 0;
-        var self = this;
-        choices.forEach(function (element,i) {
-            var button = document.createElement("button");
-            button.setAttribute("class", "choiceButton");
-            button.textContent = element.getChoice();
-            button.onclick = function () {
-                self.setChoices(i);
-            }
-            i++;
-            document.body.appendChild(button);
-        });
-        var button = document.createElement("button");
-        button.setAttribute("id", "goBack");
-        button.onclick = function () {
-            self.setChoices(10);
-        }
     }
 
     isThisAnEnding(): boolean {
         return this.contexts[this.currentContextIndex].isEnd();
     }
 
-    getContext(contextIndex: number): string {
-        var index = contextIndex;
-        console.log(index);
-        return this.contexts[index].getContext();
+    getCurrentContextText(): string {
+        return this.contexts[this.currentContextIndex].getContext();
     }
 
     removePoints(amount: number) {
@@ -135,8 +95,6 @@ export class Arceus {
     }
 
     reset():void {
-        this.points = Arceus.STARTING_POINTS;
-        var self = this;
         var restartButton = document.createElement("button");
         restartButton.textContent = "Next";
         restartButton.onclick = function () {
@@ -148,6 +106,5 @@ export class Arceus {
     start(contextIndex: number, choicesIndex: number):void {
         this.initialContextIndex = contextIndex;
         this.initialChoicesIndex = choicesIndex;
-        this.displayContent();
     }
 }
