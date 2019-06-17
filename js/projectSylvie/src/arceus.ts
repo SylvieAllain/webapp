@@ -29,12 +29,13 @@ export class Arceus {
             this.setContext(userChoice);
             this.currentChoicesIndex = userChoice.getNextChoices();
         }
-        /*if (this.isThisAnEnding()) {
+        if (this.isThisAnEnding()) {
+            this.displayEnding();
             this.reset();
         }
         else {
-            this.nextNode();
-        }*/
+            this.displayContent();
+        }
     }
 
     getChoices(): Choice[] {
@@ -54,12 +55,17 @@ export class Arceus {
         this.currentContextIndex = userChoice.getNextContext();
     }
 
-    getCurrentContextIndex() {
+    getCurrentContextIndex():number {
         return this.currentContextIndex;
     }
 
-    getCurrentChoicesIndex() {
+    getCurrentChoicesIndex():number {
         return this.currentChoicesIndex;
+    }
+
+    displayEnding(): void {
+        var ending: string = this.contexts[this.currentContextIndex].getContext();
+        document.getElementById("mainContext").innerHTML = ending;
     }
 
     displayContent():void {
@@ -67,7 +73,7 @@ export class Arceus {
         this.displayChoices();
     }
 
-    displayContext() {
+    displayContext():void {
         var context: Context = this.contexts[this.currentContextIndex];
         var space = document.createElement("p");
         space.setAttribute("id", "mainContext");
@@ -75,7 +81,7 @@ export class Arceus {
         document.body.appendChild(space);
     }
 
-    displayChoices() {
+    displayChoices():void {
         var choices: Choice[] = this.choices[this.currentChoicesIndex];
         var i: number = 0;
         var self = this;
@@ -111,18 +117,21 @@ export class Arceus {
         return this.points;
     }
 
-    getPoints() {
+    getPoints():number {
         return this.points;
     }
 
-    reset() {
+    reset():void {
         this.points = Arceus.STARTING_POINTS;
-        this.contexts[this.initialContextIndex];
-        this.choices[this.initialChoicesIndex];
+        var self = this;
+        var restartButton = document.createElement("button");
+        restartButton.textContent = "Do you want to try again?";
+        restartButton.onclick = function () {
+            self.start(self.initialContextIndex, self.initialChoicesIndex);
+        }
     }
     
-    start(contextIndex: number, choicesIndex: number) {
-
+    start(contextIndex: number, choicesIndex: number):void {
         this.initialContextIndex = contextIndex;
         this.initialChoicesIndex = choicesIndex;
         this.displayContent();
