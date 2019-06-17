@@ -1,0 +1,13 @@
+@import url('../futura.otf');
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Futura';
+  letter-spacing: 5px;
+}
+
+.coveo-logo {
+  font-size: 5.0rem;
+
+}

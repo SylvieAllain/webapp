@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
+
+* {
+	padding: 0;
+	margin: 0;
+	font-family: 'Roboto', sans-serif;
+	user-select: none;
+	cursor: url('../image/cursor.png'), auto;
+    font-size: 1.0rem;
+    text-shadow: 1px 1px 0 rgba(0, 0, 0, 1);
+}
+
+body {
+	overflow: hidden;
+}

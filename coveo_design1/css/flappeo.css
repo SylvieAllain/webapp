@@ -1,0 +1,38 @@
+#flappeo-playground {
+    position: fixed;
+    top: 0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.flappeo {
+	width: 35px;
+	height: 35px;
+	background-image: url('../image/flappeo.png');
+	background-size: 75%;
+    background-repeat: no-repeat;
+    background-position: center;
+	position: absolute;
+    top: 36px;
+    left: 1769px;
+    z-index: 1;
+    visibility: hidden;
+    pointer-events: auto;
+}
+
+.flappeo-clicked {
+    animation-name: flappeo-clicked;
+    animation-duration: 1s;
+	animation-iteration-count: forwards;
+    animation-timing-function: linear;
+    transition: 5s all;
+    width: 0;
+    height: 0;
+}
+
+@keyframes flappeo-clicked {
+    100% {top: calc(100% + 34px)}
+}
