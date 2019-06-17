@@ -1,32 +1,31 @@
-﻿class  Choice {
+﻿ class Choice {
     private text: string;
-    private nextDirection: number;
+    private nextChoices: number;
     private nextContext: number;
     private points: number;
-    private previous: number
-    constructor(text: string, nextDirection: number, nextContext :number, points: number, previous: number) {
+    private previousChoices: number;
+    constructor(text: string, nextChoices: number, nextContext: number, points: number, previousChoices: number) {
         this.text = text;
-        this.nextDirection = nextDirection;
+        this.nextChoices = nextChoices;
         this.nextContext = nextContext;
         this.points = points;
-        this.previous = previous;
+        this.previousChoices = previousChoices;
     }
-    getText() {
+    getChoice() {
         return this.text;
     }
     getPoints() {
         return this.points;
     }
-    getNextDirection() {
-        return this.nextDirection;
+    getNextChoices() {
+        return this.nextChoices;
     }
     getNextContext() {
         return this.nextContext;
     }
+
     getPrevious() {
-        return this.previous;
+        return this.previousChoices;
     }
-    
 
 }
-
