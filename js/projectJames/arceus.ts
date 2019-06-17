@@ -5,10 +5,12 @@
     private choice: Choice[][] = [];
     private points: number = 0;
     private currentContextIndex: number = 0;
+    private storyIndex: number;
 
-    constructor(context: Context[], choice: Choice[][]) {
+    constructor(context: Context[], choice: Choice[][], storyIndex: number) {
         this.context = context;
         this.choice = choice;
+        this.storyIndex = storyIndex;
     }
 
     giveChoices(index: number) {
