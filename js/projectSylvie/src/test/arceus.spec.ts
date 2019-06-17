@@ -4,8 +4,8 @@ import { Context } from "../context";
 
 const ANY_CHOICE_1 = new Choice("Answer1", 0, 1, 0, 0);
 const ANY_CHOICE_2 = new Choice("Answer2", 1, 0, 10, 0);
-const ANY_CHOICE_3 = new Choice("Answer3", 0, 1, 20, 5);
-const ANY_CHOICE_4 = new Choice("Answer4", 1, 0, 30, 4);
+const ANY_CHOICE_3 = new Choice("Answer3", 0, 1, 20, 0);
+const ANY_CHOICE_4 = new Choice("Answer4", 1, 0, 30, 0);
 const ANY_CHOICES_1: Choice[] = [ANY_CHOICE_1, ANY_CHOICE_2];
 const ANY_CHOICES_2: Choice[] = [ANY_CHOICE_3, ANY_CHOICE_4];
 const FINAL_CHOICES: Choice[][] = [ANY_CHOICES_1, ANY_CHOICES_2];
@@ -15,7 +15,7 @@ const CONTEXTS: Context[] = [ANY_CONTEXT_1, ANY_CONTEXT_2];
 const INITIAL_TOTAL_POINTS = 500;
 
 // Tests that affect the context
-test("When arceus received a new context index, the context text is changed",() => {
+test("When arceus received a context index, the context text is changed",() => {
     var arceus = new Arceus(FINAL_CHOICES, CONTEXTS);
     var receivedIndex = 1;
     var expectedContextText = ANY_CONTEXT_2.getContext();
@@ -55,18 +55,27 @@ test("When the user starts the game, the first index of Choices is available", (
     expect(expectedChoicesIndex).toBe(actualChoicesIndex);
 });
 
-test("When the user starts the game, the first array content of Choices are availables", () => {
+test("When the user starts the game, the first array of content of Choices is available", () => {
     var arceus = new Arceus(FINAL_CHOICES, CONTEXTS);
     var expectedArrayOfChoices: Choice[] = ANY_CHOICES_1;
     var actualArrayOfChoices: Choice[] = arceus.getChoices();
     expect(expectedArrayOfChoices).toBe(actualArrayOfChoices);
 });
 
-test("When the user starts the game, the first array of Choices are availables", () => {
+test("When the user starts the game, the index of the first array of Choices is available", () => {
     var arceus = new Arceus(FINAL_CHOICES, CONTEXTS);
     var expectedChoicesIndex: number = 1;
     arceus.setChoices(1);
     var actualChoicesIndex: number = arceus.getCurrentChoicesIndex();
+    expect(expectedChoicesIndex).toBe(actualChoicesIndex);
+});
+
+test("When the user made a choice, then he wants to go back, the previous choices index is available", () => {
+    var arceus = new Arceus(FINAL_CHOICES, CONTEXTS);
+    arceus.setChoices(1);
+    var newChoicesIndex = arceus.getPreviousChoices();
+    var expectedChoicesIndex:number = 0;
+    var actualChoicesIndex = newChoicesIndex;
     expect(expectedChoicesIndex).toBe(actualChoicesIndex);
 });
 
