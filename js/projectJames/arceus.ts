@@ -1,17 +1,7 @@
-﻿import { Choice } from "./choices";
+﻿/*
+import { Choice } from "./choices";
 import { Context } from "./context";
-
-    private initialContextIndex: number;
-    private context: Context[] = [];
-    private choice: Choice[][] = [];
-    private points: number = 0;
-    private currentContextIndex: number = 0;
-    private storyIndex: number;
-
-    constructor(context: Context[], choice: Choice[][], storyIndex: number) {
-        this.context = context;
-        this.choice = choice;
-        this.storyIndex = storyIndex;
+*/
 export class Arceus {
     static readonly STARTING_POINTS: number = 500;
     private initialContextIndex: number = 0;
@@ -21,14 +11,29 @@ export class Arceus {
     private points: number = Arceus.STARTING_POINTS;
     private currentContextIndex: number;
     private currentChoicesIndex: number;
-    constructor(choices: Choice[][], contexts: Context[]) {
+    private storyIndex: number;
+    private hintsFound: number = 0;
+    constructor(choices: Choice[][], contexts: Context[], storyIndex: number) {
         this.choices = choices;
         this.contexts = contexts;
         this.currentContextIndex = 0;
         this.currentChoicesIndex = 0;
+        this.storyIndex = storyIndex;
     }
 
     setChoices(userIndex: number): void {
+        switch (this.storyIndex) {
+            case 1:
+                if (context.isHint() == true) {
+                    this.hintsFound++;
+                    if (this.hintsFound == 3) {
+                        this.currentContextIndex = 11;
+                        this.currentChoicesIndex = 5;
+                    } 
+                }
+            case 2:
+        }
+
         if (userIndex == 10) {
             this.currentContextIndex = this.getPreviousContext();
             this.currentChoicesIndex = this.getPreviousChoices();
@@ -139,3 +144,4 @@ export class Arceus {
         this.displayContent();
     }
 }
+var context = this.contexts[this.currentContextIndex]
