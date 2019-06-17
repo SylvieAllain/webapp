@@ -21,31 +21,25 @@ export class Arceus {
     }
 
     setChoices(userIndex: number): void {
-        if (userIndex == 10) {
-            this.currentContextIndex = this.getPreviousContext();
-            this.currentChoicesIndex = this.getPreviousChoices();
-        }
-        else {
-            var currentChoices: Choice[] = this.choices[this.currentChoicesIndex];
-            var userChoice: Choice = currentChoices[userIndex];
-            this.removePoints(userChoice.getPoints());
-            this.setContext(userChoice);
-            var context = this.contexts[this.currentContextIndex];
-            this.currentChoicesIndex = userChoice.getNextChoices();
-            switch (this.storyIndex) {
-                case 1:
-                    if (context.isHint() == true) {
-                        this.hintsFound++;
-                        if (this.hintsFound == 3) {
-                            this.currentContextIndex = 11;
-                            this.currentChoicesIndex = 5;
-                        }
+        var currentChoices: Choice[] = this.choices[this.currentChoicesIndex];
+        var userChoice: Choice = currentChoices[userIndex];
+        this.removePoints(userChoice.getPoints());
+        this.setContext(userChoice);
+        var context = this.contexts[this.currentContextIndex];
+        this.currentChoicesIndex = userChoice.getNextChoices();
+        switch (this.storyIndex) {
+            case 1:
+                if (context.isHint() == true) {
+                    this.hintsFound++;
+                    if (this.hintsFound == 3) {
+                        this.currentContextIndex = 11;
+                        this.currentChoicesIndex = 5;
                     }
-                    break;
-                default:
-                    break;
+                }
+                break;
+            default:
+                break;
             }
-        }
         if (this.isThisAnEnding()) {
             this.displayEnding();
             this.reset();
@@ -53,6 +47,10 @@ export class Arceus {
         else {
             this.displayContent();
         }
+    }
+
+    getCurrentContextIndex() {
+        return this.currentContextIndex;
     }
 
     getChoices(): Choice[] {
@@ -70,6 +68,12 @@ export class Arceus {
     }
     setContext(userChoice: Choice): void {
         this.currentContextIndex = userChoice.getNextContext();
+    }
+
+    getBack() {
+        this.currentContextIndex = this.getPreviousContext();
+        this.currentChoicesIndex = this.getPreviousChoices();
+        this.displayContent();
     }
 
     displayEnding(): void {
