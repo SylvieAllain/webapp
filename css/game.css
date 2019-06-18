@@ -62,6 +62,8 @@
 #game-context {
 	width: 40%;
 	margin-right: 20px;
+	position: relative;
+	top: 0;
 }
 
 #game-context p, #game-initial-context  {
@@ -367,4 +369,28 @@
 
 #game-points-container button:active {
 	transform: scale(0.9);
+}
+
+.game-container-disappear {
+	animation-name: game-container-disappear;
+    animation-duration: .25s;
+	animation-iteration-count: forwards;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+@keyframes game-container-disappear {
+	100% {top: 100%}
+}
+
+.choice-drop {
+	animation-name: choice-drop;
+    animation-duration: .5s;
+	animation-iteration-count: forwards;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+@keyframes choice-drop {
+	100% {top: 2000px}
 }
