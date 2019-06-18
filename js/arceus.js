@@ -7,7 +7,6 @@ var Arceus = /** @class */ (function () {
         this.contexts = [];
         this.points = Arceus.STARTING_POINTS;
         this.hintsFound = 0;
-        this.lastHintFound = false;
         this.choices = choices;
         this.contexts = contexts;
         this.currentContextIndex = 0;
@@ -24,31 +23,16 @@ var Arceus = /** @class */ (function () {
         switch (this.storyIndex) {
             case 1:
                 if (context.isHint() == true) {
-                    context.changeHint();
                     this.hintsFound++;
                     if (this.hintsFound == 3) {
-                        this.getNextContextAfterFindingHints(11, 5);
-                    }
-                }
-                break;
-            case 4:
-                if (context.isHint() == true) {
-                    context.changeHint();
-                    this.hintsFound++;
-                    if (this.hintsFound == 2) {
-                        this.getNextContextAfterFindingHints(11, 5);
+                        this.currentContextIndex = 11;
+                        this.currentChoicesIndex = 5;
                     }
                 }
                 break;
             default:
                 break;
         }
-    };
-    Arceus.prototype.getNextContextAfterFindingHints = function (contextIndex,choicesIndex) {
-        this.lastHintFound = true;
-        this.lastHintFoundIndex = this.currentContextIndex;
-        this.currentContextIndex = contextIndex;
-        this.currentChoicesIndex = choicesIndex;
     };
     Arceus.prototype.getCurrentContextIndex = function () {
         return this.currentContextIndex;
