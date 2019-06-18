@@ -1,4 +1,3 @@
-
 var Arceus = /** @class */ (function () {
     function Arceus(choices, contexts, storyIndex) {
         this.initialContextIndex = 0;
@@ -27,15 +26,6 @@ var Arceus = /** @class */ (function () {
                     context.changeHint();
                     this.hintsFound++;
                     if (this.hintsFound == 3) {
-                        this.getNextContextAfterFindingHints(11, 5);
-                    }
-                }
-                break;
-            case 4:
-                if (context.isHint() == true) {
-                    context.changeHint();
-                    this.hintsFound++;
-                    if (this.hintsFound == 2) {
                         this.getNextContextAfterFindingHints(11, 5);
                     }
                 }

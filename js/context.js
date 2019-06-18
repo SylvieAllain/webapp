@@ -1,4 +1,3 @@
-
 var Context = /** @class */ (function () {
     function Context(text, hint, end, previous) {
         this.text = text;

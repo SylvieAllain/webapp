@@ -1,6 +1,10 @@
 class UserInterface {
 	constructor() {
+<<<<<<< HEAD
         this.initialTimer = 30;
+=======
+        this.initialTimer = 1;
+>>>>>>> dc4833e6ce7a4dd53b7c13656c95f261178578c9
         this.choiceButtons = [];
         
         this.setElements();
@@ -47,8 +51,16 @@ class UserInterface {
         this.setContext();
         this.setChoicesButtons();
 
-        this.gameContainer.style.display = 'flex';
-        this.gameContainer.classList.add('quiz-box-appear');
+        this.elementDisplayFlex(this.gameContainer);
+        this.gameContainer.classList.add('choices-box-appear');
+    }
+
+    elementDisplayFlex(element) {
+        element.style.display = "flex";
+    }
+
+    elementHide(element) {
+        element.style.display = "none";
     }
 
     enableSuperUrgentMode() {
@@ -70,10 +82,16 @@ class UserInterface {
     }
 
     endAdventure() {
+<<<<<<< HEAD
         this.stopTimer();
         this.gameContainer.style.display = "none";
         this.gamePointsContainer.style.display = "flex";
         this.gameFinalPoints.innerHTML = arceus.getPoints();
+=======
+        this.elementHide(this.gameContainer);
+        this.elementDisplayFlex(this.gamePointsContainer);
+        this.gamePointsContainer.classList.add('game-points-container-appear');
+>>>>>>> dc4833e6ce7a4dd53b7c13656c95f261178578c9
     }
 
     getElementCenterX(element) {
@@ -110,19 +128,19 @@ class UserInterface {
 			}
 		}.bind(this));
 
-        var self = this;
+        let self = this;
 		$(this.gameContainer).delay(500).queue(function() {
-			$(self.gameContainer).addClass('quiz-box-disappear').delay(500).queue(function() {
-				self.gameContainer.style.display = "none";
+			$(self.gameContainer).addClass('choices-box-disappear').delay(500).queue(function() {
+				self.elementHide(self.gameContainer);
 				self.clearButtons();
-                self.gameContainer.classList.remove('quiz-box-disappear');
+                self.gameContainer.classList.remove('choices-box-disappear');
 				$(this).dequeue();
 			}).delay(250).queue(function() {
                 self.displayNextChoices();
                 self.startTimer();
 				$(this).dequeue();
 			}).delay(250).queue(function() {
-                self.gameContainer.classList.remove('quiz-box-appear');
+                self.gameContainer.classList.remove('choices-box-appear');
 				$(this).dequeue();
 			}).queue(function() {
 				$(this).dequeue();
@@ -137,6 +155,31 @@ class UserInterface {
 
     offsetTop(element) {
         return element.getBoundingClientRect().y
+    }
+
+    outOfTime() {
+        let self = this;
+        let animatedElements = [];
+
+        for (let i = this.choiceButtons.length - 1; i >= 0; i--) {
+            animatedElements.push(this.choiceButtons[i]);
+        }
+
+        let fallDelay = 0;
+        animatedElements.push(this.gameContext, this.timerContainer, this.gameInitialContext);
+        $(this.gameContainer).delay(500).queue(function() {
+            animatedElements.forEach(function(element) {
+                $(element).delay(fallDelay).queue(function() {
+                    element.classList.add('ending-drop');
+                    $(this).dequeue();
+                });
+                fallDelay += 100;
+            });
+            $(this).dequeue();
+        }).delay(1000).queue(function() {
+            self.endAdventure();
+            $(this).dequeue();
+        });
     }
 
     removeButtonsClickEvents() {
@@ -187,6 +230,7 @@ class UserInterface {
         this.timer = document.getElementById('timer');
         this.timerBar = document.getElementById('timer-bar');
         this.timerBarContainer = document.getElementById('timer-bar-container');
+        this.timerContainer = document.getElementById('timer-container');
         this.timerOrangeBar = document.getElementById('timer-orange-bar');
         this.timerText = document.getElementById('timer-text');
 
@@ -218,7 +262,7 @@ class UserInterface {
         let buttonY = this.getElementCenterY(this.playButton);
         let diffX = logoX - buttonX;
         let diffY = logoY - buttonY;
-        var self = this;
+        let self = this;
 
         $("#play-button").animate({
             left: "+=" + diffX,
@@ -276,11 +320,10 @@ class UserInterface {
                 }
             }
         } else {
-            window.clearInterval(this.shakeBoxInterval);
+            this.stopTimer();
             this.removeButtonsClickEvents();
             this.questionTimer = 0;
             this.questionCurrentTimestamp = 0;
-            let self = this;
             this.disableSuperUrgentMode();
             $(this.gameContainer).delay(500).queue(function() {
                 let choices = self.gameChoices.children;
@@ -300,6 +343,7 @@ class UserInterface {
                 arceus.points = 0;
                 self.endAdventure();
             });
+            this.outOfTime();
         }
         this.updateTimerBar();
     }
