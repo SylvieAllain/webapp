@@ -1,10 +1,10 @@
 class UserInterface {
 	constructor() {
-        this.initialTimer = 2;
+        this.initialTimer = 30;
         this.choiceButtons = [];
         
         this.setElements();
-
+        this.isLastHintContextDisplayed = false;
         this.flappeo = new Flappeo();
         this.clock = new Clock('clock');
         this.setTimer();
@@ -73,6 +73,7 @@ class UserInterface {
         this.stopTimer();
         this.gameContainer.style.display = "none";
         this.gamePointsContainer.style.display = "flex";
+        this.gameFinalPoints.innerHTML = arceus.getPoints();
     }
 
     getElementCenterX(element) {
@@ -152,7 +153,20 @@ class UserInterface {
     }
 
     setContext() {
-        this.gameCurrentContext.innerHTML = arceus.contexts[arceus.currentContextIndex].getContext();
+        if (arceus.isThisAnEnding()) {
+            this.endAdventure();
+        }
+        else {
+            if (arceus.lastHintFound && !this.isLastHintContextDisplayed) {
+                this.gameLastHintMessage.innerHTML = arceus.contexts[arceus.lastHintFoundIndex].getContext();
+                this.gameCurrentContext.innerHTML = arceus.contexts[arceus.currentContextIndex].getContext();
+                this.isLastHintContextDisplayed = true;
+            }
+            else {
+                this.gameLastHintMessage.innerHTML = '';
+                this.gameCurrentContext.innerHTML = arceus.contexts[arceus.currentContextIndex].getContext();
+            }
+        }
     }
 
     setElements() {
@@ -162,9 +176,11 @@ class UserInterface {
         this.coveoLogoImage = document.getElementById('coveo-logo-image');
         this.game = document.getElementById('game');
         this.gameChoices = document.getElementById('game-choices');
+        this.gameFinalPoints = document.getElementById('game-final-points');
         this.gameCurrentContext = document.getElementById('game-current-context');
         this.gameContainer = document.getElementById('game-container');
         this.gameContext = document.getElementById('game-context');
+        this.gameLastHintMessage = document.getElementById('game-last-hint-message');
         this.gameInitialContext = document.getElementById('game-initial-context');
         this.gamePointsContainer = document.getElementById('game-points-container');
         this.playButton = document.getElementById('play-button');
@@ -280,7 +296,8 @@ class UserInterface {
             }).delay(200).queue(function() {
                 self.gameContext.classList.add('choice-drop');
                 $(this).dequeue();
-            }).delay(1250).queue(function() {
+                }).delay(1250).queue(function () {
+                arceus.points = 0;
                 self.endAdventure();
             });
         }
