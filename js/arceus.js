@@ -1,5 +1,4 @@
-"use strict";
-exports.__esModule = true;
+
 var Arceus = /** @class */ (function () {
     function Arceus(choices, contexts, storyIndex) {
         this.initialContextIndex = 0;
@@ -85,4 +84,3 @@ var Arceus = /** @class */ (function () {
     Arceus.STARTING_POINTS = 500;
     return Arceus;
 }());
-exports.Arceus = Arceus;

@@ -18,19 +18,18 @@ choices4.push(new Choice("Reponse2", 4, 1, 10));
 choices4.push(new Choice("Reponse", 3, 2, 0));
 choices5.push(new Choice("Reponse", 1, 0, 10));
 choices5.push(new Choice("Reponse2", 1, 1, 10));
-<<<<<<< HEAD:js/main/data.ts
 
 ////////////////////////////////////////////////
-var context: Context[] = [];
+var context = [];
 
 context.push(new Context("A customer is reporting that their Query Suggestions component is not providing any suggestions. What do you do first?", false, false, 0));
 
 var arceus = new Arceus();
 arceus.start(0);
-arceus.giveAnswer(0);
+//arceus.giveAnswer(0);
 
 console.log(arceus);
-=======
+
 var finalChoices = [];
 finalChoices.push(choices1);
 finalChoices.push(choices2);
@@ -46,4 +45,3 @@ var arceus = new Arceus(finalChoices, context);
 arceus.start(0, 0);
 console.log(arceus);
 //# sourceMappingURL=data.js.map
->>>>>>> 46d5b773b9ab09e27642f8cc6231e39ec63a9774:js/projectSylvie/data.js
