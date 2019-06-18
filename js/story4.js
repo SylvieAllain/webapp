@@ -22,8 +22,8 @@ choices2.push(new Choice("Could you please confirm your org / source name?", 4, 
 choices2.push(new Choice("Do you have indexed documents that contain the searched keyword?", 2, 7, 0, 0));
 choices2.push(new Choice("Please open another case saying that you see no results", 0, 8, 0, 0));
 
-choices3.push(new Choice("Is your title field searchable?", 6, 9, 0, 1));
-choices3.push(new Choice("Ask customer about permissions on documents", 6, 10, 0, 1));
+choices3.push(new Choice("Is your title field searchable?", 2, 9, 0, 1));
+choices3.push(new Choice("Ask customer about permissions on documents", 2, 10, 0, 1));
 choices3.push(new Choice("Suggest a meeting", 0, 11, 0, 1));
 
 choices4.push(new Choice("Test this expression on customer’s non-prod org", 8, 12, 0, 0));
@@ -131,9 +131,9 @@ context.push(new Context("No match for this on customerNonprodOrg1.", false, fal
 context.push(new Context("There is no indexed content on prod org.", false, false, 19));
 
 //hint
-context.push(new Context("So you now know that the documents are public and the feilds are searchable.", false, false, 7));
-
-var arceus = new Arceus(context, choices);
+context.push(new Context("So you now know that the documents are public and the feilds are searchable.", false, false, 6));
+var storyIndex = 4;
+var arceus = new Arceus(context, choices, storyIndex);
 arceus.start(0);
 //arceus.giveChoice(0);
 

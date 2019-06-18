@@ -85,6 +85,8 @@ class UserInterface {
         if (this.questionTimer <= 0) {
             arceus.setPointsToZero();
         }
+        var pointsToRemoveFromWastedTime = (this.initialTimer - this.questionTimer) * 2;
+        arceus.removePoints(pointsToRemoveFromWastedTime);
         this.elementHide(this.gameContainer);
         this.gameFinalPoints.innerHTML = arceus.getPoints();
         this.elementDisplayFlex(this.gamePointsContainer);

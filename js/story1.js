@@ -31,6 +31,7 @@ choices.push(choices5);
 choices.push(choices6);
 ////////////////////////////////////////////////
 var context = [];
+var storyIndex = 1;
 //initial context
 context.push(new Context("A customer is reporting that their Query Suggestions component is not providing any suggestions. What do you do first?", false, false, 0));
 //context 1

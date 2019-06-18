@@ -25,6 +25,7 @@ choices.push(choices3);
 choices.push(choices4);
 ////////////////////////////////////////////////
 var context = [];
+var storyIndex = 3;
 //initial context
 context.push(new Context("I can't seem to find my KB called \"Super deflection KB\"", false, false, 0));
 //context 1
@@ -45,7 +46,7 @@ context.push(new Context("The issue is solved but the client would of liked to h
 context.push(new Context("The issue is solved and the cliednt is really happy that you took the time to personally meet with them and guide them throught the process.", false, true, 5));
 context.push(new Context("This solves the issue but the client would of appreciated if you would of taken the time to meet with them personally and guide them through the process.", false, true, 5));
 context.push(new Context("This does solve the issue but the client is angry that you went in the prod yourself and a lawsuit could be incoming for breach of contract.", false, true, 5));
-var arceus = new Arceus(context, choices);
+var arceus = new Arceus(context, choices, storyIndex);
 arceus.start(0);
 //arceus.giveChoice(0);
 console.log(arceus);

@@ -9,7 +9,7 @@ let randomStory =  stories[getRandomInt(0,stories.length -1)];
 
 $.getScript(randomStory, function() {
 	UI = new UserInterface();
-	arceus = new Arceus(choices, context, 1);
+	arceus = new Arceus(choices, context, storyIndex);
 
 	var triangles = [];
 
