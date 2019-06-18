@@ -1,4 +1,3 @@
-"use strict";
 var Choice = /** @class */ (function () {
     function Choice(text, nextChoices, nextContext, points, previousChoices) {
         this.text = text;
