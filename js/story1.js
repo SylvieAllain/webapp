@@ -54,7 +54,4 @@ context.push(new Context("This solves the issue, client thanks you vary much and
 context.push(new Context("Client sends you a screenshot proof that the keyword is actually part of the candidates. This is not the right cause to this issue.", false, false, 9));
 context.push(new Context("Client responds that this doesn't seem to be the cause of the issue, as the Model Testing feature provides suggestions as expected.", false, false, 9));
 context.push(new Context("Client spent time training new candidates using an anoymous session. However the same issue occurs. This doesn't seem to solve the issue.", false, false, 9));
-var arceus = new Arceus(context, choices);
-arceus.start(0);
-//arceus.giveChoice(0);
-console.log(arceus);
+

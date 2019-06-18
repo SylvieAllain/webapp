@@ -64,13 +64,13 @@
 	margin-right: 20px;
 }
 
-#game-context p {
+#game-context p, #game-initial-context  {
 	font-size: 1.5rem;
 	color: #FFFFFF;
 	margin-bottom: 20px;
 }
 
-#game-context .game-context-initial {
+#game-context #game-initial-context {
 	color: rgba(255, 255, 255, 0.75);
 }
 
@@ -214,13 +214,21 @@
 
 .box-super-urgent {
 	animation-name: box-super-urgent;
-    animation-duration: 0.25s;
+    animation-duration: 0.6s;
 	animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
 
 @keyframes box-super-urgent {
+	12.50% {transform: translateX(-10px) translateY(5px)}
+	25% {transform: translateX(10px) translateY(-5px)}
+	37.50% {transform: translateX(10px) translateY(-5px)}
+	50% {transform: translateX(-10px) translateY(5px)}
 	50% {transform: scale(1.075)}
+	62.5% {transform: translateX(10px) translateY(5px)}
+	75% {transform: translateX(-10px) translateY(-5px)}
+	87.5% {transform: translateX(-10px) translateY(-5px)}
+	
 }
 
 .timer-urgent {
