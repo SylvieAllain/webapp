@@ -36,6 +36,15 @@ export class Arceus {
                     }
                 }
                 break;
+            case 4:
+                if (context.isHint() == true) {
+                    this.hintsFound++;
+                    if (this.hintsFound == 2) {
+                        this.currentContextIndex = 11;
+                        this.currentChoicesIndex = 5;
+                    }
+                }
+                break;
             default:
                 break;
         }
