@@ -1,14 +1,10 @@
 class UserInterface {
 	constructor() {
-<<<<<<< HEAD
-        this.initialTimer = 30;
-=======
-        this.initialTimer = 1;
->>>>>>> dc4833e6ce7a4dd53b7c13656c95f261178578c9
+        this.initialTimer = 180;
         this.choiceButtons = [];
         
         this.setElements();
-        this.isLastHintContextDisplayed = false;
+
         this.flappeo = new Flappeo();
         this.clock = new Clock('clock');
         this.setTimer();
@@ -82,16 +78,9 @@ class UserInterface {
     }
 
     endAdventure() {
-<<<<<<< HEAD
-        this.stopTimer();
-        this.gameContainer.style.display = "none";
-        this.gamePointsContainer.style.display = "flex";
-        this.gameFinalPoints.innerHTML = arceus.getPoints();
-=======
         this.elementHide(this.gameContainer);
         this.elementDisplayFlex(this.gamePointsContainer);
         this.gamePointsContainer.classList.add('game-points-container-appear');
->>>>>>> dc4833e6ce7a4dd53b7c13656c95f261178578c9
     }
 
     getElementCenterX(element) {
@@ -196,20 +185,7 @@ class UserInterface {
     }
 
     setContext() {
-        if (arceus.isThisAnEnding()) {
-            this.endAdventure();
-        }
-        else {
-            if (arceus.lastHintFound && !this.isLastHintContextDisplayed) {
-                this.gameLastHintMessage.innerHTML = arceus.contexts[arceus.lastHintFoundIndex].getContext();
-                this.gameCurrentContext.innerHTML = arceus.contexts[arceus.currentContextIndex].getContext();
-                this.isLastHintContextDisplayed = true;
-            }
-            else {
-                this.gameLastHintMessage.innerHTML = '';
-                this.gameCurrentContext.innerHTML = arceus.contexts[arceus.currentContextIndex].getContext();
-            }
-        }
+        this.gameCurrentContext.innerHTML = arceus.contexts[arceus.currentContextIndex].getContext();
     }
 
     setElements() {
@@ -219,11 +195,9 @@ class UserInterface {
         this.coveoLogoImage = document.getElementById('coveo-logo-image');
         this.game = document.getElementById('game');
         this.gameChoices = document.getElementById('game-choices');
-        this.gameFinalPoints = document.getElementById('game-final-points');
         this.gameCurrentContext = document.getElementById('game-current-context');
         this.gameContainer = document.getElementById('game-container');
         this.gameContext = document.getElementById('game-context');
-        this.gameLastHintMessage = document.getElementById('game-last-hint-message');
         this.gameInitialContext = document.getElementById('game-initial-context');
         this.gamePointsContainer = document.getElementById('game-points-container');
         this.playButton = document.getElementById('play-button');
@@ -325,24 +299,6 @@ class UserInterface {
             this.questionTimer = 0;
             this.questionCurrentTimestamp = 0;
             this.disableSuperUrgentMode();
-            $(this.gameContainer).delay(500).queue(function() {
-                let choices = self.gameChoices.children;
-                let fallDelay = 0;
-                for (let i = choices.length - 1; i >= 0; i--) {
-                    $(choices[i]).delay(fallDelay).queue(function() {
-                        choices[i].classList.add('choice-drop');
-                        $(this).dequeue();
-                    });
-                    fallDelay += 200;
-                }
-                $(this).dequeue();
-            }).delay(200).queue(function() {
-                self.gameContext.classList.add('choice-drop');
-                $(this).dequeue();
-                }).delay(1250).queue(function () {
-                arceus.points = 0;
-                self.endAdventure();
-            });
             this.outOfTime();
         }
         this.updateTimerBar();
