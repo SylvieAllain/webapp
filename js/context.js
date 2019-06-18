@@ -6,6 +6,9 @@ var Context = /** @class */ (function () {
         this.end = end;
         this.previous = previous;
     }
+    Context.prototype.changeHintStatus = function () {
+        this.hint = false;
+    };
     Context.prototype.getContext = function () {
         return this.text;
     };

@@ -7,6 +7,7 @@ var Arceus = /** @class */ (function () {
         this.contexts = [];
         this.points = Arceus.STARTING_POINTS;
         this.hintsFound = 0;
+        this.lastHintFound = false;
         this.choices = choices;
         this.contexts = contexts;
         this.currentContextIndex = 0;
@@ -24,21 +25,39 @@ var Arceus = /** @class */ (function () {
             case 1:
                 if (context.isHint() == true) {
                     this.hintsFound++;
+                    context.changeHintStatus();
                     if (this.hintsFound == 3) {
-                        this.currentContextIndex = 11;
-                        this.currentChoicesIndex = 5;
+                        this.lastHintHasBeenFound(11, 5);
                     }
-                }
                 break;
+                }
+            case 4:
+                if (context.isHint() == true) {
+                    this.hintsFound++;
+                    context.changeHintStatus();
+                    if (this.hintsFound == 2) {
+                        this.lastHintHasBeenFound(30, 6);
+                    }
+                    break;
+                }
             default:
                 break;
         }
+    };
+    Arceus.prototype.lastHintHasBeenFound = function (contextIndex,choicesIndex) {
+        this.lastHintFound = true;
+        this.lastHintFoundIndex = this.currentContextIndex;
+        this.currentContextIndex = contextIndex;
+        this.currentChoicesIndex = choicesIndex;
     };
     Arceus.prototype.getCurrentContextIndex = function () {
         return this.currentContextIndex;
     };
     Arceus.prototype.getChoices = function () {
         return this.choices[this.currentChoicesIndex];
+    };
+    Arceus.prototype.setPointsToZero = function () {
+        this.points = 0;
     };
     Arceus.prototype.getPreviousContext = function () {
         var context = this.contexts[this.currentContextIndex];
@@ -64,6 +83,9 @@ var Arceus = /** @class */ (function () {
     };
     Arceus.prototype.removePoints = function (amount) {
         this.points = this.points - amount;
+        if (this.points < 0) {
+            this.setPointsToZero();
+        }
         return this.points;
     };
     Arceus.prototype.getPoints = function () {

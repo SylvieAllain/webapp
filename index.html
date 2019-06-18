@@ -29,7 +29,8 @@
 			</div>
 			<div id="game">
 				<div id="game-context">
-						<p id="game-current-context"></p>
+                    <p id="game-last-hint-message"></p>
+					<p id="game-current-context"></p>
 				</div>
 				<div id="game-box">
 					<div id="game-choices"></div>
@@ -40,7 +41,7 @@
 			<p>
 				You made it!<br>
 				Lots of words to signify your achievement!<br>
-				You got <strong>0</strong> points!
+				You got <span id="game-final-points"><strong></strong></span> points!
 			</p>
 			<div class="atcoveo">
 				<div contenteditable="true" id="atcoveo" spellcheck="false"></div><div onclick="document.getElementById('atcoveo').focus()">@coveo.com</div>

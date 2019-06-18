@@ -2,9 +2,9 @@ class UserInterface {
 	constructor() {
         this.initialTimer = 180;
         this.choiceButtons = [];
-        
+        this.isTheEnd = false;
         this.setElements();
-
+        this.isLastHintContextDisplayed = false;
         this.flappeo = new Flappeo();
         this.clock = new Clock('clock');
         this.setTimer();
@@ -45,10 +45,14 @@ class UserInterface {
 
     displayNextChoices() {
         this.setContext();
-        this.setChoicesButtons();
-
-        this.elementDisplayFlex(this.gameContainer);
-        this.gameContainer.classList.add('choices-box-appear');
+        if (this.isTheEnd) {
+            this.endAdventure();
+        }
+        else {
+            this.setChoicesButtons();
+            this.elementDisplayFlex(this.gameContainer);
+            this.gameContainer.classList.add('choices-box-appear');
+        }
     }
 
     elementDisplayFlex(element) {
@@ -78,9 +82,14 @@ class UserInterface {
     }
 
     endAdventure() {
+        if (this.questionTimer <= 0) {
+            arceus.setPointsToZero();
+        }
         this.elementHide(this.gameContainer);
+        this.gameFinalPoints.innerHTML = arceus.getPoints();
         this.elementDisplayFlex(this.gamePointsContainer);
         this.gamePointsContainer.classList.add('game-points-container-appear');
+        
     }
 
     getElementCenterX(element) {
@@ -185,7 +194,22 @@ class UserInterface {
     }
 
     setContext() {
-        this.gameCurrentContext.innerHTML = arceus.contexts[arceus.currentContextIndex].getContext();
+        console.log(arceus.isThisAnEnding());
+        if (arceus.isThisAnEnding()) {
+            this.isTheEnd = true;
+        }
+        else {
+            if (arceus.lastHintFound && !this.isLastHintContextDisplayed) {
+                this.gameLastHintMessage.innerHTML = arceus.contexts[arceus.lastHintFoundIndex].getContext();
+                this.gameCurrentContext.innerHTML = arceus.contexts[arceus.currentContextIndex].getContext();
+                this.isLastHintContextDisplayed = true;
+            }
+            else {
+                this.gameLastHintMessage.innerHTML = '';
+                this.gameCurrentContext.innerHTML = arceus.contexts[arceus.currentContextIndex].getContext();
+            }
+        }
+        console.log(arceus.isThisAnEnding());
     }
 
     setElements() {
@@ -196,8 +220,10 @@ class UserInterface {
         this.game = document.getElementById('game');
         this.gameChoices = document.getElementById('game-choices');
         this.gameCurrentContext = document.getElementById('game-current-context');
+        this.gameLastHintMessage = document.getElementById('game-last-hint-message');
         this.gameContainer = document.getElementById('game-container');
         this.gameContext = document.getElementById('game-context');
+        this.gameFinalPoints = document.getElementById('game-final-points');
         this.gameInitialContext = document.getElementById('game-initial-context');
         this.gamePointsContainer = document.getElementById('game-points-container');
         this.playButton = document.getElementById('play-button');
