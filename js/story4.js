@@ -130,6 +130,9 @@ context.push(new Context("The customer mentions that this issue is not concernin
 context.push(new Context("No match for this on customerNonprodOrg1.", false, false, 19));
 context.push(new Context("There is no indexed content on prod org.", false, false, 19));
 
+//hint
+context.push(new Context("So you now know that the documents are public and the feilds are searchable.", false, false, 7));
+
 var arceus = new Arceus(context, choices);
 arceus.start(0);
 //arceus.giveChoice(0);
