@@ -1,4 +1,3 @@
-
 class Flappeo {
 	constructor() {
         this.flappeoScale = 1;
