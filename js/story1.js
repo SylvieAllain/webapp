@@ -19,10 +19,10 @@ choices4.push(new Choice("Open the network tab", 4, 2, 0, 1));
 choices4.push(new Choice("Look for errors in the Console", 3, 8, 0, 1));
 choices5.push(new Choice("Inspect the request that queries the Query Suggestions model", 1, 9, 0, 3));
 choices5.push(new Choice("Inspect the request that sends the analytics event related to the search", 1, 10, 0, 3));
-choices6.push(new Choice("The SearchHub filter values are diffrent on the event that feeds the model VS the event that grabs suggestions from the model. The client must ensure that both value's are the same.", 5, 11, 0, 4));
-choices6.push(new Choice("The client is testing the model with a keyword that is not part of the candidates. The client must ensure that they're using the right keyword.", 5, 12, 0, 4));
-choices6.push(new Choice("Even though there are candidates on the model, there is not enough data to provide suggestions. Thew model must be trained for a longer peroid of time inn order to obtain suggestions", 5, 13, 0, 4));
-choices6.push(new Choice("Results are being provided for an anoymous user, while the candidates have been trained by a specific user. Query suggestions are provided according to the user.", 5, 14, 0, 4));
+choices6.push(new Choice("The SearchHub filter values are diffrent on the event that feeds the model VS the event that grabs suggestions from the model. The client must ensure that both value's are the same.", 5, 12, 0, 4));
+choices6.push(new Choice("The client is testing the model with a keyword that is not part of the candidates. The client must ensure that they're using the right keyword.", 5, 13, 0, 4));
+choices6.push(new Choice("Even though there are candidates on the model, there is not enough data to provide suggestions. Thew model must be trained for a longer peroid of time inn order to obtain suggestions", 5, 14, 0, 4));
+choices6.push(new Choice("Results are being provided for an anoymous user, while the candidates have been trained by a specific user. Query suggestions are provided according to the user.", 5, 15, 0, 4));
 choices.push(choices1);
 choices.push(choices2);
 choices.push(choices3);
@@ -50,7 +50,7 @@ context.push(new Context("All parameters are as expected on the request. THe Sea
 //context 6
 context.push(new Context("You have now gathered enough information to formulate a resolution attempt to the client. Which of the following recommendations will you choose?", false, false, 5));
 //ending
-context.push(new Context("This solves the issue, client thanks you vary much and confirms you can close the case!", false, true, 9));
+context.push(new Context("This solves the issue, client thanks you very much and confirms you can close the case!", false, true, 9));
 context.push(new Context("Client sends you a screenshot proof that the keyword is actually part of the candidates. This is not the right cause to this issue.", false, false, 9));
 context.push(new Context("Client responds that this doesn't seem to be the cause of the issue, as the Model Testing feature provides suggestions as expected.", false, false, 9));
 context.push(new Context("Client spent time training new candidates using an anoymous session. However the same issue occurs. This doesn't seem to solve the issue.", false, false, 9));
