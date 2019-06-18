@@ -28,7 +28,6 @@ for (let i = 0; i < 20; i++) {
 
 // Randomly highlight triangles, because it's pretty
 setInterval(function() {
-
 	// Spawning Flappeo, the Coveo bird
 	if (UI.questionTimer < UI.initialTimer && !UI.flappeo.flying) {
 		if (getRandomInt(1, 1) == 1 || UI.questionTimer < 45) {

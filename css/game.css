@@ -1,170 +1,54 @@
-#timer-separator {
+.atcoveo {
+	transition: .1s all;
 	display: flex;
-	position: relative;
-	width: 100%;
+	justify-content: center;
 }
 
-#timer-bar-container {
-	position: relative;
-	flex: 1;
-	height: 3px;
-	bottom: -10px;
-	margin-right: 5px;
-	display: flex;
-}
-
-#timer-bar {
-	width: 0%;
-	height: 100%;
-	background-color: #F58020;
-}
-
-#timer-bar-tip {
-	width: 3px;
-	height: 100%;
-	background-color: #fc9d05;
-}
-
-#timer {
-	color: #FFFFFF;
-	font-weight: bold;
-	text-align: right;
-	position: relative;
-	top: -1px;
-	display: flex;
-	align-items: center;
-}
-
-#timer, .choice-button {
+.atcoveo > * {
 	font-size: 1.25rem;
 }
 
-#game-container {
-	display: none;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	position: absolute;
-	top: 0;
-	z-index: 2;
-	width: 80%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-#game {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-	align-items: center;
-}
-
-#game-context {
-	width: 40%;
-	margin-right: 20px;
-	position: relative;
-	top: 0;
-}
-
-#game-context p, #game-initial-context  {
-	font-size: 1.5rem;
+#atcoveo {
+	border-bottom: 2px solid #F58020;
 	color: #FFFFFF;
-	margin-bottom: 20px;
+	padding-left: 5px;
+	padding-right: 6px;
+	direction: rtl;
 }
 
-#game-context #game-initial-context {
-	color: rgba(255, 255, 255, 0.75);
+#atcoveo:focus, #atcoveo:active {
+	outline: none;
 }
 
-#game-box {
-	width: 60%;
-}
-
-#coveo-logo-container {
-	top: 0;
-	right: 0;
-	left: 0;
-	bottom: 0;
-	position: absolute;
-}
-
-#coveo-logo {
-	position: absolute;
-	top: 20%;
-	right: 50%;
-	transform: translateX(50%) translateY(-50%);
-	text-align: center;
-	white-space: nowrap;
-}
-
-#coveo-logo-image {
-	width: 375px;
-	height: 125px;
-	background-image: url('../image/logo.png');
-	background-repeat: no-repeat;
-	background-size: 100%;
-	position: relative;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
-#coveo-logo-container-title {
-	font-size: 1.5rem;
-	color: rgba(255, 255, 255, 0.75);
+.atcoveo div:last-child {
+	border-bottom: 2px solid #F58020;
+	color: #FFFFFF;
+	display: inline-block;
+	margin-left: -5px;
+	padding-right: 5px;
 	font-weight: bold;
-	position: relative;
-	top: 10px;
 }
 
-#play-button {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	width: 72px;
-	height: 82px;
-	background-image: url('../image/triangle.png');
-	background-repeat: no-repeat;
-	background-size: 100%;
-	transform: translateX(-50%) translateY(-50%);
-	color: rgba(255, 255, 255, 0.75);
-	animation-name: play-button-standby;
-    animation-duration: 1s;
+.atcoveo:hover {
+	transform: scale(1.1);
+}
+
+.choice-button {
+	z-index: 2;
+}
+
+.box-super-urgent {
+	animation-name: box-super-urgent;
+    animation-duration: 0.6s;
 	animation-iteration-count: infinite;
-	animation-timing-function: ease-out;
+    animation-timing-function: linear;
 }
 
-#play-button:hover {
-	transform: translateX(-50%) translateY(-50%) scale(1.2);
-}
-
-#play-button:active {
-	transform: translateX(-50%) translateY(-50%) scale(0.8)
-}
-
-@keyframes play-button-standby {
-	50% {left: 50.5%}
-}
-
-.coveo-logo-phase-1 {
-	animation-name: coveo-logo-phase-1;
-    animation-duration: 0.25s;
-	animation-iteration-count: 1;
-	animation-timing-function: ease-out;
-}
-
-@keyframes coveo-logo-phase-1 {
-	30% {transform: translateX(-50%) scale(0.75)}
-}
-
-.coveo-logo-corner {
-	transition: .25s all;
-	top: 0 !important;
-	right: 0 !important;
-	transform: translateX(17%) scale(0.5) !important;
-}
-
-#game-choices {
-	display: grid;
+.box-urgent {
+	animation-name: box-urgent;
+    animation-duration: 0.5s;
+	animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
 .choice-button {
@@ -203,104 +87,133 @@
 	color: #f58020;
 }
 
-.box-urgent {
-	animation-name: box-urgent;
-    animation-duration: 0.5s;
-	animation-iteration-count: infinite;
-    animation-timing-function: linear;
+#coveo-logo {
+	position: absolute;
+	top: 20%;
+	right: 50%;
+	transform: translateX(50%) translateY(-50%);
+	text-align: center;
+	white-space: nowrap;
 }
 
-@keyframes box-urgent {
-    50% {transform: scale(1.05)}
+#coveo-logo-container {
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	position: absolute;
 }
 
-.box-super-urgent {
-	animation-name: box-super-urgent;
-    animation-duration: 0.6s;
-	animation-iteration-count: infinite;
-    animation-timing-function: linear;
+#coveo-logo-container-title {
+	font-size: 1.5rem;
+	color: rgba(255, 255, 255, 0.75);
+	font-weight: bold;
+	position: relative;
+	top: 10px;
 }
 
-@keyframes box-super-urgent {
-	12.50% {transform: translateX(-10px) translateY(5px)}
-	25% {transform: translateX(10px) translateY(-5px)}
-	37.50% {transform: translateX(10px) translateY(-5px)}
-	50% {transform: translateX(-10px) translateY(5px)}
-	50% {transform: scale(1.075)}
-	62.5% {transform: translateX(10px) translateY(5px)}
-	75% {transform: translateX(-10px) translateY(-5px)}
-	87.5% {transform: translateX(-10px) translateY(-5px)}
-	
+.coveo-logo-corner {
+	transition: .25s all;
+	top: 0 !important;
+	right: 0 !important;
+	transform: translateX(17%) scale(0.5) !important;
 }
 
-.timer-urgent {
-	animation-name: timer-urgent;
-    animation-duration: 0.5s;
-	animation-iteration-count: infinite;
-    animation-timing-function: linear;
+#coveo-logo-image {
+	width: 375px;
+	height: 125px;
+	background-image: url('../image/logo.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
-@keyframes timer-urgent {
-    50% {transform: scale(1.2)}
-}
-
-.timer-super-urgent {
-	animation-name: timer-super-urgent;
+.coveo-logo-phase-1 {
+	animation-name: coveo-logo-phase-1;
     animation-duration: 0.25s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-}
-
-@keyframes timer-super-urgent {
-	25% {transform: rotate(10deg)}
-	50% {transform: scale(1.4)}
-	75% {transform: rotate(-10deg)}
-}
-
-.quiz-box-disappear {
-	animation-name: quiz-box-disappear;
-    animation-duration: 0.5s;
 	animation-iteration-count: 1;
-	animation-timing-function: linear;
+	animation-timing-function: ease-out;
+	animation-fill-mode: forwards;
 }
 
-@keyframes quiz-box-disappear {
-	20% {transform: scale(1.4)}
-	40% {transform: scale(1.5)}
-	60% {transform: scale(1.6)}
-	100% {transform: scale(0)}
-}
-
-.quiz-box-appear {
-	transform: scale(1);
-	animation-name: quiz-box-appear;
-    animation-duration: 0.25s;
+.ending-drop {
+	animation-name: ending-drop;
+    animation-duration: .5s;
 	animation-iteration-count: forwards;
 	animation-timing-function: linear;
+	animation-fill-mode: forwards;
 }
 
-@keyframes quiz-box-appear {
-	0% {transform: scale(3)}
-	40% {transform: scale(0.8)}
-	50% {transform: scale(0.7)}
-	60% {transform: scale(0.65)}
-	90% {transform: scale(1.1)}
-	100% {transform: scale(1)}
+#game {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
 }
 
-.choice-button {
+#game-box {
+	width: 60%;
+}
+
+#game-choices {
+	display: grid;
+}
+
+#game-container {
+	display: none;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
 	z-index: 2;
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#game-context {
+	width: 40%;
+	margin-right: 20px;
+	position: relative;
+	top: 0;
+}
+
+#game-context p, #game-initial-context  {
+	font-size: 1.5rem;
+	color: #FFFFFF;
+	margin-bottom: 20px;
+}
+
+#game-context #game-initial-context {
+	color: rgba(255, 255, 255, 0.75);
+}
+
+#game-initial-context {
+	position: relative;
+	top: 0;
 }
 
 #game-points-container {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-50%) translateY(-50%) scale(0);
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	display: none;
+	transition: 5s all;
+}
+
+.game-points-container-appear {
+	animation-name: points-container-appear;
+    animation-duration: 0.3s;
+	animation-iteration-count: forwards;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
 }
 
 #game-points-container p {
@@ -308,41 +221,6 @@
 	font-size: 1.25rem;
 	text-align: center;
 	margin-bottom: 50px;
-}
-
-.atcoveo {
-	transition: .1s all;
-	display: flex;
-	justify-content: center;
-}
-
-.atcoveo > * {
-	font-size: 1.25rem;
-}
-
-#atcoveo {
-	border-bottom: 2px solid #F58020;
-	color: #FFFFFF;
-	padding-left: 5px;
-	padding-right: 6px;
-	direction: rtl;
-}
-
-#atcoveo:focus, #atcoveo:active {
-	outline: none;
-}
-
-.atcoveo div:last-child {
-	border-bottom: 2px solid #F58020;
-	color: #FFFFFF;
-	display: inline-block;
-	margin-left: -5px;
-	padding-right: 5px;
-	font-weight: bold;
-}
-
-.atcoveo:hover {
-	transform: scale(1.1);
 }
 
 #game-points-container button {
@@ -379,18 +257,166 @@
 	animation-fill-mode: forwards;
 }
 
-@keyframes game-container-disappear {
-	100% {top: 100%}
+#play-button {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 72px;
+	height: 82px;
+	background-image: url('../image/triangle.png');
+	background-repeat: no-repeat;
+	background-size: 100%;
+	transform: translateX(-50%) translateY(-50%);
+	color: rgba(255, 255, 255, 0.75);
+	animation-name: play-button-standby;
+    animation-duration: 1s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-out;
 }
 
-.choice-drop {
-	animation-name: choice-drop;
-    animation-duration: .5s;
+#play-button:hover {
+	transform: translateX(-50%) translateY(-50%) scale(1.2);
+}
+
+#play-button:active {
+	transform: translateX(-50%) translateY(-50%) scale(0.8)
+}
+
+#timer {
+	color: #FFFFFF;
+	font-weight: bold;
+	text-align: right;
+	position: relative;
+	top: -1px;
+	display: flex;
+	align-items: center;
+}
+
+#timer, .choice-button {
+	font-size: 1.25rem;
+}
+
+#timer-bar {
+	width: 0%;
+	height: 100%;
+	background-color: #F58020;
+}
+
+#timer-bar-container {
+	position: relative;
+	flex: 1;
+	height: 3px;
+	bottom: -10px;
+	margin-right: 5px;
+	display: flex;
+}
+
+#timer-bar-tip {
+	width: 3px;
+	height: 100%;
+	background-color: #fc9d05;
+}
+
+#timer-container {
+	display: flex;
+	position: relative;
+	width: 100%;
+	top: 0;
+}
+
+.timer-super-urgent {
+	animation-name: timer-super-urgent;
+    animation-duration: 0.25s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+.timer-urgent {
+	animation-name: timer-urgent;
+    animation-duration: 0.5s;
+	animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.choices-box-appear {
+	transform: scale(1);
+	animation-name: choices-box-appear;
+    animation-duration: 0.25s;
 	animation-iteration-count: forwards;
 	animation-timing-function: linear;
 	animation-fill-mode: forwards;
 }
 
-@keyframes choice-drop {
+.choices-box-disappear {
+	animation-name: choices-box-disappear;
+    animation-duration: 0.5s;
+	animation-iteration-count: 1;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+@keyframes box-super-urgent {
+	12.50% {transform: translateX(-10px) translateY(5px)}
+	25% {transform: translateX(10px) translateY(-5px)}
+	37.50% {transform: translateX(10px) translateY(-5px)}
+	50% {transform: translateX(-10px) translateY(5px)}
+	50% {transform: scale(1.075)}
+	62.5% {transform: translateX(10px) translateY(5px)}
+	75% {transform: translateX(-10px) translateY(-5px)}
+	87.5% {transform: translateX(-10px) translateY(-5px)}
+}
+
+@keyframes box-urgent {
+    50% {transform: scale(1.05)}
+}
+
+@keyframes coveo-logo-phase-1 {
+	30% {transform: translateX(-50%) scale(0.75)}
+}
+
+@keyframes ending-drop {
 	100% {top: 2000px}
+}
+
+@keyframes game-container-disappear {
+	100% {top: 100%}
+}
+
+@keyframes play-button-standby {
+	50% {left: 50.5%}
+}
+
+@keyframes points-container-appear {
+	0% {transform: translateX(-50%) translateY(-50%) scale(0)}
+	40% {transform: translateX(-50%) translateY(-50%) scale(1.2)}
+	50% {transform: translateX(-50%) translateY(-50%) scale(1.1)}
+	60% {transform: translateX(-50%) translateY(-50%) scale(1.0)}
+	90% {transform: translateX(-50%) translateY(-50%) scale(0.9)}
+	100% {transform: translateX(-50%) translateY(-50%) scale(1)}
+}
+
+@keyframes timer-super-urgent {
+	25% {transform: rotate(10deg)}
+	50% {transform: scale(1.4)}
+	75% {transform: rotate(-10deg)}
+}
+
+@keyframes timer-urgent {
+    50% {transform: scale(1.2)}
+}
+
+@keyframes choices-box-appear {
+	0% {transform: scale(3)}
+	40% {transform: scale(0.8)}
+	50% {transform: scale(0.7)}
+	60% {transform: scale(0.65)}
+	90% {transform: scale(1.1)}
+	100% {transform: scale(1)}
+}
+
+@keyframes choices-box-disappear {
+	20% {transform: scale(1.4)}
+	40% {transform: scale(1.5)}
+	60% {transform: scale(1.6)}
+	100% {transform: scale(0)}
 }

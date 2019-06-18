@@ -1,5 +1,4 @@
-"use strict";
-exports.__esModule = true;
+
 var Arceus = /** @class */ (function () {
     function Arceus(choices, contexts, storyIndex) {
         this.initialContextIndex = 0;
@@ -26,15 +25,6 @@ var Arceus = /** @class */ (function () {
                 if (context.isHint() == true) {
                     this.hintsFound++;
                     if (this.hintsFound == 3) {
-                        this.currentContextIndex = 11;
-                        this.currentChoicesIndex = 5;
-                    }
-                }
-                break;
-            case 4:
-                if (context.isHint() == true) {
-                    this.hintsFound++;
-                    if (this.hintsFound == 2) {
                         this.currentContextIndex = 11;
                         this.currentChoicesIndex = 5;
                     }
@@ -94,4 +84,3 @@ var Arceus = /** @class */ (function () {
     Arceus.STARTING_POINTS = 500;
     return Arceus;
 }());
-exports.Arceus = Arceus;
