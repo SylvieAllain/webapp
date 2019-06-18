@@ -1,3 +1,5 @@
+"use strict";
+exports.__esModule = true;
 var Choice = /** @class */ (function () {
     function Choice(text, nextChoices, nextContext, points, previousChoices) {
         this.text = text;
@@ -23,4 +25,4 @@ var Choice = /** @class */ (function () {
     };
     return Choice;
 }());
-//# sourceMappingURL=choices.js.map
+exports.Choice = Choice;
