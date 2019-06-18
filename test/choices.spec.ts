@@ -1,4 +1,4 @@
-﻿import { Choice } from '../src/choices';
+﻿import { Choice } from '../ts/choices';
 
 const ANY_CONTENT: string = "it's a choice";
 const ANY_NEXT_CONTEXT_INDEX: number= 1;

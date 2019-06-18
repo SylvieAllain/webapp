@@ -1,9 +1,9 @@
 const TRIANGLE_HEIGHT = 52;
 const TRIANGLE_LENGTH = 86;
 
-var UI = new UIManager();
+var UI = new UserInterface();
 
-var arceus = new Arceus(finalChoices, context, 1);
+var arceus = new Arceus(choices, context, 1);
 
 var triangles = [];
 

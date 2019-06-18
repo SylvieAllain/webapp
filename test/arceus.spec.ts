@@ -1,6 +1,6 @@
-﻿import { Arceus } from "../src/arceus";
-import { Choice } from "../src/choices";
-import { Context } from "../src/context";
+﻿import { Arceus } from "../ts/arceus";
+import { Choice } from "../ts/choices";
+import { Context } from "../ts/context";
 
 const ANY_CHOICE_1 = new Choice("Answer1", 0, 1, 0, 0);
 const ANY_CHOICE_2 = new Choice("Answer2", 1, 0, 10, 0);
