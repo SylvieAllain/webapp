@@ -1,4 +1,4 @@
-﻿import { Context } from "../src/context";
+﻿import { Context } from "../ts/context";
 
 const ANY_CONTEXT: string = "It's a context";
 const ANY_IS_HINT: boolean = false;
