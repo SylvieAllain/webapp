@@ -1,3 +1,4 @@
+
 var Context = /** @class */ (function () {
     function Context(text, hint, end, previous) {
         this.text = text;
@@ -5,9 +6,6 @@ var Context = /** @class */ (function () {
         this.end = end;
         this.previous = previous;
     }
-    Context.prototype.changeHint = function () {
-        this.hint = false;
-    };
     Context.prototype.getContext = function () {
         return this.text;
     };
