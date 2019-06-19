@@ -13,23 +13,34 @@ class UserInterface {
     addButton(choice, goBack=false) {
         let button = document.createElement('button');
         button.classList.add('choice-button');
-        button.innerHTML = choice.getChoice();
+        if(!goBack){
+            button.innerHTML = choice.getChoice();
+        }
         this.gameChoices.appendChild(button);
         this.choiceButtons.push(button);
         let buttonIndex = this.choiceButtons.length - 1;
-        $(button).on('click', function() {
-            this.stopTimer();
-            $(button).off();
-            arceus.setChoices(buttonIndex);
-            if (arceus.isThisChoiceIsAPathToTheEnding(choice)) {
-                this.endAdventure();
-            }
-            else {
-                this.nextChoices(buttonIndex);
-            }
-        }.bind(this));
-        if (goBack) {
-            button.classList.add('choice-button-goback')
+        if (!goBack) {
+            $(button).on('click', function () {
+                this.stopTimer();
+                $(button).off();
+                arceus.setChoices(buttonIndex);
+                if (arceus.isThisChoiceIsAPathToTheEnding(choice)) {
+                    this.endAdventure();
+                }
+                else {
+                    this.nextChoices(buttonIndex);
+                }
+            }.bind(this));
+        }
+        else {
+            button.innerHTML = choice;
+            button.classList.add('choice-button-goback');
+            $(button).on('click', function () {
+                this.stopTimer();
+                $(button).off();
+                arceus.getPrevious();
+                this.displayNextChoices();
+            }.bind(this));
         }
 	}
 
@@ -207,6 +218,7 @@ class UserInterface {
         arceus.getChoices().forEach(function(choice) {
             this.addButton(choice);
         }.bind(this));
+        this.addBackButton();
     }
 
     setContext() {

@@ -1,11 +1,10 @@
 "use strict";
 var Choice = /** @class */ (function () {
-    function Choice(text, nextChoices, nextContext, points, previousChoices) {
+    function Choice(text, nextChoices, nextContext, points) {
         this.text = text;
         this.nextChoices = nextChoices;
         this.nextContext = nextContext;
         this.points = points;
-        this.previousChoices = previousChoices;
     }
     Choice.prototype.getChoice = function () {
         return this.text;
@@ -18,9 +17,6 @@ var Choice = /** @class */ (function () {
     };
     Choice.prototype.getNextContext = function () {
         return this.nextContext;
-    };
-    Choice.prototype.getPrevious = function () {
-        return this.previousChoices;
     };
     return Choice;
 }());

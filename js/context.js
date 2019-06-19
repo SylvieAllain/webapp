@@ -1,29 +1,21 @@
 
 var Context = /** @class */ (function () {
-    function Context(text, pieceOfPuzzle, end, previous, hint) {
+    function Context(text, hint, end) {
         this.text = text;
-        this.pieceOfPuzzle = pieceOfPuzzle;
+        this.hint = hinte;
         this.end = end;
-        this.previous = previous;
-        this.hint = hint;
     }
-    Context.prototype.changePieceOfPuzzleStatus = function () {
-        this.pieceOfPuzzle = false;
+    Context.prototype.changeHintStatus = function () {
+        this.hint = false;
     };
     Context.prototype.getContext = function () {
         return this.text;
     };
-    Context.prototype.isPieceOfPuzzle = function () {
-        return this.pieceOfPuzzle;
+    Context.prototype.isHint = function () {
+        return this.hint;
     };
     Context.prototype.isEnd = function () {
         return this.end;
-    };
-    Context.prototype.getPrevious = function () {
-        return this.previous;
-    };
-    Context.prototype.getHint = function () {
-        return this.hint;
     };
     return Context;
 }());
