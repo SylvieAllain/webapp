@@ -13,8 +13,11 @@ var Arceus = /** @class */ (function () {
         this.currentContextIndex = 0;
         this.currentChoicesIndex = 0;
         this.storyIndex = storyIndex;
+        this.arrayOfPreviousChoices = [];
+        this.arrayOfPreviousContexts = [];
     }
     Arceus.prototype.setChoices = function (userIndex) {
+        this.addPrevious();
         var currentChoices = this.choices[this.currentChoicesIndex];
         var userChoice = currentChoices[userIndex];
         this.removePoints(userChoice.getPoints());
@@ -48,6 +51,14 @@ var Arceus = /** @class */ (function () {
                 break;
         }
     };
+    Arceus.prototype.getPrevious = function () {
+        this.currentChoicesIndex = this.arrayOfPreviousChoices.pop();
+        this.currentContextIndex = this.arrayOfPreviousContexts.pop();
+    };
+    Arceus.prototype.addPrevious = function () {
+        this.arrayOfPreviousChoices.push(this.currentChoicesIndex);
+        this.arrayOfPreviousContexts.push(this.currentContextIndex);
+    };
     Arceus.prototype.lastHintHasBeenFound = function () {
         this.lastHintFound = true;
         this.lastHintFoundIndex = this.currentContextIndex;
@@ -67,15 +78,7 @@ var Arceus = /** @class */ (function () {
     Arceus.prototype.setPointsToZero = function () {
         this.points = 0;
     };
-    Arceus.prototype.getPreviousContext = function () {
-        var context = this.contexts[this.currentContextIndex];
-        return context.getPrevious();
-    };
-    Arceus.prototype.getPreviousChoices = function () {
-        var choices = this.choices[this.currentChoicesIndex];
-        var choice = choices[0];
-        return choice.getPrevious();
-    };
+    
     Arceus.prototype.setContext = function (userChoice) {
         this.currentContextIndex = userChoice.getNextContext();
     };
