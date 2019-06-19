@@ -14,7 +14,7 @@ var Arceus = /** @class */ (function () {
     }
     Arceus.prototype.setChoices = function (userIndex) {
         this.addPrevious();
-        var currentChoices = this.choices[this.currentChoicesIndex];
+        var currentChoices = this.story.getChoice(this.currentChoicesIndex);
         var userChoice = currentChoices[userIndex];
         this.removePoints(userChoice.getPoints());
         this.setContext(userChoice);
