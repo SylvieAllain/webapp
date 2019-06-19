@@ -3,7 +3,7 @@ class Arceus {
         this.initialContextIndex = 0;
         this.initialChoicesIndex = 0;
         this.story = story;
-        this.points = Arceus.STARTING_POINTS;
+        this.points = 500;
         this.hintsFound = 0;
         this.lastHintFound = false;
         this.currentContextIndex = 0;
@@ -11,7 +11,6 @@ class Arceus {
         this.storyIndex = storyIndex;
         this.arrayOfPreviousChoices = [];
         this.arrayOfPreviousContexts = [];
-        this.STARTING_POINTS = 500;
     }
 
     getCurrentChoices() {
