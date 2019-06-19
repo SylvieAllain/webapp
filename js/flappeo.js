@@ -9,19 +9,13 @@ class Flappeo {
         this.flying = false;
         this.element.addEventListener('click', function() {
             this.clicked = true;
+            this.giveHint();
             $(this.element).stop();
             this.evade();
         }.bind(this));
 	}
     
-    fly() {
-        this.flying = true;
-        setTimeout(function() {
-            this.animate();
-        }.bind(this), 5000);
-    }
-
-	animate() {
+    animate() {
         if (!this.clicked) {
             let xRange = [0, $(window).innerWidth()];
             let yRange = [0, $(window).innerHeight() - 300];
@@ -58,6 +52,23 @@ class Flappeo {
             top: "-=110%",
             left: "+=" + left
         }, 2000);
+    }
+
+    fly() {
+        this.flying = true;
+        setTimeout(function() {
+            this.animate();
+        }.bind(this), 5000);
+    }
+
+    giveHint() {
+        let currentChoices = arceus.getChoices();
+        currentChoices.forEach(function(choice) {
+            let remove = false;
+            if (arceus.isThisChoiceIsAPathToTheEnding(choice)) {
+                
+            }
+        });
     }
 
     isClicked() {

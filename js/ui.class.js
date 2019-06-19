@@ -92,7 +92,7 @@ class UserInterface {
         }
         if (this.questionTimer <= 0) {
             arceus.setPointsToZero();
-            this.gameEndingResult.innerHTML = "Time's up! You couldn't resolve the problem in time, the case has been assign to another agent.";
+            this.gameEndingResult.innerHTML = "Time's up! You couldn't resolve the problem in time, the case has been assigned to another agent.";
         }
         else {
             
@@ -102,7 +102,7 @@ class UserInterface {
         var pointsToRemoveFromWastedTime = (this.initialTimer - this.questionTimer) * 2;
         arceus.removePoints(pointsToRemoveFromWastedTime);
         this.elementHide(this.gameContainer);
-        this.gameFinalPoints.innerHTML = arceus.getPoints();
+        this.gameFinalPoints.innerHTML = "<strong>" + arceus.getPoints() + "</strong>";
         this.elementDisplayFlex(this.gamePointsContainer);
         this.gamePointsContainer.classList.add('game-points-container-appear');
         
@@ -215,13 +215,13 @@ class UserInterface {
         }
         else {
             if (arceus.lastHintFound && !this.isLastHintContextDisplayed) {
-                this.gameLastHintMessage.innerHTML = arceus.contexts[arceus.lastHintFoundIndex].getContext();
-                this.gameCurrentContext.innerHTML = arceus.contexts[arceus.currentContextIndex].getContext();
+                this.gameLastHintMessage.innerHTML = arceus.story.getContext(arceus.lastHintFoundIndex).getContext();
+                this.gameCurrentContext.innerHTML = arceus.story.getContext(arceus.currentContextIndex).getContext();
                 this.isLastHintContextDisplayed = true;
             }
             else {
                 this.gameLastHintMessage.innerHTML = '';
-                this.gameCurrentContext.innerHTML = arceus.contexts[arceus.currentContextIndex].getContext();
+                this.gameCurrentContext.innerHTML = arceus.story.getContext(arceus.currentContextIndex).getContext();
             }
         }
     }
@@ -269,7 +269,7 @@ class UserInterface {
     }
 
     setInitialContext() {
-        this.gameInitialContext.innerHTML = arceus.contexts[arceus.initialContextIndex].getContext();
+        this.gameInitialContext.innerHTML = arceus.story.getContext(arceus.initialContextIndex).getContext();
     }
 
     setTimer(timer = this.initialTimer) {

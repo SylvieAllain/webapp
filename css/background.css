@@ -23,7 +23,7 @@
 	bottom: 0;
 }
 
-#background-over, #game-container, #coveo-logo-container {
+#background-over, #game-container, #coveo-logo-container, #game-points-container {
 	pointer-events: none;
 }
 

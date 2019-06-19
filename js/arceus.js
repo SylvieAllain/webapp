@@ -1,44 +1,39 @@
-
 var Arceus = /** @class */ (function () {
-    function Arceus(choices, contexts, storyIndex) {
+    function Arceus(story) {
         this.initialContextIndex = 0;
         this.initialChoicesIndex = 0;
-        this.choices = [];
-        this.contexts = [];
+        this.story = story;
         this.points = Arceus.STARTING_POINTS;
-        this.hintsFound = 0;
-        this.lastHintFound = false;
-        this.choices = choices;
-        this.contexts = contexts;
+        this.piecesOfPuzzleFound = 0;
+        this.lastPieceOfPuzzleFound = false;
         this.currentContextIndex = 0;
         this.currentChoicesIndex = 0;
-        this.storyIndex = storyIndex;
     }
     Arceus.prototype.setChoices = function (userIndex) {
-        var currentChoices = this.choices[this.currentChoicesIndex];
+        var currentChoices = this.story.getChoice(this.currentChoicesIndex);
         var userChoice = currentChoices[userIndex];
         this.removePoints(userChoice.getPoints());
         this.setContext(userChoice);
-        var context = this.contexts[this.currentContextIndex];
+        var context = this.story.getContext(this.currentContextIndex);
         this.currentChoicesIndex = userChoice.getNextChoices();
-        switch (this.storyIndex) {
+        switch (this.story.getStoryIndex()) {
             case 1:
-                if (context.isHint() == true) {
-                    this.hintsFound++;
-                    context.changeHintStatus();
-                    if (this.hintsFound == 3) {
-                        this.lastHintHasBeenFound();
+                if (context.isPieceOfPuzzle() == true) {
+                    this.piecesOfPuzzleFound++;
+                    context.changePieceOfPuzzleStatus();
+                    if (this.piecesOfPuzzleFound == 3) {
+                        this.lastPieceOfPuzzleHasBeenFound();
                         this.changeCurrentContextIndex(11);
                         this.changeCurrentChoicesIndex(5);
                     }
                 break;
                 }
             case 4:
-                if (context.isHint() == true) {
-                    this.hintsFound++;
-                    context.changeHintStatus();
-                    if (this.hintsFound == 2) {
-                        this.lastHintHasBeenFound();
+                if (context.isPieceOfPuzzle() == true) {
+                    this.piecesOfPuzzleFound++;
+                    context.changePieceOfPuzzleStatus();
+                    if (this.piecesOfPuzzleFound == 2) {
+                        this.lastPieceOfPuzzleHasBeenFound();
                         this.changeCurrentContextIndex(30);
                         this.changeCurrentChoicesIndex(6);
                     }
@@ -48,9 +43,9 @@ var Arceus = /** @class */ (function () {
                 break;
         }
     };
-    Arceus.prototype.lastHintHasBeenFound = function () {
-        this.lastHintFound = true;
-        this.lastHintFoundIndex = this.currentContextIndex;
+    Arceus.prototype.lastPieceOfPuzzleHasBeenFound = function () {
+        this.lastPieceOfPuzzleFound = true;
+        this.lastPieceOfPuzzleFoundIndex = this.currentContextIndex;
     };
     Arceus.prototype.changeCurrentContextIndex = function (contextIndex) {
         this.currentContextIndex = contextIndex;
@@ -62,17 +57,17 @@ var Arceus = /** @class */ (function () {
         return this.currentContextIndex;
     };
     Arceus.prototype.getChoices = function () {
-        return this.choices[this.currentChoicesIndex];
+        return this.story.getChoice(this.currentChoicesIndex);
     };
     Arceus.prototype.setPointsToZero = function () {
         this.points = 0;
     };
     Arceus.prototype.getPreviousContext = function () {
-        var context = this.contexts[this.currentContextIndex];
+        var context = this.story.getChoice(this.currentChoicesIndex);
         return context.getPrevious();
     };
     Arceus.prototype.getPreviousChoices = function () {
-        var choices = this.choices[this.currentChoicesIndex];
+        var choices = this.story.getChoice(this.currentChoicesIndex);
         var choice = choices[0];
         return choice.getPrevious();
     };
@@ -84,14 +79,14 @@ var Arceus = /** @class */ (function () {
         this.currentChoicesIndex = this.getPreviousChoices();
     };
     Arceus.prototype.isThisAnEnding = function () {
-        return this.contexts[this.currentContextIndex].isEnd();
+        return this.story.getContext(this.currentContextIndex).isEnd();
     };
     Arceus.prototype.getCurrentContextText = function () {
-        return this.contexts[this.currentContextIndex].getContext();
+        return this.story.getContext(this.currentContextIndex).getContext();
     };
     Arceus.prototype.isThisChoiceIsAPathToTheEnding = function (choice) {
         var nextContextIndex = choice.getNextContext()
-        var contextToCheck = this.contexts[nextContextIndex];
+        var contextToCheck = this.story.getContext(nextContextIndex);
         return contextToCheck.isEnd();
     };
     Arceus.prototype.removePoints = function (amount) {

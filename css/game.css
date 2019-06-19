@@ -20,6 +20,11 @@
 	outline: none;
 }
 
+.atcoveo {
+	margin-top: 20px;
+	position: relative;
+}
+
 .atcoveo div:last-child {
 	border-bottom: 2px solid #F58020;
 	color: #FFFFFF;
@@ -45,6 +50,23 @@
     animation-duration: 0.5s;
 	animation-iteration-count: infinite;
     animation-timing-function: linear;
+}
+
+.choices-box-appear {
+	transform: scale(1);
+	animation-name: choices-box-appear;
+    animation-duration: 0.25s;
+	animation-iteration-count: forwards;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
+}
+
+.choices-box-disappear {
+	animation-name: choices-box-disappear;
+    animation-duration: 0.5s;
+	animation-iteration-count: 1;
+	animation-timing-function: linear;
+	animation-fill-mode: forwards;
 }
 
 .choice-button {
@@ -212,6 +234,7 @@
 	flex-direction: column;
 	display: none;
 	transition: 5s all;
+	z-index: 2;
 }
 
 .game-points-container-appear {
@@ -226,7 +249,7 @@
 	color: #FFFFFF;
 	font-size: 1.25rem;
 	text-align: center;
-	margin-bottom: 50px;
+	margin-bottom: 10px;
 }
 
 #game-points-container button {
@@ -288,6 +311,15 @@
 	transform: translateX(-50%) translateY(-50%) scale(0.8)
 }
 
+.text-important {
+	font-weight: bold;
+}
+
+.text-action {
+	font-style: italic;
+	color: rgba(255, 255, 255, 0.75);
+}
+
 #timer {
 	color: #FFFFFF;
 	font-weight: bold;
@@ -342,23 +374,6 @@
     animation-duration: 0.5s;
 	animation-iteration-count: infinite;
     animation-timing-function: linear;
-}
-
-.choices-box-appear {
-	transform: scale(1);
-	animation-name: choices-box-appear;
-    animation-duration: 0.25s;
-	animation-iteration-count: forwards;
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
-}
-
-.choices-box-disappear {
-	animation-name: choices-box-disappear;
-    animation-duration: 0.5s;
-	animation-iteration-count: 1;
-	animation-timing-function: linear;
-	animation-fill-mode: forwards;
 }
 
 @keyframes box-super-urgent {

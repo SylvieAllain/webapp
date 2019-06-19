@@ -84,7 +84,7 @@ context.push(new Context("I see no results", false, false, 0));
 
 //context 
 context.push(new Context("Yes, it says No results.", false, false, 0));
-context.push(new Context("Is this a joke to you ?[Customer calls their CSM]You’re in trouble.", false, true, 0));
+context.push(new Context("Is this a joke to you ?<p><span class='text-action'>[Customer calls their CSM]</span></p><p class='text-important'>You’re in trouble.</p>", false, true, 0));
 context.push(new Context("Customer sends log. You find nothing weird.", false, false, 0));
 context.push(new Context("\“Of course. Please test this for yourself on dev.mysearch.site\”Testing the live website makes you realize that the query looks for documents that match the expression \“displayOnSearch=1\”", false, false, 0));
 
