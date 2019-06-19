@@ -48,5 +48,3 @@ context.push(new Context("This solves the issue but the client would of apprecia
 context.push(new Context("This does solve the issue but the client is angry that you went in the prod yourself and a lawsuit could be incoming for breach of contract.", false, true, 5));
 var arceus = new Arceus(context, choices, storyIndex);
 arceus.start(0);
-//arceus.giveChoice(0);
-console.log(arceus);

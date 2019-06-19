@@ -135,6 +135,3 @@ context.push(new Context("So you now know that the documents are public and the 
 var storyIndex = 4;
 var arceus = new Arceus(context, choices, storyIndex);
 arceus.start(0);
-//arceus.giveChoice(0);
-
-console.log(arceus);

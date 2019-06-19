@@ -1,4 +1,5 @@
 #background {
+	background-color: #000000;
 	background-image: url('../image/background.png');
 }
 
@@ -11,6 +12,8 @@
 
 #background, #background-over {
 	position: fixed;
+	background-position: bottom;
+	background-repeat: no-repeat;
 }
 
 #background, #background-over, #game-container {

@@ -196,7 +196,6 @@ class UserInterface {
     }
 
     setContext() {
-        console.log(arceus.isThisAnEnding());
         if (arceus.isThisAnEnding()) {
             this.isTheEnd = true;
         }
@@ -211,7 +210,6 @@ class UserInterface {
                 this.gameCurrentContext.innerHTML = arceus.contexts[arceus.currentContextIndex].getContext();
             }
         }
-        console.log(arceus.isThisAnEnding());
     }
 
     setElements() {
@@ -235,6 +233,21 @@ class UserInterface {
         this.timerContainer = document.getElementById('timer-container');
         this.timerOrangeBar = document.getElementById('timer-orange-bar');
         this.timerText = document.getElementById('timer-text');
+
+        document.addEventListener('mousedown', function(mouseEvent) {
+            
+            let lastY = mouseEvent.clientY;
+            let scroll = function(mouseEvent) {
+                let newY = mouseEvent.clientY;
+                let diffY = this.gameContainer.scrollTop + ((newY - lastY) * -1);
+                lastY = newY;
+                this.gameContainer.scroll(0, diffY);
+            }.bind(this);
+            document.addEventListener('mousemove', scroll);
+            document.addEventListener('mouseup', function() {
+                document.removeEventListener('mousemove', scroll);
+            })
+        }.bind(this));
 
         this.playButton.addEventListener('click', function() {
             this.showAdventure();

@@ -81,5 +81,3 @@ context.push(new Context("You've resolved the issue, however the customer doesn'
 context.push(new Context("The customer is happy that you found the root cause, but the Rebuild didn't resolve the issue and the source is still paused on error.", false, true, 17));
 var arceus = new Arceus(context, choices,storyIndex);
 arceus.start(0);
-//arceus.getChoice(0);
-console.log(arceus);
