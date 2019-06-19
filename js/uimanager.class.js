@@ -115,7 +115,6 @@ class UIManager {
         let selectedButton = this.choiceButtons[selectedIndex];
         this.clearButtons();
         let choices = arceus.getChoices();
-        console.log(choices);
         choices.forEach(function(choice) {
             this.addButton(choice);
         }.bind(this));
