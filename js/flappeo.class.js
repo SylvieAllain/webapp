@@ -1,6 +1,6 @@
 class Flappeo {
 	constructor() {
-        this.flappeoScale = 1;
+        this.flappeoScale = -1;
         let canvas = document.getElementById('flappeo-playground');
 		this.element = document.createElement('div');
 		this.element.setAttribute('class', 'flappeo');
@@ -10,10 +10,8 @@ class Flappeo {
         this.element.addEventListener('click', function() {
             this.clicked = true;
             $(this.element).stop();
-            this.giveHint().delay(2000).queue(function() {
-                this.evade();
-                $(this).dequeue();
-            });
+            this.giveHint();
+            setTimeout(() => { this.evade(); }, 2000);
         }.bind(this));
 	}
     
@@ -64,13 +62,40 @@ class Flappeo {
     }
 
     giveHint() {
-        let currentChoices = arceus.getChoices();
-        currentChoices.forEach(function(choice) {
-            let remove = false;
-            if (arceus.isThisChoiceIsAPathToTheEnding(choice)) {
-                
-            }
-        });
+        let hintElement = document.createElement('div');
+        hintElement.setAttribute('class', 'flappeo-hint');
+
+        let hintTextElement = document.createElement('div');
+        hintTextElement.setAttribute('class', 'flappeo-hint-text-bubble');
+        hintElement.appendChild(hintTextElement);
+
+        let hintSmallBubble1Element = document.createElement('div');
+        hintSmallBubble1Element.setAttribute('class', 'flappeo-hint-small-bubble-1');
+        hintElement.appendChild(hintSmallBubble1Element);
+
+        let hintSmallBubble2Element = document.createElement('div');
+        hintSmallBubble2Element.setAttribute('class', 'flappeo-hint-small-bubble-2');
+        hintElement.appendChild(hintSmallBubble2Element);
+
+        document.body.appendChild(hintElement);
+        
+        let flappeoX = this.element.offsetLeft;
+        let flappeoY = this.element.offsetTop;
+
+        let newX = flappeoX + this.element.getBoundingClientRect().width;
+        let newY = flappeoY + this.element.getBoundingClientRect().height + 30;
+
+        if (this.flappeoScale == 1) {
+            hintElement.style.transform = "scaleX(1)";
+            hintTextElement.style.transform = "scaleX(1)";
+        }
+
+        console.log(hintElement.getBoundingClientRect().width);
+
+        hintElement.style.top = newY + "px";
+        hintElement.style.left = newX + "px";
+
+        hintTextElement.innerHTML = arceus.getStoryHint();
     }
 
     isClicked() {

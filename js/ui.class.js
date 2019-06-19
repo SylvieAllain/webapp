@@ -356,7 +356,7 @@ class UserInterface {
                     this.questionTimer = 0;
                 } else if (this.questionTimer <= 30 && !this.questionShaking) {
                     this.enableSuperUrgentMode();
-                } else if (this.questionTimer <= 120 && !this.questionZooming) {
+                } else if (this.questionTimer <= 90 && !this.questionZooming) {
                     this.enableUrgentMode();
                 }
             }

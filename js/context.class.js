@@ -1,4 +1,3 @@
-
 class Context {
     constructor(text, hint, end) {
         this.text = text;

@@ -54,4 +54,6 @@ context.push(new Context("The issue is solved and the client is really happy tha
 context.push(new Context("This solves the issue but the client would of appreciated if you would of taken the time to meet with them personally and guide them through the process.", false, true));
 context.push(new Context("This does solve the issue but the client is angry that you went in the prod yourself and a lawsuit could be incoming for breach of contract.", false, true));
 
-var story = new Story(context, choices,storyIndex);
+let hint = "Psst, ALWAYS ask for more information about the client's org before making do something!";
+
+var story = new Story(context, choices, storyIndex, hint);

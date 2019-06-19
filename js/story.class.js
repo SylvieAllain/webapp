@@ -17,4 +17,8 @@ class Story {
     getStoryIndex() {
         return this.storyIndex;
     }
+
+    getHint() {
+        return this.hint;
+    }
 }

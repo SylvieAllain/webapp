@@ -38,6 +38,10 @@ $.getScript(randomStory, function() {
 		// Spawning Flappeo, the Coveo bird
 		if (UI.questionTimer < UI.initialTimer && !UI.flappeo.flying) {
 			if (getRandomInt(1, 1) == 1 || UI.questionTimer < 45) {
+				let newY = UI.offsetTop(UI.coveoLogoImage) - 4;
+				let newX = UI.offsetLeft(UI.coveoLogoImage) + 104;
+				UI.flappeo.element.style.top = newY + "px";
+				UI.flappeo.element.style.left = newX + "px";
 				UI.flappeo.element.style.visibility = "visible";
 				UI.coveoLogoImage.style.backgroundImage = 'url("image/logo.png")';
 				UI.flappeo.fly();

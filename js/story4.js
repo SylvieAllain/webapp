@@ -140,4 +140,6 @@ context.push(new Context("So you now know that the documents are public and the 
 
 var storyIndex = 4;
 
-var story = new Story(context, choices,storyIndex);
+let hint = "Psst, maybe the client would like to speak with you personally.";
+
+var story = new Story(context, choices, storyIndex, hint);

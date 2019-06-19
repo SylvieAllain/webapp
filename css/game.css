@@ -23,6 +23,7 @@
 .atcoveo {
 	margin-top: 20px;
 	position: relative;
+	pointer-events: auto;
 }
 
 .atcoveo div:last-child {

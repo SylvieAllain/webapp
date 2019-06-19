@@ -59,6 +59,10 @@ class Arceus {
         }
     }
 
+    getStoryHint() {
+        return this.story.getHint();
+    }
+
     isArrayEmpty() {
         var isEmpty = false;
         if (this.arrayOfPreviousChoices.length == 0) {
