@@ -1,10 +1,9 @@
 
 var Context = /** @class */ (function () {
-    function Context(text, hint, end, previous) {
+    function Context(text, hint, end) {
         this.text = text;
         this.hint = hint;
         this.end = end;
-        this.previous = previous;
     }
     Context.prototype.changeHintStatus = function () {
         this.hint = false;
@@ -17,9 +16,6 @@ var Context = /** @class */ (function () {
     };
     Context.prototype.isEnd = function () {
         return this.end;
-    };
-    Context.prototype.getPrevious = function () {
-        return this.previous;
     };
     return Context;
 }());
