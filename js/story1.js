@@ -51,7 +51,7 @@ context.push(new Context("All parameters are as expected on the request. THe Sea
 //context 6
 context.push(new Context("You have now gathered enough information to formulate a resolution attempt to the client. Which of the following recommendations will you choose?", false, false, 5));
 //ending
-context.push(new Context("This solves the issue, client thanks you vary much and confirms you can close the case!", false, true, 9));
+context.push(new Context("This solves the issue, client thanks you very much and confirms you can close the case!", false, true, 9));
 context.push(new Context("Client sends you a screenshot proof that the keyword is actually part of the candidates. This is not the right cause to this issue.", false, false, 9));
 context.push(new Context("Client responds that this doesn't seem to be the cause of the issue, as the Model Testing feature provides suggestions as expected.", false, false, 9));
 context.push(new Context("Client spent time training new candidates using an anoymous session. However the same issue occurs. This doesn't seem to solve the issue.", false, false, 9));
