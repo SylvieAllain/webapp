@@ -136,12 +136,8 @@ context.push(new Context("So you now know that the documents are public and the 
 //var arceus = new Arceus(context, choices);
 context.push(new Context("So you now know that the documents are public and the feilds are searchable.", false, false, 6));
 context.push(new Context("So you now know that the documents are public and the feilds are searchable.", false, false));
-
-var arceus = new Arceus(context, choices);
 context.push(new Context("So you now know that the documents are public and the feilds are searchable.", false, false));
+
 var storyIndex = 4;
-/*var arceus = new Arceus(context, choices, storyIndex);
-context.push(new Context("So you now know that the documents are public and the feilds are searchable.", false, false, 6));
-var storyIndex = 4;
-var arceus = new Arceus(context, choices, storyIndex);
-arceus.start(0);*/
+
+var story = new Story(context, choices,storyIndex);

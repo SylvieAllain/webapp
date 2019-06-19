@@ -27,7 +27,7 @@ class Arceus {
         var userChoice = currentChoices[userIndex];
         this.removePoints(userChoice.getPoints());
         this.setContext(userChoice);
-        var context = this.getCurrentContextIndex();
+        var context = this.getCurrentContext();
         this.currentChoicesIndex = userChoice.getNextChoices();
         switch (this.story.getStoryIndex()) {
             case 1:
