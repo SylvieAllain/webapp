@@ -79,4 +79,5 @@ context.push(new Context("You notice that Salesforce had a planned maintenance w
 context.push(new Context("You've resolved the issue and the customer is happy to know the root cause. You can close the case.", false, true, 17));
 context.push(new Context("You've resolved the issue, however the customer doesn't like that you triggered an unauthorized rebuild in is production org and  if there is any issue after the rebuild could come back with it's legal team against us.", false, true, 17));
 context.push(new Context("The customer is happy that you found the root cause, but the Rebuild didn't resolve the issue and the source is still paused on error.", false, true, 17));
+
 var story = new Story(context, choices,storyIndex);

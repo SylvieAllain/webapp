@@ -56,3 +56,4 @@ context.push(new Context("Client sends you a screenshot proof that the keyword i
 context.push(new Context("Client responds that this doesn't seem to be the cause of the issue, as the Model Testing feature provides suggestions as expected.", false, false));
 context.push(new Context("Client spent time training new candidates using an anoymous session. However the same issue occurs. This doesn't seem to solve the issue.", false, false));
 
+var story = new Story(context, choices,storyIndex);

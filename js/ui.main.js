@@ -6,7 +6,7 @@ var arceus;
 
 let stories = ["js/story1.js", "js/story2.js", "js/story3.js", "js/story4.js"];
 //let randomStory =  stories[getRandomInt(0,stories.length -1)];
-let randomStory = "js/story2.js";
+let randomStory = "js/story4.js";
 
 $.getScript(randomStory, function() {
 	UI = new UserInterface();
