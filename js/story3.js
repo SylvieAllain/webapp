@@ -5,7 +5,7 @@ var choices3 = [];
 var choices4 = [];
 choices1.push(new Choice("Open customer environment and look at the source", 0, 1, 5, 0));
 choices1.push(new Choice("Ask for more information like source name and org name", 1, 2, 0, 0));
-choices1.push(new Choice("Send a link from google to the super deflection KB", 0, 6, 0, 0)); //might have to change the next context if the 2 context in comments arent comments anymore
+choices1.push(new Choice("Send a link from google to the super deflection KB", 0, 6, 600, 0)); //might have to change the next context if the 2 context in comments arent comments anymore
 choices1.push(new Choice("Let the client know the next refresh should have it.", 0, 3, 10, 0));
 choices2.push(new Choice("Tell client the document is present and you can see it, no issue", 0, 7, 0, 0));
 choices2.push(new Choice("Ask the client why is the document secured instead of public", 1, 2, 10, 0));
@@ -25,6 +25,7 @@ choices.push(choices3);
 choices.push(choices4);
 ////////////////////////////////////////////////
 var context = [];
+var storyIndex = 3;
 //initial context
 context.push(new Context("I can't seem to find my KB called \"Super deflection KB\"", false, false, 0));
 //context 1
@@ -42,10 +43,13 @@ context.push(new Context("Client is unhappy and think GSA was better", false, tr
 context.push(new Context("You didn't solve the issue and the custumer is unsatisfied", false, true, 2));
 context.push(new Context("The issue is not solved and the client is angry", false, true, 4));
 context.push(new Context("The issue is solved but the client would of liked to have a personal interation wiht you.", false, true, 5));
-context.push(new Context("The issue is solved and the cliednt is really happy that you took the time to personally meet with them and guide them throught the process.", false, true, 5));
+context.push(new Context("The issue is solved and the client is really happy that you took the time to personally meet with them and guide them throught the process.", false, true, 5));
 context.push(new Context("This solves the issue but the client would of appreciated if you would of taken the time to meet with them personally and guide them through the process.", false, true, 5));
 context.push(new Context("This does solve the issue but the client is angry that you went in the prod yourself and a lawsuit could be incoming for breach of contract.", false, true, 5));
+<<<<<<< HEAD
 var arceus = new Arceus(context, choices);
+arceus.start(0)
+=======
+var arceus = new Arceus(context, choices, storyIndex);
 arceus.start(0);
-//arceus.giveChoice(0);
-console.log(arceus);
+>>>>>>> 40540d148ddb44a64ac76031011d96566b5e8bc0

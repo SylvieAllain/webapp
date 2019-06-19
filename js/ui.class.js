@@ -10,7 +10,7 @@ class UserInterface {
         this.setTimer();
 	}
 
-    addButton(choice, goBack = false) {
+    addButton(choice, goBack=false) {
         let button = document.createElement('button');
         button.classList.add('choice-button');
         button.innerHTML = choice.getChoice();
@@ -21,7 +21,12 @@ class UserInterface {
             this.stopTimer();
             $(button).off();
             arceus.setChoices(buttonIndex);
-            this.nextChoices(buttonIndex);
+            if (arceus.isThisChoiceIsAPathToTheEnding(choice)) {
+                this.endAdventure();
+            }
+            else {
+                this.nextChoices(buttonIndex);
+            }
         }.bind(this));
         if (goBack) {
             button.classList.add('choice-button-goback')
@@ -82,9 +87,20 @@ class UserInterface {
     }
 
     endAdventure() {
+        if (this.flappeo.isClicked()) {
+            arceus.removePoints(-50);
+        }
         if (this.questionTimer <= 0) {
             arceus.setPointsToZero();
+            this.gameEndingResult.innerHTML = "Time's up! You couldn't resolve the problem in time, the case has been assign to another agent.";
         }
+        else {
+            
+            this.gameEndingResult.innerHTML = arceus.getCurrentContextText();
+        }
+        this.stopTimer();
+        var pointsToRemoveFromWastedTime = (this.initialTimer - this.questionTimer) * 2;
+        arceus.removePoints(pointsToRemoveFromWastedTime);
         this.elementHide(this.gameContainer);
         this.gameFinalPoints.innerHTML = arceus.getPoints();
         this.elementDisplayFlex(this.gamePointsContainer);
@@ -194,7 +210,6 @@ class UserInterface {
     }
 
     setContext() {
-        console.log(arceus.isThisAnEnding());
         if (arceus.isThisAnEnding()) {
             this.isTheEnd = true;
         }
@@ -209,7 +224,6 @@ class UserInterface {
                 this.gameCurrentContext.innerHTML = arceus.contexts[arceus.currentContextIndex].getContext();
             }
         }
-        console.log(arceus.isThisAnEnding());
     }
 
     setElements() {
@@ -221,6 +235,7 @@ class UserInterface {
         this.gameChoices = document.getElementById('game-choices');
         this.gameCurrentContext = document.getElementById('game-current-context');
         this.gameLastHintMessage = document.getElementById('game-last-hint-message');
+        this.gameEndingResult = document.getElementById('game-ending-result');
         this.gameContainer = document.getElementById('game-container');
         this.gameContext = document.getElementById('game-context');
         this.gameFinalPoints = document.getElementById('game-final-points');
@@ -233,6 +248,20 @@ class UserInterface {
         this.timerContainer = document.getElementById('timer-container');
         this.timerOrangeBar = document.getElementById('timer-orange-bar');
         this.timerText = document.getElementById('timer-text');
+
+        document.addEventListener('mousedown', function(mouseEvent) {
+            let lastY = mouseEvent.clientY;
+            let scroll = function(mouseEvent) {
+                let newY = mouseEvent.clientY;
+                let diffY = this.gameContainer.scrollTop + ((newY - lastY) * -1);
+                lastY = newY;
+                this.gameContainer.scroll(0, diffY);
+            }.bind(this);
+            document.addEventListener('mousemove', scroll);
+            document.addEventListener('mouseup', function() {
+                document.removeEventListener('mousemove', scroll);
+            })
+        }.bind(this));
 
         this.playButton.addEventListener('click', function() {
             this.showAdventure();

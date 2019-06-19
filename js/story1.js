@@ -14,14 +14,14 @@ choices2.push(new Choice("Open the Client's Cloud Organization instead", 2, 3, 0
 choices3.push(new Choice("Open the Client's Search Page instead", 1, 2, 0, 0));
 choices3.push(new Choice("Inspect the Model", 2, 5, 0, 0));
 choices3.push(new Choice("Browse to \"Model Testing\"", 2, 6, 0, 0));
-choices4.push(new Choice("Look in the cource code to make sure the component is defined properly", 3, 7, 0, 1));
+choices4.push(new Choice("Look in the source code to make sure the component is defined properly", 3, 7, 0, 1));
 choices4.push(new Choice("Open the network tab", 4, 2, 0, 1));
 choices4.push(new Choice("Look for errors in the Console", 3, 8, 0, 1));
 choices5.push(new Choice("Inspect the request that queries the Query Suggestions model", 1, 9, 0, 3));
 choices5.push(new Choice("Inspect the request that sends the analytics event related to the search", 1, 10, 0, 3));
 choices6.push(new Choice("The SearchHub filter values are diffrent on the event that feeds the model VS the event that grabs suggestions from the model. The client must ensure that both value's are the same.", 5, 12, 0, 4));
 choices6.push(new Choice("The client is testing the model with a keyword that is not part of the candidates. The client must ensure that they're using the right keyword.", 5, 13, 4));
-choices6.push(new Choice("Even though there are candidates on the model, there is not enough data to provide suggestions. Thew model must be trained for a longer peroid of time inn order to obtain suggestions", 5, 14, 0, 4));
+choices6.push(new Choice("Even though there are candidates on the model, there is not enough data to provide suggestions. Thew model must be trained for a longer peroid of time in order to obtain suggestions", 5, 14, 0, 4));
 choices6.push(new Choice("Results are being provided for an anoymous user, while the candidates have been trained by a specific user. Query suggestions are provided according to the user.", 5, 15, 0, 4));
 choices.push(choices1);
 choices.push(choices2);
@@ -31,6 +31,7 @@ choices.push(choices5);
 choices.push(choices6);
 ////////////////////////////////////////////////
 var context = [];
+var storyIndex = 1;
 //initial context
 context.push(new Context("A customer is reporting that their Query Suggestions component is not providing any suggestions. What do you do first?", false, false, 0));
 //context 1

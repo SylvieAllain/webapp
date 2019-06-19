@@ -5,11 +5,12 @@ var UI;
 var arceus;
 
 let stories = ["js/story1.js", "js/story2.js", "js/story3.js", "js/story4.js"];
-let randomStory =  stories[getRandomInt(0,stories.length -1)];
+//let randomStory =  stories[getRandomInt(0,stories.length -1)];
+let randomStory = "js/story1.js";
 
 $.getScript(randomStory, function() {
 	UI = new UserInterface();
-	arceus = new Arceus(choices, context, 1);
+	arceus = new Arceus(choices, context, storyIndex);
 
 	var triangles = [];
 
@@ -36,7 +37,7 @@ $.getScript(randomStory, function() {
 	setInterval(function() {
 		// Spawning Flappeo, the Coveo bird
 		if (UI.questionTimer < UI.initialTimer && !UI.flappeo.flying) {
-			if (getRandomInt(1, 1) == 1 || UI.questionTimer < 45) {
+			if (getRandomInt(1, 200) == 1 || UI.questionTimer < 45) {
 				UI.flappeo.element.style.visibility = "visible";
 				UI.coveoLogoImage.style.backgroundImage = 'url("image/logo.png")';
 				UI.flappeo.fly();
