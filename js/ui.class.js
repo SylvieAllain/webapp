@@ -227,14 +227,12 @@ class UserInterface {
         }
         else {
             if (arceus.lastHintFound && !this.isLastHintContextDisplayed) {
-                this.gameLastHintMessage.innerHTML = arceus.story.getContext(arceus.lastHintFoundIndex).getContext();
-                this.gameCurrentContext.innerHTML = arceus.story.getContext(arceus.currentContextIndex).getContext();
+                this.gameLastHintMessage.innerHTML = arceus.getContext(arceus.lastHintFoundIndex).getContext();
                 this.isLastHintContextDisplayed = true;
-            }
-            else {
+            } else {
                 this.gameLastHintMessage.innerHTML = '';
-                this.gameCurrentContext.innerHTML = arceus.story.getContext(arceus.currentContextIndex).getContext();
             }
+            this.gameCurrentContext.innerHTML = arceus.getCurrentContext().getContext();
         }
     }
 
