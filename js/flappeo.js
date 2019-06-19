@@ -59,4 +59,8 @@ class Flappeo {
             left: "+=" + left
         }, 2000);
     }
+
+    isClicked() {
+        return this.clicked;
+    }
 }

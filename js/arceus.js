@@ -27,7 +27,9 @@ var Arceus = /** @class */ (function () {
                     this.hintsFound++;
                     context.changeHintStatus();
                     if (this.hintsFound == 3) {
-                        this.lastHintHasBeenFound(11, 5);
+                        this.lastHintHasBeenFound();
+                        this.changeCurrentContextIndex(11);
+                        this.changeCurrentChoicesIndex(5);
                     }
                 break;
                 }
@@ -36,7 +38,9 @@ var Arceus = /** @class */ (function () {
                     this.hintsFound++;
                     context.changeHintStatus();
                     if (this.hintsFound == 2) {
-                        this.lastHintHasBeenFound(30, 6);
+                        this.lastHintHasBeenFound();
+                        this.changeCurrentContextIndex(30);
+                        this.changeCurrentChoicesIndex(6);
                     }
                     break;
                 }
@@ -44,10 +48,14 @@ var Arceus = /** @class */ (function () {
                 break;
         }
     };
-    Arceus.prototype.lastHintHasBeenFound = function (contextIndex,choicesIndex) {
+    Arceus.prototype.lastHintHasBeenFound = function () {
         this.lastHintFound = true;
         this.lastHintFoundIndex = this.currentContextIndex;
+    };
+    Arceus.prototype.changeCurrentContextIndex = function (contextIndex) {
         this.currentContextIndex = contextIndex;
+    };
+    Arceus.prototype.changeCurrentChoicesIndex = function (choicesIndex) {
         this.currentChoicesIndex = choicesIndex;
     };
     Arceus.prototype.getCurrentContextIndex = function () {
@@ -80,6 +88,11 @@ var Arceus = /** @class */ (function () {
     };
     Arceus.prototype.getCurrentContextText = function () {
         return this.contexts[this.currentContextIndex].getContext();
+    };
+    Arceus.prototype.isThisChoiceIsAPathToTheEnding = function (choice) {
+        var nextContextIndex = choice.getNextContext()
+        var contextToCheck = this.contexts[nextContextIndex];
+        return contextToCheck.isEnd();
     };
     Arceus.prototype.removePoints = function (amount) {
         this.points = this.points - amount;
