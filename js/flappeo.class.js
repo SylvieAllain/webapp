@@ -87,10 +87,11 @@ class Flappeo {
 
         if (this.flappeoScale == 1) {
             hintElement.style.transform = "scaleX(1)";
+            newX -= this.element.getBoundingClientRect().width * 2;
             hintTextElement.style.transform = "scaleX(1)";
+        } else {
+            newX += this.element.getBoundingClientRect().width;
         }
-
-        console.log(hintElement.getBoundingClientRect().width);
 
         hintElement.style.top = newY + "px";
         hintElement.style.left = newX + "px";

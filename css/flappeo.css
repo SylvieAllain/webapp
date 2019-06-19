@@ -26,7 +26,11 @@
 .flappeo-hint {
     position: absolute;
     transform: scaleX(-1) translateX(100%);
-    border: 1px solid red;
+    z-index: 10;
+}
+
+.flappeo-hint > * {
+    box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.25);
 }
 
 .flappeo-hint-text-bubble {
@@ -35,23 +39,41 @@
     color: #000000;
     transform: scaleX(-1);
     padding: 10px;
+    animation-name: hint-bubble-disappear;
+    animation-duration: 0.5s;
+	animation-iteration-count: forwards;
+    animation-timing-function: linear;
+    animation-delay: 6s;
+    animation-fill-mode: forwards;
 }
 
 .flappeo-hint-small-bubble-1 {
-    background-color: rgba(255, 255, 255, 0.9);
-    width: 15px;
-    height: 15px;
-    position: absolute;
-    top: -18px;
-}
-
-.flappeo-hint-small-bubble-2 {
     background-color: rgba(255, 255, 255, 0.9);
     width: 10px;
     height: 10px;
     position: absolute;
     top: -31px;
     left: 20px;
+    animation-name: hint-bubble-disappear;
+    animation-duration: 0.5s;
+	animation-iteration-count: forwards;
+    animation-timing-function: linear;
+    animation-delay: 5s;
+    animation-fill-mode: forwards;
+}
+
+.flappeo-hint-small-bubble-2 {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: -18px;
+    animation-name: hint-bubble-disappear;
+    animation-duration: 0.5s;
+	animation-iteration-count: forwards;
+    animation-timing-function: linear;
+    animation-delay: 5.5s;
+    animation-fill-mode: forwards;
 }
 
 #flappeo-playground {
@@ -62,6 +84,10 @@
     bottom: 0;
     z-index: 1;
     pointer-events: none;
+}
+
+@keyframes hint-bubble-disappear {
+    100% {opacity: 0}
 }
 
 @keyframes flappeo-clicked {
