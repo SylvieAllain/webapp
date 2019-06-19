@@ -1,5 +1,5 @@
-var Arceus = /** @class */ (function () {
-    function Arceus(story) {
+class Arceus {
+    constructor(story) {
         this.initialContextIndex = 0;
         this.initialChoicesIndex = 0;
         this.story = story;
@@ -11,8 +11,10 @@ var Arceus = /** @class */ (function () {
         this.storyIndex = storyIndex;
         this.arrayOfPreviousChoices = [];
         this.arrayOfPreviousContexts = [];
+        this.STARTING_POINTS = 500;
     }
-    Arceus.prototype.setChoices = function (userIndex) {
+
+    setChoices (userIndex) {
         this.addPrevious();
         var currentChoices = this.story.getChoice(this.currentChoicesIndex);
         var userChoice = currentChoices[userIndex];
@@ -46,75 +48,88 @@ var Arceus = /** @class */ (function () {
             default:
                 break;
         }
-    };
-    Arceus.prototype.getPrevious = function () {
+    }
+
+    getPrevious() {
         this.currentChoicesIndex = this.arrayOfPreviousChoices.pop();
         this.currentContextIndex = this.arrayOfPreviousContexts.pop();
-    };
-    Arceus.prototype.addPrevious = function () {
+    }
+
+    addPrevious() {
         this.arrayOfPreviousChoices.push(this.currentChoicesIndex);
         this.arrayOfPreviousContexts.push(this.currentContextIndex);
-    };
-    Arceus.prototype.lastHintHasBeenFound = function () {
+    }
+
+    lastHintHasBeenFound() {
         this.lastHintFound = true;
         this.lastHintFoundIndex = this.currentContextIndex;
-    };
-    Arceus.prototype.changeCurrentContextIndex = function (contextIndex) {
+    }
+
+    changeCurrentContextIndex(contextIndex) {
         this.currentContextIndex = contextIndex;
-    };
-    Arceus.prototype.changeCurrentChoicesIndex = function (choicesIndex) {
+    }
+
+    changeCurrentChoicesIndex(choicesIndex) {
         this.currentChoicesIndex = choicesIndex;
-    };
-    Arceus.prototype.getCurrentContextIndex = function () {
+    }
+
+    getCurrentContextIndex() {
         return this.currentContextIndex;
-    };
-    Arceus.prototype.getChoices = function () {
+    }
+
+    getChoices() {
         return this.story.getChoice(this.currentChoicesIndex);
-    };
-    Arceus.prototype.setPointsToZero = function () {
+    }
+
+    setPointsToZero() {
         this.points = 0;
-    };
+    }
     
-    Arceus.prototype.setContext = function (userChoice) {
+    setContext(userChoice) {
         this.currentContextIndex = userChoice.getNextContext();
-    };
-    Arceus.prototype.getBack = function () {
+    }
+
+    getBack() {
         this.currentContextIndex = this.getPreviousContext();
         this.currentChoicesIndex = this.getPreviousChoices();
-    };
-    Arceus.prototype.isThisAnEnding = function () {
+    }
+
+    isThisAnEnding() {
         return this.story.getContext(this.currentContextIndex).isEnd();
-    };
-    Arceus.prototype.getCurrentContextText = function () {
+    }
+
+    getCurrentContextText() {
         return this.story.getContext(this.currentContextIndex).getContext();
-    };
-    Arceus.prototype.isThisChoiceIsAPathToTheEnding = function (choice) {
+    }
+
+    isThisChoiceIsAPathToTheEnding(choice) {
         var nextContextIndex = choice.getNextContext()
         var contextToCheck = this.story.getContext(nextContextIndex);
         return contextToCheck.isEnd();
-    };
-    Arceus.prototype.removePoints = function (amount) {
+    }
+
+    removePoints(amount) {
         this.points = this.points - amount;
         if (this.points < 0) {
             this.setPointsToZero();
         }
         return this.points;
-    };
-    Arceus.prototype.getPoints = function () {
+    }
+
+    getPoints() {
         return this.points;
-    };
-    Arceus.prototype.reset = function () {
+    }
+
+    reset() {
         var restartButton = document.createElement("button");
         restartButton.textContent = "Next";
-        restartButton.onclick = function () {
+        restartButton.onclick = function() {
             window.location.reload();
-            //self.start(self.initialContextIndex, self.initialChoicesIndex);
         };
-    };
-    Arceus.prototype.start = function (contextIndex, choicesIndex) {
+    }
+
+    start(contextIndex, choicesIndex) {
         this.initialContextIndex = contextIndex;
         this.initialChoicesIndex = choicesIndex;
-    };
-    Arceus.STARTING_POINTS = 500;
-    return Arceus;
-}());
+    }
+}

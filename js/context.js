@@ -1,21 +1,24 @@
 
-var Context = /** @class */ (function () {
-    function Context(text, hint, end) {
+class Context {
+    constructor(text, hint, end) {
         this.text = text;
         this.hint = hint;
         this.end = end;
     }
-    Context.prototype.changeHintStatus = function () {
+
+    changeHintStatus() {
         this.hint = false;
-    };
-    Context.prototype.getContext = function () {
+    }
+
+    getContext() {
         return this.text;
-    };
-    Context.prototype.isHint = function () {
+    }
+
+    isHint() {
         return this.hint;
-    };
-    Context.prototype.isEnd = function () {
+    }
+
+    isEnd() {
         return this.end;
-    };
-    return Context;
-}());
+    }
+}

@@ -1,22 +1,24 @@
-"use strict";
-var Choice = /** @class */ (function () {
-    function Choice(text, nextChoices, nextContext, points) {
+class Choice {
+    constructor(text, nextChoices, nextContext, points) {
         this.text = text;
         this.nextChoices = nextChoices;
         this.nextContext = nextContext;
         this.points = points;
     }
-    Choice.prototype.getChoice = function () {
+
+    getChoice() {
         return this.text;
-    };
-    Choice.prototype.getPoints = function () {
+    }
+
+    getPoints() {
         return this.points;
-    };
-    Choice.prototype.getNextChoices = function () {
+    }
+
+    getNextChoices() {
         return this.nextChoices;
-    };
-    Choice.prototype.getNextContext = function () {
+    }
+
+    getNextContext() {
         return this.nextContext;
-    };
-    return Choice;
-}());
+    }
+}
