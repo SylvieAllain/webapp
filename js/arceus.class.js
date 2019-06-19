@@ -59,6 +59,14 @@ class Arceus {
         }
     }
 
+    isArrayEmpty() {
+        var isEmpty = false;
+        if (this.arrayOfPreviousChoices.length == 0) {
+            isEmpty = true;
+        }
+        return isEmpty;
+    }
+
     getPrevious() {
         this.currentChoicesIndex = this.arrayOfPreviousChoices.pop();
         this.currentContextIndex = this.arrayOfPreviousContexts.pop();
@@ -132,14 +140,6 @@ class Arceus {
 
     getPoints() {
         return this.points;
-    }
-
-    reset() {
-        var restartButton = document.createElement("button");
-        restartButton.textContent = "Next";
-        restartButton.onclick = function() {
-            window.location.reload();
-        };
     }
 
     start(contextIndex, choicesIndex) {
