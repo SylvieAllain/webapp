@@ -10,7 +10,7 @@ class UserInterface {
         this.setTimer();
 	}
 
-    addButton(choice, goBack = false) {
+    addButton(choice, goBack=false) {
         let button = document.createElement('button');
         button.classList.add('choice-button');
         button.innerHTML = choice.getChoice();
@@ -21,7 +21,12 @@ class UserInterface {
             this.stopTimer();
             $(button).off();
             arceus.setChoices(buttonIndex);
-            this.nextChoices(buttonIndex);
+            if (arceus.isThisChoiceIsAPathToTheEnding(choice)) {
+                this.endAdventure();
+            }
+            else {
+                this.nextChoices(buttonIndex);
+            }
         }.bind(this));
         if (goBack) {
             button.classList.add('choice-button-goback')
@@ -82,9 +87,18 @@ class UserInterface {
     }
 
     endAdventure() {
+        if (this.flappeo.isClicked()) {
+            arceus.removePoints(-50);
+        }
         if (this.questionTimer <= 0) {
             arceus.setPointsToZero();
+            this.gameEndingResult.innerHTML = "Time's up! You couldn't resolve the problem in time, the case has been assign to another agent.";
         }
+        else {
+            
+            this.gameEndingResult.innerHTML = arceus.getCurrentContextText();
+        }
+        this.stopTimer();
         var pointsToRemoveFromWastedTime = (this.initialTimer - this.questionTimer) * 2;
         arceus.removePoints(pointsToRemoveFromWastedTime);
         this.elementHide(this.gameContainer);
@@ -221,6 +235,7 @@ class UserInterface {
         this.gameChoices = document.getElementById('game-choices');
         this.gameCurrentContext = document.getElementById('game-current-context');
         this.gameLastHintMessage = document.getElementById('game-last-hint-message');
+        this.gameEndingResult = document.getElementById('game-ending-result');
         this.gameContainer = document.getElementById('game-container');
         this.gameContext = document.getElementById('game-context');
         this.gameFinalPoints = document.getElementById('game-final-points');
@@ -321,6 +336,7 @@ class UserInterface {
     }
 
     timerLoop() {
+        console.log(1);
         if (this.questionCurrentTimestamp >= 0) {
             this.questionCurrentTimestamp -= 1000 / 60;
             if (this.questionLastTimestamp - this.questionCurrentTimestamp >= 1000) {

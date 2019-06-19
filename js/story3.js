@@ -5,7 +5,7 @@ var choices3 = [];
 var choices4 = [];
 choices1.push(new Choice("Open customer environment and look at the source", 0, 1, 5, 0));
 choices1.push(new Choice("Ask for more information like source name and org name", 1, 2, 0, 0));
-choices1.push(new Choice("Send a link from google to the super deflection KB", 0, 6, 0, 0)); //might have to change the next context if the 2 context in comments arent comments anymore
+choices1.push(new Choice("Send a link from google to the super deflection KB", 0, 6, 600, 0)); //might have to change the next context if the 2 context in comments arent comments anymore
 choices1.push(new Choice("Let the client know the next refresh should have it.", 0, 3, 10, 0));
 choices2.push(new Choice("Tell client the document is present and you can see it, no issue", 0, 7, 0, 0));
 choices2.push(new Choice("Ask the client why is the document secured instead of public", 1, 2, 10, 0));
