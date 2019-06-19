@@ -58,6 +58,9 @@ class Arceus {
             }
         }
     }
+    getInititialContext() {
+        return this.initialContextIndex;
+    }
 
     getStoryHint() {
         return this.story.getHint();

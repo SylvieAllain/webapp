@@ -236,6 +236,9 @@ class UserInterface {
             }
             this.gameCurrentContext.innerHTML = arceus.getCurrentContext().getContext();
         }
+        if (arceus.getCurrentContextIndex() != arceus.initialContextIndex) {
+            this.setInitialContext();
+        }
     }
 
     setElements() {
@@ -332,7 +335,6 @@ class UserInterface {
 
         arceus.start(0, 0);
 
-        this.setInitialContext();
         this.displayNextChoices();
     }
 
