@@ -93,8 +93,6 @@ class Flappeo {
             newX += this.element.getBoundingClientRect().width;
         }
 
-        console.log(hintElement.getBoundingClientRect().width);
-
         hintElement.style.top = newY + "px";
         hintElement.style.left = newX + "px";
 
