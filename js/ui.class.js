@@ -218,7 +218,9 @@ class UserInterface {
         arceus.getChoices().forEach(function(choice) {
             this.addButton(choice);
         }.bind(this));
-        this.addBackButton();
+        if (!arceus.isArrayEmpty()) {
+            this.addBackButton();
+        }
     }
 
     setContext() {
