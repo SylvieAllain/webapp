@@ -132,9 +132,15 @@ context.push(new Context("There is no indexed content on prod org.", false, fals
 
 //hint
 <<<<<<< HEAD
+<<<<<<< HEAD
 context.push(new Context("So you now know that the documents are public and the feilds are searchable.", false, false, 7));
 
 var arceus = new Arceus(context, choices);
+=======
+context.push(new Context("So you now know that the documents are public and the feilds are searchable.", false, false, 6));
+var storyIndex = 4;
+var arceus = new Arceus(context, choices, storyIndex);
+>>>>>>> 40540d148ddb44a64ac76031011d96566b5e8bc0
 =======
 context.push(new Context("So you now know that the documents are public and the feilds are searchable.", false, false, 6));
 var storyIndex = 4;

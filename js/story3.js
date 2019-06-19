@@ -47,8 +47,13 @@ context.push(new Context("The issue is solved and the client is really happy tha
 context.push(new Context("This solves the issue but the client would of appreciated if you would of taken the time to meet with them personally and guide them through the process.", false, true, 5));
 context.push(new Context("This does solve the issue but the client is angry that you went in the prod yourself and a lawsuit could be incoming for breach of contract.", false, true, 5));
 <<<<<<< HEAD
+<<<<<<< HEAD
 var arceus = new Arceus(context, choices);
 arceus.start(0)
+=======
+var arceus = new Arceus(context, choices, storyIndex);
+arceus.start(0);
+>>>>>>> 40540d148ddb44a64ac76031011d96566b5e8bc0
 =======
 var arceus = new Arceus(context, choices, storyIndex);
 arceus.start(0);
