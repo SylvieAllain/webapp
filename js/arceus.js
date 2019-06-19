@@ -4,8 +4,8 @@ var Arceus = /** @class */ (function () {
         this.initialChoicesIndex = 0;
         this.story = story;
         this.points = Arceus.STARTING_POINTS;
-        this.piecesOfPuzzleFound = 0;
-        this.lastPieceOfPuzzleFound = false;
+        this.hintsFound = 0;
+        this.lastHintFound = false;
         this.currentContextIndex = 0;
         this.currentChoicesIndex = 0;
         this.storyIndex = storyIndex;
@@ -22,22 +22,22 @@ var Arceus = /** @class */ (function () {
         this.currentChoicesIndex = userChoice.getNextChoices();
         switch (this.story.getStoryIndex()) {
             case 1:
-                if (context.isPieceOfPuzzle() == true) {
-                    this.piecesOfPuzzleFound++;
-                    context.changePieceOfPuzzleStatus();
-                    if (this.piecesOfPuzzleFound == 3) {
-                        this.lastPieceOfPuzzleHasBeenFound();
+                if (context.isHint() == true) {
+                    this.hintsFound++;
+                    context.changeHintStatus();
+                    if (this.hintsFound == 3) {
+                        this.lastHintHasBeenFound();
                         this.changeCurrentContextIndex(11);
                         this.changeCurrentChoicesIndex(5);
                     }
                 break;
                 }
             case 4:
-                if (context.isPieceOfPuzzle() == true) {
-                    this.piecesOfPuzzleFound++;
-                    context.changePieceOfPuzzleStatus();
-                    if (this.piecesOfPuzzleFound == 2) {
-                        this.lastPieceOfPuzzleHasBeenFound();
+                if (context.isHint() == true) {
+                    this.hintsFound++;
+                    context.changeHintStatus();
+                    if (this.hintsFound == 2) {
+                        this.lastHintHasBeenFound();
                         this.changeCurrentContextIndex(30);
                         this.changeCurrentChoicesIndex(6);
                     }

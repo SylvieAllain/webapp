@@ -2,7 +2,7 @@
 var Context = /** @class */ (function () {
     function Context(text, hint, end) {
         this.text = text;
-        this.hint = hinte;
+        this.hint = hint;
         this.end = end;
     }
     Context.prototype.changeHintStatus = function () {
