@@ -23,37 +23,39 @@ class Arceus {
 
     setChoices(userIndex) {
         this.addPrevious();
-        var currentChoices = this.getCurrentChoices();
-        var userChoice = currentChoices[userIndex];
+        let currentChoices = this.getCurrentChoices();
+        let userChoice = currentChoices[userIndex];
         this.removePoints(userChoice.getPoints());
         this.setContext(userChoice);
-        var context = this.getCurrentContext();
+        let context = this.getCurrentContext();
         this.currentChoicesIndex = userChoice.getNextChoices();
-        switch (this.story.getStoryIndex()) {
-            case 1:
-                if (context.isHint() == true) {
-                    this.hintsFound++;
-                    context.changeHintStatus();
+        if (context.isHint() == true) {
+            let allHintsFound = false;
+            let nextContextIndex = 0;
+            let nextChoicesIndex = 0;
+            context.changeHintStatus();
+            this.hintsFound++;
+            switch (this.story.getStoryIndex()) {
+                case 1:
                     if (this.hintsFound == 3) {
-                        this.lastHintHasBeenFound();
-                        this.changeCurrentContextIndex(11);
-                        this.changeCurrentChoicesIndex(5);
-                    }
-                break;
-                }
-            case 4:
-                if (context.isHint() == true) {
-                    this.hintsFound++;
-                    context.changeHintStatus();
-                    if (this.hintsFound == 2) {
-                        this.lastHintHasBeenFound();
-                        this.changeCurrentContextIndex(30);
-                        this.changeCurrentChoicesIndex(6);
+                        allHintsFound = true;
+                        nextContextIndex = 11;
+                        nextChoicesIndex = 5;
                     }
                     break;
-                }
-            default:
-                break;
+                case 4:
+                    if (this.hintsFound == 2) {
+                        allHintsFound = true;
+                        nextcontextIndex = 30;
+                        nextChoicesIndex = 6;
+                    }
+                    break;
+            }
+            if (allHintsFound) {
+                this.lastHintHasBeenFound();
+                this.changeCurrentContextIndex(nextContextIndex);
+                this.changeCurrentChoicesIndex(nextChoicesIndex);
+            }
         }
     }
 
@@ -101,13 +103,18 @@ class Arceus {
         this.currentChoicesIndex = this.getPreviousChoices();
     }
 
-    isThisAnEnding() {
-        return this.getCurrentContext().isEnd();
+    getContext(index) {
+        return this.story.getContext(index);
     }
 
     getCurrentContextText() {
         return this.getCurrentContext().getContext();
     }
+
+    isThisAnEnding() {
+        return this.getCurrentContext().isEnd();
+    }
+
 
     isThisChoiceIsAPathToTheEnding(choice) {
         var nextContextIndex = choice.getNextContext()

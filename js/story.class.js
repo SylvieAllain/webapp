@@ -1,8 +1,9 @@
 class Story {
-    constructor(contexts, choices, storyIndex) {
+    constructor(contexts, choices, storyIndex, hint) {
         this.choices = choices;
         this.contexts = contexts;
         this.storyIndex = storyIndex;
+        this.hint = hint;
     }
 
     getChoice(choiceIndex) {

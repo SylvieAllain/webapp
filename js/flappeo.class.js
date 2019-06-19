@@ -9,9 +9,11 @@ class Flappeo {
         this.flying = false;
         this.element.addEventListener('click', function() {
             this.clicked = true;
-            this.giveHint();
             $(this.element).stop();
-            this.evade();
+            this.giveHint().delay(2000).queue(function() {
+                this.evade();
+                $(this).dequeue();
+            });
         }.bind(this));
 	}
     
