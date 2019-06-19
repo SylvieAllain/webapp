@@ -24,7 +24,7 @@ class UserInterface {
                 this.stopTimer();
                 $(button).off();
                 arceus.setChoices(buttonIndex);
-                if (arceus.isThisChoiceIsAPathToTheEnding(choice)) {
+                if (arceus.isThisChoiceAPathToTheEnding(choice)) {
                     this.endAdventure();
                 }
                 else {

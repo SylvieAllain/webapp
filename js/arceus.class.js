@@ -46,7 +46,7 @@ class Arceus {
                 case 4:
                     if (this.hintsFound == 2) {
                         allHintsFound = true;
-                        nextcontextIndex = 30;
+                        nextContextIndex = 30;
                         nextChoicesIndex = 6;
                     }
                     break;
@@ -123,8 +123,7 @@ class Arceus {
         return this.getCurrentContext().isEnd();
     }
 
-
-    isThisChoiceIsAPathToTheEnding(choice) {
+    isThisChoiceAPathToTheEnding(choice) {
         var nextContextIndex = choice.getNextContext()
         var contextToCheck = this.story.getContext(nextContextIndex);
         return contextToCheck.isEnd();
