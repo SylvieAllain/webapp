@@ -250,7 +250,6 @@ class UserInterface {
         this.timerText = document.getElementById('timer-text');
 
         document.addEventListener('mousedown', function(mouseEvent) {
-            
             let lastY = mouseEvent.clientY;
             let scroll = function(mouseEvent) {
                 let newY = mouseEvent.clientY;
@@ -336,7 +335,6 @@ class UserInterface {
     }
 
     timerLoop() {
-        console.log(1);
         if (this.questionCurrentTimestamp >= 0) {
             this.questionCurrentTimestamp -= 1000 / 60;
             if (this.questionLastTimestamp - this.questionCurrentTimestamp >= 1000) {
