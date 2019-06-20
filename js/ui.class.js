@@ -13,26 +13,26 @@ class UserInterface {
     addButton(choice, goBack=false) {
         let button = document.createElement('button');
         button.classList.add('choice-button');
-        if(!goBack){
-            button.innerHTML = choice.getChoice();
-        }
         this.gameChoices.appendChild(button);
         this.choiceButtons.push(button);
         let buttonIndex = this.choiceButtons.length - 1;
         if (!goBack) {
+            button.innerHTML = choice.getChoice();
             $(button).on('click', function () {
                 this.stopTimer();
                 $(button).off();
                 arceus.setChoices(buttonIndex);
                 if (arceus.isThisChoiceAPathToTheEnding(choice)) {
-                    this.endAdventure();
-                }
-                else {
+                    this.regroupAnimation(button);
+                    this.popupAnimation();
+                    setTimeout(() => {
+                        this.endAdventure();
+                    }, 1500);
+                } else {
                     this.nextChoices(buttonIndex);
                 }
             }.bind(this));
-        }
-        else {
+        } else {
             button.innerHTML = choice;
             button.classList.add('choice-button-goback');
             $(button).on('click', function () {
@@ -81,6 +81,8 @@ class UserInterface {
 
     enableSuperUrgentMode() {
         this.gameChoices.className = "";
+        this.timerBarContainer.className = "";
+        this.timer.className = "";
         this.questionShaking = true;
         this.gameChoices.classList.add('box-super-urgent');
         this.timerBarContainer.classList.add('box-super-urgent');
@@ -92,6 +94,7 @@ class UserInterface {
     enableUrgentMode() {
         this.questionZooming = true;
         this.gameChoices.classList.add('box-urgent');
+        this.timerBarContainer.classList.add('box-urgent');
         this.timer.classList.add('timer-urgent');
         this.timer.style.color = 'orange';
         this.clock.urgent();
@@ -136,42 +139,11 @@ class UserInterface {
 
     nextChoices(selectedIndex) {
         let selectedButton = this.choiceButtons[selectedIndex];
-        selectedButton.classList.add('choice-selected');
         let buttons = document.getElementsByClassName('choice-button');
         buttons.disabled = true;
-		
-        this.gameContainer.className = '';
-		this.choiceButtons.forEach(function(button) {
-			let yDiff = this.offsetTop(selectedButton) - this.offsetTop(button);
-			if (button != selectedButton) {
-				$(button).animate({
-					top: "+=" + yDiff,
-					opacity: 0.75
-				}, 50, function() {
-					button.style.visibility = "hidden";
-				});
-			}
-		}.bind(this));
 
-        let self = this;
-		$(this.gameContainer).delay(500).queue(function() {
-			$(self.gameContainer).addClass('choices-box-disappear').delay(500).queue(function() {
-				self.elementHide(self.gameContainer);
-				self.clearButtons();
-                self.gameContainer.classList.remove('choices-box-disappear');
-				$(this).dequeue();
-			}).delay(250).queue(function() {
-                self.displayNextChoices();
-                self.startTimer();
-				$(this).dequeue();
-			}).delay(250).queue(function() {
-                self.gameContainer.classList.remove('choices-box-appear');
-				$(this).dequeue();
-			}).queue(function() {
-				$(this).dequeue();
-			});
-			$(this).dequeue();
-        });
+        this.regroupAnimation(selectedButton);
+        this.popupAnimation();
     }
 
     offsetLeft(element) {
@@ -205,6 +177,44 @@ class UserInterface {
             self.endAdventure();
             $(this).dequeue();
         });
+    }
+
+    popupAnimation() {
+        let self = this;
+		$(this.gameContainer).delay(500).queue(function() {
+			$(self.gameContainer).addClass('choices-box-disappear').delay(500).queue(function() {
+				self.elementHide(self.gameContainer);
+				self.clearButtons();
+                self.gameContainer.classList.remove('choices-box-disappear');
+				$(this).dequeue();
+			}).delay(250).queue(function() {
+                self.displayNextChoices();
+                self.startTimer();
+				$(this).dequeue();
+			}).delay(250).queue(function() {
+                self.gameContainer.classList.remove('choices-box-appear');
+				$(this).dequeue();
+			}).queue(function() {
+				$(this).dequeue();
+			});
+			$(this).dequeue();
+        });
+    }
+
+    regroupAnimation(selectedButton) {
+        selectedButton.classList.add('choice-selected');
+        this.gameContainer.className = '';
+		this.choiceButtons.forEach(function(button) {
+			let yDiff = this.offsetTop(selectedButton) - this.offsetTop(button);
+			if (button != selectedButton) {
+				$(button).animate({
+					top: "+=" + yDiff,
+					opacity: 0.75
+				}, 50, function() {
+					button.style.visibility = "hidden";
+				});
+			}
+		}.bind(this));
     }
 
     removeButtonsClickEvents() {
