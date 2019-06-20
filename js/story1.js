@@ -49,7 +49,7 @@ context.push(new Context("There are no errors in the console when reproducing th
 context.push(new Context("You can see 2 things: <br> 1. The query parameter is the expected value that the user enters in the SearchBox <br> 2. THe SearchHub parameter is equal to \"MySearchPage\"<br> The object that is returned by the model is an empty object of the expected type, which means that the Query Suggestions model doesn't provide any suggestions for the above parameter.", true, false));
 context.push(new Context("All parameters are as expected on the request. THe SearchHub value is equal to \"MySearchHub\".", true, false));
 //context 6
-context.push(new Context("You have now gathered enough information to formulate a resolution attempt to the client. Which of the following recommendations will you choose?", false, false));
+context.push(new Context("You have now gathered enough information to formulate a resolution attempt to the client. Which of the following recommendations will you choose?", false, false)); //patate
 //ending
 context.push(new Context("This solves the issue, client thanks you very much and confirms you can close the case!", false, true));
 context.push(new Context("Client sends you a screenshot proof that the keyword is actually part of the candidates. This is not the right cause to this issue.", false, false));
