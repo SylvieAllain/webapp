@@ -6,8 +6,7 @@ class UserInterface {
         this.setElements();
         this.isLastHintContextDisplayed = false;
         this.flappeo = new Flappeo();
-        this.clock = new Clock('clock');
-        this.setTimer();
+        this.clock = new Clock('clock', this.initialTimer);
 	}
 
     addButton(choice, goBack=false) {
@@ -38,8 +37,6 @@ class UserInterface {
             $(button).on('click', function () {
                 this.stopTimer();
                 $(button).off();
-                arceus.getPreviousState();
-                this.displayNextChoices();
                 this.regroupAnimation(button);
                 setTimeout(() => {
                     arceus.getPrevious();
@@ -232,7 +229,6 @@ class UserInterface {
         arceus.getChoices().forEach(function(choice) {
             this.addButton(choice);
         }.bind(this));
-        console.log(arceus.arrayOfPreviousStates);
         if (!arceus.isArrayEmpty()) {
             this.addBackButton();
         }
@@ -306,7 +302,7 @@ class UserInterface {
 		this.questionTimer = timer;
 		this.questionShaking = false;
 		this.questionZooming = false;
-        this.questionInitialTimestamp = this.questionTimer * 1000;
+        this.questionInitialTimestamp = Date.now();
 		this.questionLastTimestamp = this.questionInitialTimestamp;
 		this.questionCurrentTimestamp = this.questionInitialTimestamp;
         this.timerText.textContent = this.getFormatedTimer();
@@ -345,7 +341,8 @@ class UserInterface {
     }
 
 	start() {
-        this.clock.run();
+        this.setTimer();
+        this.clock.run(this.questionInitialTimestamp);
         this.startTimer();
 
         arceus.start(0, 0);
@@ -364,6 +361,34 @@ class UserInterface {
     }
 
     timerLoop() {
+        if (this.questionCurrentTimestamp >= 0) {
+            this.questionCurrentTimestamp = Date.now();
+            let diffTimestamp = this.questionCurrentTimestamp - this.questionLastTimestamp;
+            if (diffTimestamp >= 1000) {
+                let rest = diffTimestamp - 1000;
+                this.questionLastTimestamp = this.questionCurrentTimestamp - rest;
+                this.questionTimer--;
+                if (this.questionTimer <= 0) {
+                    this.questionTimer = 0;
+                } else if (this.questionTimer <= 30 && !this.questionShaking) {
+                    this.enableSuperUrgentMode();
+                } else if (this.questionTimer <= 90 && !this.questionZooming) {
+                    this.enableUrgentMode();
+                }
+            }
+        } else {
+            this.stopTimer();
+            this.removeButtonsClickEvents();
+            this.questionTimer = 0;
+            this.questionCurrentTimestamp = 0;
+            this.disableSuperUrgentMode();
+            this.outOfTime();
+        }
+        this.clock.update(this.questionCurrentTimestamp);
+        this.updateTimerBar();
+    }
+
+    /*timerLoop() {
         if (this.questionCurrentTimestamp >= 0) {
             this.questionCurrentTimestamp -= 1000 / 60;
             if (this.questionLastTimestamp - this.questionCurrentTimestamp >= 1000) {
@@ -385,8 +410,9 @@ class UserInterface {
             this.disableSuperUrgentMode();
             this.outOfTime();
         }
+        this.clock.update(this.questionCurrentTimestamp);
         this.updateTimerBar();
-    }
+    }*/
 
     updateTimerBar() {
         this.timerText.textContent = this.getFormatedTimer();
