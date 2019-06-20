@@ -19,9 +19,9 @@ choices4.push(new Choice("Open the network tab", 4, 2, 0));
 choices4.push(new Choice("Look for errors in the Console", 3, 8, 0));
 choices5.push(new Choice("Inspect the request that queries the Query Suggestions model", 1, 9, 0));
 choices5.push(new Choice("Inspect the request that sends the analytics event related to the search", 1, 10, 0));
-choices6.push(new Choice("The SearchHub filter values are diffrent on the event that feeds the model VS the event that grabs suggestions from the model. The client must ensure that both value's are the same.", 5, 12, 0));
+choices6.push(new Choice("The SearchHub filter values are different on the event that feeds the model VS the event that grabs suggestions from the model. The client must ensure that both values are the same.", 5, 12, 0));
 choices6.push(new Choice("The client is testing the model with a keyword that is not part of the candidates. The client must ensure that they're using the right keyword.", 5, 13));
-choices6.push(new Choice("Even though there are candidates on the model, there is not enough data to provide suggestions. Thew model must be trained for a longer peroid of time in order to obtain suggestions", 5, 14, 0));
+choices6.push(new Choice("Even though there are candidates on the model, there is not enough data to provide suggestions. The model must be trained for a longer period of time in order to obtain suggestions", 5, 14, 0));
 choices6.push(new Choice("Results are being provided for an anoymous user, while the candidates have been trained by a specific user. Query suggestions are provided according to the user.", 5, 15, 0));
 choices.push(choices1);
 choices.push(choices2);
@@ -35,13 +35,13 @@ var storyIndex = 1;
 //initial context
 context.push(new Context("A customer is reporting that their Query Suggestions component is not providing any suggestions. What do you do first?", false, false,));
 //context 1
-context.push(new Context("Client explians that they are creating for a new developement enviorement. It seems that the model has candidates, but they are not displayed on the Search Page.", false, false));
+context.push(new Context("Client explains that they are creating for a new developement environment. It seems that the model has candidates, but they are not displayed on the Search Page.", false, false));
 context.push(new Context("You are on the Client's Search Page and you can see that the Query Suggestions are not provided when typing various letters in the Search Box.", false, false));
 context.push(new Context("You are on the Client's Cloud Organization. You browse to \"Machine Learning > Models\" and you can see the corresponding Query Suggestion model.", false, false));
-context.push(new Context("Client responds that everything is setup as expoected and that it is still not working.", false, false));
+context.push(new Context("Client responds that everything is setup as expected and that it is still not working.", false, false));
 //context 3
 context.push(new Context("You can see that the Model has candidates. The only SearchHub filter value that is trained on the model is \" MySearchHub\".", true, false));
-context.push(new Context("You are on the Madel Testing page where you can test the Query Suggestions model directly. You can see that Query Suggestions are provided when typing various lettters in the Search Box.", false, false));
+context.push(new Context("You are on the Model Testing page where you can test the Query Suggestions model directly. You can see that Query Suggestions are provided when typing various letters in the Search Box.", false, false));
 //context 4
 context.push(new Context("The component appears to be defined properly in the source code.", false, false));
 context.push(new Context("There are no errors in the console when reproducing the problematic scenario.", false, false));
@@ -54,7 +54,7 @@ context.push(new Context("You have now gathered enough information to formulate 
 context.push(new Context("This solves the issue, client thanks you very much and confirms you can close the case!", false, true));
 context.push(new Context("Client sends you a screenshot proof that the keyword is actually part of the candidates. This is not the right cause to this issue.", false, false));
 context.push(new Context("Client responds that this doesn't seem to be the cause of the issue, as the Model Testing feature provides suggestions as expected.", false, false));
-context.push(new Context("Client spent time training new candidates using an anoymous session. However the same issue occurs. This doesn't seem to solve the issue.", false, false));
+context.push(new Context("Client spent time training new candidates using an anonymous session. However the same issue occurs. This doesn't seem to solve the issue.", false, false));
 
 let hint = "Psst, try inspecting once in a while!";
 
