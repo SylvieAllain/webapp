@@ -18,7 +18,7 @@ class Flappeo {
         let currentX = this.element.getBoundingClientRect().left;
         let currentY = this.element.getBoundingClientRect().top;
 
-        let hintZoneX = window.innerWidth * 0.2;
+        let hintZoneX = window.innerWidth * 0.3;
         let hintZoneY = 50;
 
         this.turnAround(currentX, hintZoneX);

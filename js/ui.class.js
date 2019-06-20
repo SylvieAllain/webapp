@@ -6,8 +6,7 @@ class UserInterface {
         this.setElements();
         this.isLastHintContextDisplayed = false;
         this.flappeo = new Flappeo();
-        this.clock = new Clock('clock');
-        this.setTimer();
+        this.clock = new Clock('clock', this.initialTimer);
 	}
 
     addButton(choice, goBack=false) {
@@ -303,7 +302,7 @@ class UserInterface {
 		this.questionTimer = timer;
 		this.questionShaking = false;
 		this.questionZooming = false;
-        this.questionInitialTimestamp = this.questionTimer * 1000;
+        this.questionInitialTimestamp = Date.now();
 		this.questionLastTimestamp = this.questionInitialTimestamp;
 		this.questionCurrentTimestamp = this.questionInitialTimestamp;
         this.timerText.textContent = this.getFormatedTimer();
@@ -342,7 +341,8 @@ class UserInterface {
     }
 
 	start() {
-        this.clock.run();
+        this.setTimer();
+        this.clock.run(this.questionInitialTimestamp);
         this.startTimer();
 
         arceus.start(0, 0);
@@ -361,10 +361,12 @@ class UserInterface {
     }
 
     timerLoop() {
-        if (this.questionCurrentTimestamp >= 0) {
-            this.questionCurrentTimestamp -= 1000 / 60;
-            if (this.questionLastTimestamp - this.questionCurrentTimestamp >= 1000) {
-                this.questionLastTimestamp = this.questionCurrentTimestamp;
+        if (this.questionTimer > 0) {
+            this.questionCurrentTimestamp = Date.now();
+            let diffTimestamp = this.questionCurrentTimestamp - this.questionLastTimestamp;
+            if (diffTimestamp >= 1000) {
+                let rest = diffTimestamp - 1000;
+                this.questionLastTimestamp = this.questionCurrentTimestamp - rest;
                 this.questionTimer--;
                 if (this.questionTimer <= 0) {
                     this.questionTimer = 0;
@@ -382,12 +384,13 @@ class UserInterface {
             this.disableSuperUrgentMode();
             this.outOfTime();
         }
+        this.clock.update(this.questionCurrentTimestamp);
         this.updateTimerBar();
     }
 
     updateTimerBar() {
         this.timerText.textContent = this.getFormatedTimer();
-        let barPercentage = 100 - this.questionCurrentTimestamp / this.questionInitialTimestamp * 100;
+        let barPercentage = Math.abs((this.questionInitialTimestamp - this.questionCurrentTimestamp) / 1000) / this.initialTimer * 100;
         this.timerBar.style.width = barPercentage + "%";
     }
 }

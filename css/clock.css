@@ -23,7 +23,8 @@
 .clock-hand {
     position: absolute;
     height: 5px;
-    border: 1px solid #FFFFFF;
+    width: 2px;
+    background-color: #FFFFFF;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-100%);
@@ -37,6 +38,14 @@
 
 .clock-super-urgent {
     border-color: red !important;
+}
+
+.clock-hand-urgent {
+    background-color: orange !important;
+}
+
+.clock-hand-super-urgent {
+    background-color: red !important;
 }
 
 #clock .clock-hand-minutes {

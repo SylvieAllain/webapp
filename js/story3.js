@@ -49,4 +49,4 @@ context.push(new Context("This does solve the issue but the client is angry that
 
 let hint = "Psst, ALWAYS ask for more information about the client's org before making do something!";
 
-var story = new Story(context, choices, storyIndex, hint);//patate
+var story = new Story(context, choices, storyIndex, hint);

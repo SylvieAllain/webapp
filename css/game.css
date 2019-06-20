@@ -358,6 +358,11 @@
 	top: 0;
 }
 
+#timer-text {
+	position: relative;
+	top: 1px;
+}
+
 .timer-super-urgent {
 	animation-name: timer-super-urgent;
     animation-duration: 0.25s;
