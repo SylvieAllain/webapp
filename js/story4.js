@@ -137,4 +137,4 @@ var storyIndex = 4;
 
 let hint = "Psst, maybe the client would like to speak with you personally.";
 
-var story = new Story(context, choices, storyIndex, hint);//patate
+var story = new Story(context, choices, storyIndex, hint);

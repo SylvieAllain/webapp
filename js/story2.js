@@ -80,4 +80,4 @@ context.push(new Context("The customer is happy that you found the root cause, b
 
 let hint = "Psst, don't do anything in the client's org on your own. Make the client do it.";
 
-var story = new Story(context, choices, storyIndex, hint);//patate
+var story = new Story(context, choices, storyIndex, hint);

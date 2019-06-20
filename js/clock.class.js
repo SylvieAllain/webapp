@@ -21,7 +21,6 @@ class Clock {
     
     run(initialTimestamp) {
         this.lastTimestamp = initialTimestamp;
-        console.log(initialTimestamp);
     }
 
     update(currentTimestamp) {
