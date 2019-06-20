@@ -10,12 +10,46 @@ class Flappeo {
         this.element.addEventListener('click', function() {
             this.clicked = true;
             $(this.element).stop();
-            this.giveHint();
-            setTimeout(() => { this.evade(); }, 2000);
+            this.evade();
         }.bind(this));
 	}
-    
-    animate() {
+
+    evade() {
+        let currentX = this.element.getBoundingClientRect().left;
+        let currentY = this.element.getBoundingClientRect().top;
+
+        let hintZoneX = window.innerWidth * 0.2;
+        let hintZoneY = 50;
+
+        this.turnAround(currentX, hintZoneX);
+        
+        let diffX = hintZoneX - currentX;
+        let diffY = hintZoneY - currentY;
+            
+        let time = this.time = this.getFlyDistance(diffX, diffY) * 2;
+
+        let self = this;
+
+        $(this.element).animate({
+            top: "+=" + diffY,
+            left: "+=" + diffX
+        }, time).delay(500).queue(function() {
+            self.giveHint();
+            $(this).dequeue();
+        }).delay(2000).queue(function() {
+            self.flyAway();
+            $(this).dequeue();
+        });
+    }
+
+    fly() {
+        this.flying = true;
+        setTimeout(function() {
+            this.flyAround();
+        }.bind(this), 5000);
+    }
+
+    flyAround() {
         if (!this.clicked) {
             let xRange = [0, $(window).innerWidth()];
             let yRange = [0, $(window).innerHeight() - 300];
@@ -26,26 +60,23 @@ class Flappeo {
             let currentX = parseInt($(this.element).css('left'));
             let currentY = parseInt($(this.element).css('top'));
             
-            this.flappeoScale = Math.sign(currentX - newX);
+            this.turnAround(currentX, newX);
             
-            $(this.element).css('transform', 'scaleX(' + this.flappeoScale * -1 + ')');
+            let diffX = newX - currentX;
+            let diffY = newY - currentY;
             
-            let xDiff = newX - currentX;
-            let yDiff = newY - currentY;
-            let zDistance = Math.round(Math.sqrt(Math.pow(xDiff, 2) + Math.pow(yDiff, 2)));
-            
-            let time = this.time = zDistance * 10;
+            let time = this.time = this.getFlyDistance(diffX, diffY) * 10;
 
             $(this.element).animate({
-                top: "+=" + yDiff,
-                left: "+=" + xDiff
+                top: "+=" + diffY,
+                left: "+=" + diffX
             }, time, function() {
-                this.animate();
+                this.flyAround();
             }.bind(this));
         }
     }
 
-    evade() {
+    flyAway() {
         let left = -400 * this.flappeoScale;
         this.element.style.transform = "scaleX(" + this.flappeoScale * -1 + ") rotate(-25deg)";
         $(this.element).animate({
@@ -54,11 +85,8 @@ class Flappeo {
         }, 2000);
     }
 
-    fly() {
-        this.flying = true;
-        setTimeout(function() {
-            this.animate();
-        }.bind(this), 5000);
+    getFlyDistance(x, y) {
+        return Math.round(Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)));
     }
 
     giveHint() {
@@ -105,5 +133,10 @@ class Flappeo {
 
     isClicked() {
         return this.clicked;
+    }
+
+    turnAround(fromPosition, toPosition) {
+        this.flappeoScale = Math.sign(fromPosition - toPosition);
+        $(this.element).css('transform', 'scaleX(' + this.flappeoScale * -1 + ')');
     }
 }

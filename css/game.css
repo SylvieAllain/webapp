@@ -82,6 +82,7 @@
 	left: 0;
 	pointer-events: auto;
 	text-shadow: 1px 1px rgba(255, 255, 255);
+	min-width: 700px;
 }
 
 .choice-selected, #game-choices button:hover {
@@ -98,12 +99,6 @@
 
 .choice-button:active, .choice-button:focus {
 	outline: none;
-}
-
-#game-choices .choice-button-goback {
-	font-size: 2.25rem;
-	padding: 10px;
-	color: #f58020;
 }
 
 #coveo-logo {
@@ -181,6 +176,12 @@
 	display: grid;
 }
 
+#game-choices .choice-button-goback {
+	font-size: 2.25rem;
+	padding: 10px;
+	color: #f58020;
+}
+
 #game-content {
 	margin: auto;
 	padding: 10px;
@@ -196,12 +197,6 @@
 	margin-left: auto;
 	margin-right: auto;
 	overflow: hidden;
-}
-
-@media screen and (max-width: 1200px) {
-	#game-container {
-		width: 80%;
-	}
 }
 
 #game-context {
@@ -375,6 +370,16 @@
     animation-duration: 0.5s;
 	animation-iteration-count: infinite;
     animation-timing-function: linear;
+}
+
+@media screen and (max-width: 1200px) {
+	#game-container {
+		width: 80%;
+	}
+
+	.choice-button {
+		min-width: 0;
+	}
 }
 
 @keyframes box-super-urgent {

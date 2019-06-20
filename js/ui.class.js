@@ -119,7 +119,6 @@ class UserInterface {
         this.gameFinalPoints.innerHTML = "<strong>" + arceus.getPoints() + "</strong>";
         this.elementDisplayFlex(this.gamePointsContainer);
         this.gamePointsContainer.classList.add('game-points-container-appear');
-        
     }
 
     getElementCenterX(element) {
