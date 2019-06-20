@@ -20,7 +20,7 @@ choices4.push(new Choice("Look for errors in the Console", 3, 8, 0));
 choices5.push(new Choice("Inspect the request that queries the Query Suggestions model", 1, 9, 0));
 choices5.push(new Choice("Inspect the request that sends the analytics event related to the search", 1, 10, 0));
 choices6.push(new Choice("The SearchHub filter values are different on the event that feeds the model VS the event that grabs suggestions from the model. The client must ensure that both values are the same.", 5, 12, 0));
-choices6.push(new Choice("The client is testing the model with a keyword that is not part of the candidates. The client must ensure that they're using the right keyword.", 5, 13));
+choices6.push(new Choice("The client is testing the model with a keyword that is not part of the candidates. The client must ensure that they're using the right keyword.", 5, 13, 0));
 choices6.push(new Choice("Even though there are candidates on the model, there is not enough data to provide suggestions. The model must be trained for a longer period of time in order to obtain suggestions", 5, 14, 0));
 choices6.push(new Choice("Results are being provided for an anoymous user, while the candidates have been trained by a specific user. Query suggestions are provided according to the user.", 5, 15, 0));
 choices.push(choices1);
