@@ -38,8 +38,12 @@ class UserInterface {
             $(button).on('click', function () {
                 this.stopTimer();
                 $(button).off();
-                arceus.getPrevious();
-                this.displayNextChoices();
+                this.regroupAnimation(button);
+                setTimeout(() => {
+                    arceus.getPrevious();
+                    this.displayNextChoices();
+                    this.startTimer();
+                }, 400);
             }.bind(this));
         }
 	}
@@ -63,8 +67,7 @@ class UserInterface {
         this.setContext();
         if (this.isTheEnd) {
             this.endAdventure();
-        }
-        else {
+        } else {
             this.setChoicesButtons();
             this.elementDisplayFlex(this.gameContainer);
             this.gameContainer.classList.add('choices-box-appear');
@@ -162,7 +165,7 @@ class UserInterface {
         }
 
         let fallDelay = 0;
-        animatedElements.push(this.gameContext, this.timerContainer, this.gameInitialContext);
+        animatedElements.push(this.timerContainer, this.gameContext, this.gameInitialContext);
         $(this.gameContainer).delay(500).queue(function() {
             animatedElements.forEach(function(element) {
                 $(element).delay(fallDelay).queue(function() {
