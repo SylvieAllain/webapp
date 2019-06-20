@@ -55,7 +55,17 @@ class Arceus {
                 this.lastHintHasBeenFound();
                 this.changeCurrentContextIndex(nextContextIndex);
                 this.changeCurrentChoicesIndex(nextChoicesIndex);
+                this.emptyTheArrays();
             }
+        }
+    }
+
+    emptyTheArrays() {
+        while (this.arrayOfPreviousChoices.length > 0) {
+            this.arrayOfPreviousChoices.pop();
+        }
+        while (this.arrayOfPreviousContexts.length > 0) {
+            this.arrayOfPreviousContexts.pop();
         }
     }
     getInititialContext() {
