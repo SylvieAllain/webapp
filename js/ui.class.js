@@ -361,7 +361,7 @@ class UserInterface {
     }
 
     timerLoop() {
-        if (this.questionCurrentTimestamp >= 0) {
+        if (this.questionTimer > 0) {
             this.questionCurrentTimestamp = Date.now();
             let diffTimestamp = this.questionCurrentTimestamp - this.questionLastTimestamp;
             if (diffTimestamp >= 1000) {
@@ -388,35 +388,9 @@ class UserInterface {
         this.updateTimerBar();
     }
 
-    /*timerLoop() {
-        if (this.questionCurrentTimestamp >= 0) {
-            this.questionCurrentTimestamp -= 1000 / 60;
-            if (this.questionLastTimestamp - this.questionCurrentTimestamp >= 1000) {
-                this.questionLastTimestamp = this.questionCurrentTimestamp;
-                this.questionTimer--;
-                if (this.questionTimer <= 0) {
-                    this.questionTimer = 0;
-                } else if (this.questionTimer <= 30 && !this.questionShaking) {
-                    this.enableSuperUrgentMode();
-                } else if (this.questionTimer <= 90 && !this.questionZooming) {
-                    this.enableUrgentMode();
-                }
-            }
-        } else {
-            this.stopTimer();
-            this.removeButtonsClickEvents();
-            this.questionTimer = 0;
-            this.questionCurrentTimestamp = 0;
-            this.disableSuperUrgentMode();
-            this.outOfTime();
-        }
-        this.clock.update(this.questionCurrentTimestamp);
-        this.updateTimerBar();
-    }*/
-
     updateTimerBar() {
         this.timerText.textContent = this.getFormatedTimer();
-        let barPercentage = 100 - this.questionCurrentTimestamp / this.questionInitialTimestamp * 100;
+        let barPercentage = Math.abs((this.questionInitialTimestamp - this.questionCurrentTimestamp) / 1000) / this.initialTimer * 100;
         this.timerBar.style.width = barPercentage + "%";
     }
 }
