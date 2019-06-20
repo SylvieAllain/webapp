@@ -65,17 +65,21 @@ class Flappeo {
         let hintElement = document.createElement('div');
         hintElement.setAttribute('class', 'flappeo-hint');
 
+        let hintBubbleElement = document.createElement('div');
+        hintBubbleElement.setAttribute('class', 'flappeo-hint-bubble');
+        hintElement.appendChild(hintBubbleElement);
+
         let hintTextElement = document.createElement('div');
         hintTextElement.setAttribute('class', 'flappeo-hint-text-bubble');
-        hintElement.appendChild(hintTextElement);
+        hintBubbleElement.appendChild(hintTextElement);
 
         let hintSmallBubble1Element = document.createElement('div');
         hintSmallBubble1Element.setAttribute('class', 'flappeo-hint-small-bubble-1');
-        hintElement.appendChild(hintSmallBubble1Element);
+        hintBubbleElement.appendChild(hintSmallBubble1Element);
 
         let hintSmallBubble2Element = document.createElement('div');
         hintSmallBubble2Element.setAttribute('class', 'flappeo-hint-small-bubble-2');
-        hintElement.appendChild(hintSmallBubble2Element);
+        hintBubbleElement.appendChild(hintSmallBubble2Element);
 
         document.body.appendChild(hintElement);
         

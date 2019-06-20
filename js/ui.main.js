@@ -5,8 +5,26 @@ var UI;
 var arceus;
 
 let stories = ["js/story1.js", "js/story2.js", "js/story3.js", "js/story4.js"];
-//let randomStory =  stories[getRandomInt(0,stories.length -1)];
-let randomStory = "js/story4.js";
+let randomStory =  stories[getRandomInt(0,stories.length -1)];
+
+let selectedStory = getUrlParameter("story");
+if (selectedStory !== undefined) {
+	selectedStory = parseInt(selectedStory);
+	switch (selectedStory) {
+		case 1:
+			randomStory = "js/story1.js";
+			break;
+		case 2:
+			randomStory = "js/story2.js";
+			break;
+		case 3:
+			randomStory = "js/story3.js";
+			break;
+		case 4:
+			randomStory = "js/story4.js";
+			break;
+	}
+}
 
 $.getScript(randomStory, function() {
 	UI = new UserInterface();

@@ -5,7 +5,6 @@
 	background-size: 75%;
     background-repeat: no-repeat;
     background-position: center;
-	position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
@@ -24,56 +23,60 @@
 }
 
 .flappeo-hint {
-    position: absolute;
+    position: relative;
     transform: scaleX(-1) translateX(100%);
     z-index: 10;
+    top: 200px;
+    left: 1500px;
 }
 
-.flappeo-hint > * {
+.flappeo-hint-bubble {
+    animation-name: hint-bubble-floating;
+    animation-duration: 4s;
+	animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.flappeo-hint-bubble > * {
     box-shadow: 0 0 5px 0 rgba(255, 255, 255, 0.25);
 }
 
 .flappeo-hint-text-bubble {
     text-shadow: 1px 1px rgba(255, 255, 255);
-    background-color: rgba(255, 255, 255, 0.9);
     color: #000000;
     transform: scaleX(-1);
     padding: 10px;
+    animation-duration: 0.4s;
+    animation-delay: 11s;
+}
+
+.flappeo-hint-text-bubble, .flappeo-hint-small-bubble-1, .flappeo-hint-small-bubble-2 {
+    background-color: #FFFFFF;
     animation-name: hint-bubble-disappear;
-    animation-duration: 0.5s;
 	animation-iteration-count: forwards;
     animation-timing-function: linear;
-    animation-delay: 6s;
     animation-fill-mode: forwards;
+}
+
+.flappeo-hint-small-bubble-1, .flappeo-hint-small-bubble-2, .flappeo-hint-bubble, .flappeo {
+    position: absolute;
 }
 
 .flappeo-hint-small-bubble-1 {
-    background-color: rgba(255, 255, 255, 0.9);
     width: 10px;
     height: 10px;
-    position: absolute;
     top: -31px;
     left: 20px;
-    animation-name: hint-bubble-disappear;
-    animation-duration: 0.5s;
-	animation-iteration-count: forwards;
-    animation-timing-function: linear;
-    animation-delay: 5s;
-    animation-fill-mode: forwards;
+    animation-duration: 0.2s;
+    animation-delay: 10s;
 }
 
 .flappeo-hint-small-bubble-2 {
-    background-color: rgba(255, 255, 255, 0.9);
     width: 15px;
     height: 15px;
-    position: absolute;
     top: -18px;
-    animation-name: hint-bubble-disappear;
-    animation-duration: 0.5s;
-	animation-iteration-count: forwards;
-    animation-timing-function: linear;
-    animation-delay: 5.5s;
-    animation-fill-mode: forwards;
+    animation-duration: 0.3s;
+    animation-delay: 10.5s;
 }
 
 #flappeo-playground {
@@ -90,6 +93,12 @@
     100% {opacity: 0}
 }
 
+@keyframes hint-bubble-floating {
+    25% {transform: skewY(1deg) skewX(-1deg) rotate(-2deg) rotateX(1deg) scale(0.98) translateX(2px) translateY(-2px)}
+    50% {transform: skewY(0deg) skewX(1deg) rotate(1deg) rotateX(-1deg) scale(1.02) translateX(-2px) translateY(1px)}
+    75% {transform: skewY(-1deg) skewX(0deg) rotate(-1deg) rotateX(1deg) scale(0.98) translateX(-1px) translateY(2px)}
+}
+
 @keyframes flappeo-clicked {
-    100% {top: calc(100% + 34px)}
+    100% {top: calc(100% + 35px)}
 }
