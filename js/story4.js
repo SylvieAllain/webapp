@@ -28,7 +28,7 @@ choices3.push(new Choice("Suggest a meeting", 0, 11, 0));
 
 choices4.push(new Choice("Test this expression on customer’s non-prod org", 8, 12, 0));
 choices4.push(new Choice("Ask about displayOnSearch field to the customer", 5, 13, 0));
-choices4.push(new Choice("Tell the customer that his query seems to be filtering results out", 5, 13, 0));
+choices4.push(new Choice("Tell the customer that his query seems to be filtering results out", 5, 14, 0));
 
 choices5.push(new Choice("Suggest a meeting", 9, 11, 0));
 choices5.push(new Choice("What would be the full query that does not produce results ?", 9, 5, 2));
@@ -61,8 +61,8 @@ choices11.push(new Choice("Trigger a full rebuild on the trial org to see if the
 choices11.push(new Choice("Test the full query on the trial org mentioned by the customer.", 0, 25, 0));
 
 choices12.push(new Choice("Tell the customer that there is no match for their displayOnSearch=1 on their customerNonProdOrg1 content browser", 0, 26, 0));
-choices12.push(new Choice("Check if there is a match for @displayfOnSearch (without a specific value) on their non-prod org", 0, 12, 0));
-choices12.push(new Choice("See if there is a match in their prod org, just in case", 0, 28, 0));
+choices12.push(new Choice("Check if there is a match for @displayfOnSearch (without a specific value) on their non-prod org", 11, 12, 0));
+choices12.push(new Choice("See if there is a match in their prod org, just in case", 11, 27, 0));
 
 choices.push(choices1);
 choices.push(choices2);
