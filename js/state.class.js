@@ -5,7 +5,7 @@ class State {
     }
 
     getContext() {
-        return this.context;
+        return this.context;//patate
     }
 
     getChoices() {
