@@ -100,7 +100,7 @@
 	outline: none;
 }
 
-.choice-button-goback {
+#game-choices .choice-button-goback {
 	font-size: 2.25rem;
 	padding: 10px;
 	color: #f58020;
