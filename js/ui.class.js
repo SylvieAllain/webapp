@@ -38,7 +38,7 @@ class UserInterface {
             $(button).on('click', function () {
                 this.stopTimer();
                 $(button).off();
-                arceus.getPrevious();
+                arceus.getPreviousState();
                 this.displayNextChoices();
             }.bind(this));
         }
@@ -227,6 +227,7 @@ class UserInterface {
         arceus.getChoices().forEach(function(choice) {
             this.addButton(choice);
         }.bind(this));
+        console.log(arceus.arrayOfPreviousStates);
         if (!arceus.isArrayEmpty()) {
             this.addBackButton();
         }

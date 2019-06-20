@@ -9,8 +9,7 @@ class Arceus {
         this.currentContextIndex = 0;
         this.currentChoicesIndex = 0;
         this.storyIndex = storyIndex;
-        this.arrayOfPreviousChoices = [];
-        this.arrayOfPreviousContexts = [];
+        this.arrayOfPreviousStates = [];
     }
 
     getCurrentChoices() {
@@ -22,7 +21,7 @@ class Arceus {
     }
 
     setChoices(userIndex) {
-        this.addPrevious();
+        this.addPreviousState();
         let currentChoices = this.getCurrentChoices();
         let userChoice = currentChoices[userIndex];
         this.removePoints(userChoice.getPoints());
@@ -61,11 +60,8 @@ class Arceus {
     }
 
     emptyTheArrays() {
-        while (this.arrayOfPreviousChoices.length > 0) {
-            this.arrayOfPreviousChoices.pop();
-        }
-        while (this.arrayOfPreviousContexts.length > 0) {
-            this.arrayOfPreviousContexts.pop();
+        while (this.arrayOfPreviousStates.length > 0) {
+            this.arrayOfPreviousStates.pop();
         }
     }
     getInititialContext() {
@@ -78,20 +74,21 @@ class Arceus {
 
     isArrayEmpty() {
         var isEmpty = false;
-        if (this.arrayOfPreviousChoices.length == 0) {
+        if (this.arrayOfPreviousStates.length == 0) {
             isEmpty = true;
         }
         return isEmpty;
     }
 
-    getPrevious() {
-        this.currentChoicesIndex = this.arrayOfPreviousChoices.pop();
-        this.currentContextIndex = this.arrayOfPreviousContexts.pop();
+    getPreviousState() {
+        var previousState = this.arrayOfPreviousStates.pop();
+        this.currentChoicesIndex = previousState.getChoices();
+        this.currentContextIndex = previousState.getContext();
     }
 
-    addPrevious() {
-        this.arrayOfPreviousChoices.push(this.currentChoicesIndex);
-        this.arrayOfPreviousContexts.push(this.currentContextIndex);
+    addPreviousState() {
+        var state = new State(this.currentContextIndex, this.currentChoicesIndex);
+        this.arrayOfPreviousStates.push(state);
     }
 
     lastHintHasBeenFound() {
