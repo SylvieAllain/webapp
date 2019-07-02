@@ -27,7 +27,7 @@ choices.push(choices4);
 var context = [];
 var storyIndex = 3;
 //initial context
-context.push(new Context("I can't seem to find my KB called \"Super deflection KB\"", false, false));
+context.push(new Context("I can't seem to find my knowledge article called \"Super deflection KB\"", false, false));
 //context 1
 context.push(new Context("You don’t have this information just yet.", false, false));
 context.push(new Context("You can check in the Content browser, you can see the document.", false, false));
@@ -47,6 +47,6 @@ context.push(new Context("The issue is solved and the client is really happy tha
 context.push(new Context("This solves the issue but the client would have appreciated if you would have taken the time to meet with them personally and guide them through the process.", false, true));
 context.push(new Context("This does solve the issue but the client is angry that you went in the prod yourself and a lawsuit could be incoming for breach of contract.", false, true));
 
-let hint = "Psst, ALWAYS ask for more information about the client's org before making do something!";
+let hint = "ALWAYS ask for more information about the client's org before making do something!";
 
 var story = new Story(context, choices, storyIndex, hint);

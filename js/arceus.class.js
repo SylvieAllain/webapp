@@ -37,14 +37,14 @@ class Arceus {
             this.hintsFound++;
             switch (this.story.getStoryIndex()) {
                 case 1:
-                    if (this.hintsFound == 3) {
+                    if (this.hintsFound == this.getHintsCount()) {
                         allHintsFound = true;
                         nextContextIndex = 13;
                         nextChoicesIndex = 5;
                     }
                     break;
                 case 4:
-                    if (this.hintsFound == 2) {
+                    if (this.hintsFound == this.getHintsCount()) {
                         allHintsFound = true;
                         nextContextIndex = 28;
                         nextChoicesIndex = 6;
@@ -97,6 +97,23 @@ class Arceus {
     lastHintHasBeenFound() {
         this.lastHintFound = true;
         this.lastHintFoundIndex = this.currentContextIndex;
+    }
+
+    getHintsCount() {
+        let count = 0;
+        switch (this.storyIndex) {
+            case 1:
+                count = 3;
+                break;
+            case 4:
+                count = 2;
+                break;
+        }
+        return count;
+    }
+
+    getHintsFound() {
+        return this.hintsFound;
     }
 
     changeCurrentContextIndex(contextIndex) {

@@ -20,6 +20,13 @@ class UserInterface {
             $(button).on('click', function () {
                 this.stopTimer();
                 $(button).off();
+
+                let isNextContextAHint = arceus.getContext(choice.getNextContext()).isHint();
+
+                if (isNextContextAHint) {
+                    this.displayHintPopup();
+                }
+
                 arceus.setChoices(buttonIndex);
                 if (arceus.isThisChoiceAPathToTheEnding(choice)) {
                     this.regroupAnimation(button);
@@ -60,6 +67,18 @@ class UserInterface {
         this.gameChoices.className = "";
         this.timerBarContainer.className = "";
         this.timer.className = "";
+    }
+
+    displayHintPopup() {
+        this.gameHintStatus.textContent = arceus.getHintsFound() + 1 + " of " + arceus.getHintsCount() + " found";
+        this.gameHint.classList.add('game-hint-appear');
+        setTimeout(function() {
+            this.gameHint.classList.remove('game-hint-appear');
+            this.gameHint.classList.add('game-hint-disappear');
+            setTimeout(function() {
+                this.gameHint.classList.remove('game-hint-disappear');
+            }.bind(this), 250);
+        }.bind(this), 2000);
     }
 
     displayNextChoices() {
@@ -111,8 +130,8 @@ class UserInterface {
             this.gameEndingResult.innerHTML = "Time's up! You couldn't resolve the problem in time, the case has been assigned to another agent.";
         }
         else {
-            
-            this.gameEndingResult.innerHTML = arceus.getCurrentContextText();
+            let timeLeft = this.initialTimer - this.questionTimer;
+            this.gameEndingResult.outerHTML = "<p>" + arceus.getCurrentContextText() + "</p><p>You finished your adventure in " + this.getFormatedTime(timeLeft) + "!</p>";
         }
         this.stopTimer();
         var pointsToRemoveFromWastedTime = (this.initialTimer - this.questionTimer) * 2;
@@ -123,6 +142,17 @@ class UserInterface {
         this.gamePointsContainer.classList.add('game-points-container-appear');
     }
 
+    fallingElementsAnimation(animatedElements) {
+        let fallDelay = 0;
+        animatedElements.forEach(function(element) {
+            $(element).delay(fallDelay).queue(function() {
+                element.classList.add('ending-drop');
+                $(this).dequeue();
+            });
+            fallDelay += 100;
+        });
+    }
+
     getElementCenterX(element) {
         return this.offsetLeft(element) + element.offsetWidth / 2;
     }
@@ -131,11 +161,15 @@ class UserInterface {
         return this.offsetTop(element) + element.offsetHeight / 2;
     }
 
-    getFormatedTimer() {
+    getFormatedTime(time) {
         let date = new Date(null);
-        date.setSeconds(this.questionTimer);
-        let time = date.toISOString().substr(15, 4);
-        return time;
+        date.setSeconds(time);
+        let formatedTime = date.toISOString().substr(15, 4);
+        return formatedTime;
+    }
+
+    getFormatedTimer() {
+        return this.getFormatedTime(this.questionTimer);
     }
 
     nextChoices(selectedIndex) {
@@ -156,28 +190,21 @@ class UserInterface {
     }
 
     outOfTime() {
-        let self = this;
         let animatedElements = [];
 
         for (let i = this.choiceButtons.length - 1; i >= 0; i--) {
             animatedElements.push(this.choiceButtons[i]);
         }
 
-        let fallDelay = 0;
         animatedElements.push(this.timerContainer, this.gameContext, this.gameInitialContext);
-        $(this.gameContainer).delay(500).queue(function() {
-            animatedElements.forEach(function(element) {
-                $(element).delay(fallDelay).queue(function() {
-                    element.classList.add('ending-drop');
-                    $(this).dequeue();
-                });
-                fallDelay += 100;
-            });
-            $(this).dequeue();
-        }).delay(1000).queue(function() {
-            self.endAdventure();
-            $(this).dequeue();
-        });
+
+        setTimeout(function() {
+            this.fallingElementsAnimation(animatedElements);
+
+            setTimeout(function() {
+                this.endAdventure();
+            }.bind(this), 1250);
+        }.bind(this), 500);
     }
 
     popupAnimation() {
@@ -253,6 +280,7 @@ class UserInterface {
     }
 
     setElements() {
+        this.atcoveo = document.getElementById('atcoveo');
         this.background = document.getElementById('background');
         this.coveoLogoContainer = document.getElementById('coveo-logo');
         this.coveoLogoContainerTitle = document.getElementById('coveo-logo-container-title');
@@ -265,8 +293,11 @@ class UserInterface {
         this.gameContainer = document.getElementById('game-container');
         this.gameContext = document.getElementById('game-context');
         this.gameFinalPoints = document.getElementById('game-final-points');
+        this.gameHint = document.getElementById('game-hint');
+        this.gameHintStatus = document.getElementById('game-hint-status');
         this.gameInitialContext = document.getElementById('game-initial-context');
         this.gamePointsContainer = document.getElementById('game-points-container');
+        this.replayButton = document.getElementById('replay-button');
         this.playButton = document.getElementById('play-button');
         this.timer = document.getElementById('timer');
         this.timerBar = document.getElementById('timer-bar');
@@ -292,6 +323,20 @@ class UserInterface {
         this.playButton.addEventListener('click', function() {
             this.showAdventure();
         }.bind(this));
+
+        this.replayButton.addEventListener('click', function() {
+            let animatedElements = [];
+            let elements = this.gamePointsContainer.children;
+            
+            for (let element of elements) {
+                animatedElements.unshift(element);
+            }
+
+            this.fallingElementsAnimation(animatedElements);
+            setTimeout(function() {
+                window.location.reload();
+            }, 2000);
+        }.bind(this));
     }
 
     setInitialContext() {
@@ -299,7 +344,7 @@ class UserInterface {
     }
 
     setTimer(timer = this.initialTimer) {
-		this.questionTimer = timer;
+        this.questionTimer = timer;
 		this.questionShaking = false;
 		this.questionZooming = false;
         this.questionInitialTimestamp = Date.now();

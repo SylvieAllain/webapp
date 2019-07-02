@@ -8,9 +8,11 @@ class Flappeo {
         this.clicked = false;
         this.flying = false;
         this.element.addEventListener('click', function() {
-            this.clicked = true;
-            $(this.element).stop();
-            this.evade();
+            if (!this.clicked) {
+                this.clicked = true;
+                $(this.element).stop();
+                this.evade();
+            }
         }.bind(this));
 	}
 
@@ -128,7 +130,7 @@ class Flappeo {
         hintElement.style.top = newY + "px";
         hintElement.style.left = newX + "px";
 
-        hintTextElement.innerHTML = arceus.getStoryHint();
+        hintTextElement.innerHTML = "<i>*psst*</i> " + arceus.getStoryHint();
     }
 
     isClicked() {

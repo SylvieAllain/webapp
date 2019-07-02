@@ -38,26 +38,33 @@
 				</div>
 			</div>
 		</div>
+		<div id="game-hint-container">
+			<div id="game-hint">
+				You have found a piece of the puzzle
+				<p id="game-hint-status"></p>
+			</div>
+		</div>
         <div id="game-points-container">
-            <p id="game-ending-result"> </p>
+			<p id="game-ending-result"></p>
             <p>Thank you for your participation, you got <span id="game-final-points"></span> points!</p>
-            <p>Please fill the @coveo field and take a picture of this page. <small>(Are you the next best technical support agent?)</small></p>
-            <p><small><i>*psst*</i> have you seen the bird around? It might be useful...</small></p>
-			<div class="atcoveo">
+            <p>Enter your @coveo.com email address below and take a picture of this page. <small>(Are you the next best technical support agent?)</small></p>
+			<p><small><i>*psst*</i> have you seen the bird around? It might be useful...</small></p>
+			<div class="atcoveo" id="atcoveo-container">
 				<div contenteditable="true" id="atcoveo" spellcheck="false"></div><div onclick="document.getElementById('atcoveo').focus()">@coveo.com</div>
 			</div>
-            </div>
-            <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
-            <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-            <script type="application/javascript" src="js/tools.js"></script>
-            <script type="application/javascript" src="js/clock.class.js"></script>
-            <script type="application/javascript" src="js/ui.class.js"></script>
-            <script type="application/javascript" src="js/triangle.class.js"></script>
-            <script type="application/javascript" src="js/flappeo.class.js"></script>
-            <script type="application/javascript" src="js/context.class.js"></script>
-			<script type="application/javascript" src="js/choice.class.js"></script>
-			<script type="application/javascript" src="js/story.class.js"></script>
-            <script type="application/javascript" src="js/arceus.class.js"></script>
-            <script type="application/javascript" src="js/ui.main.js"></script>
-        </body>
-    </html>
+			<div id="replay-button">Play again</div>
+        </div>
+		<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+		<script type="application/javascript" src="js/tools.js"></script>
+		<script type="application/javascript" src="js/clock.class.js"></script>
+		<script type="application/javascript" src="js/ui.class.js"></script>
+		<script type="application/javascript" src="js/triangle.class.js"></script>
+		<script type="application/javascript" src="js/flappeo.class.js"></script>
+		<script type="application/javascript" src="js/context.class.js"></script>
+		<script type="application/javascript" src="js/choice.class.js"></script>
+		<script type="application/javascript" src="js/story.class.js"></script>
+		<script type="application/javascript" src="js/arceus.class.js"></script>
+		<script type="application/javascript" src="js/ui.main.js"></script>
+	</body>
+</html>

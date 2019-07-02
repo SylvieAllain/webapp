@@ -61,7 +61,7 @@ choices11.push(new Choice("Trigger a full rebuild on the trial org to see if the
 choices11.push(new Choice("Test the full query on the trial org mentioned by the customer.", 0, 25, 0));
 
 choices12.push(new Choice("Tell the customer that there is no match for their displayOnSearch=1 on their customerNonProdOrg1 content browser", 0, 26, 0));
-choices12.push(new Choice("Check if there is a match for @displayfOnSearch (without a specific value) on their non-prod org", 0, 12, 0));
+choices12.push(new Choice("Check if there is a match for @displayOnSearch (without a specific value) on their non-prod org", 0, 12, 0));
 choices12.push(new Choice("See if there is a match in their prod org, just in case", 0, 28, 0));
 
 choices.push(choices1);
@@ -92,7 +92,7 @@ context.push(new Context("\Of course. Please test this for yourself on \”dev.m
 context.push(new Context("Q: testCQ : Source=mySourceAQ : displayOnSearch=1Org : myTrialOrg2", false, false));
 context.push(new Context("Org : myTrialOrg2Source name : mySource(mySource contains public items).", false, false));
 context.push(new Context("Yes, all my documents have the same title as my keyword.", false, false));
-context.push(new Context("[Customer calls their CSM]You’re in trouble.", false, true));
+context.push(new Context("<span class='text-action'>[Customer calls their CSM]</span></p><p class='text-important'>You’re in trouble.</p>", false, true));
 
 //context 3
 context.push(new Context("Yes the fields are searchable.", true, false));
@@ -135,6 +135,6 @@ context.push(new Context("So you now know that the documents are public and the 
 
 var storyIndex = 4;
 
-let hint = "Psst, maybe the client would like to speak with you personally.";
+let hint = "Maybe the client would like to speak with you personally.";
 
 var story = new Story(context, choices, storyIndex, hint);
