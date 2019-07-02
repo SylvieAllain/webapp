@@ -18,7 +18,7 @@ choices2.push(new Choice("Open the Client's Cloud Organization instead", 2, 3, 0
 choices3.push(new Choice("Open the Client's Search Page instead", 1, 2, 0));
 choices3.push(new Choice("Inspect the Model", 2, 6, 0));
 choices3.push(new Choice("Browse to \"Model Testing\"", 2, 7, 0));
-choices3.push(new Choice("Edit the Model's JSON in order to manually enter test candidates", 2, 8, 0));
+choices3.push(new Choice("Edit the Model's JSON in order to manually enter test candidates", 2, 8, 99999999999999999999999999));
 
 choices4.push(new Choice("Look in the source code to make sure the component is defined properly", 3, 9, 0));
 choices4.push(new Choice("Open the network tab", 4, 2, 0));
@@ -49,7 +49,7 @@ context.push(new Context("You are on the Client's Search Page and you can see th
 context.push(new Context("You are on the Client's Cloud Organization. You browse to \"Machine Learning > Models\" and you can see the corresponding Query Suggestion model.", false, false));
 context.push(new Context("Client responds that everything is setup as expected and that it is still not working.", false, false));
 //context 2
-context.push(new Context("This was a trap, you should not do that", false, true));
+context.push(new Context("This was a trap, you should not do that", false, false));
 //context 3
 context.push(new Context("You can see that the Model has candidates. The only SearchHub filter value that is trained on the model is \"MySearchHub\".", true, false));
 context.push(new Context("You are on the Model Testing page where you can test the Query Suggestions model directly. You can see that Query Suggestions are provided when typing various letters in the Search Box.", false, false));
