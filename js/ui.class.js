@@ -7,7 +7,26 @@ class UserInterface {
         this.isLastHintContextDisplayed = false;
         this.flappeo = new Flappeo();
         this.clock = new Clock('clock', this.initialTimer);
-	}
+        this.storyMultiplier = 1;
+    }
+
+    getStoryMultiplier() {
+        var storyIndex = arceus.getStoryIndex();
+        switch (storyIndex) {
+            case 2:
+                this.storyMultiplier = 1.2;
+                break;
+            case 3:
+                this.storyMultiplier = 1.6;
+                break;
+            case 4:
+                this.storyMultiplier = 1.7;
+                break;
+            default:
+                this.storyMultiplier = 1;
+                break;
+        }
+    }
 
     addButton(choice, goBack=false) {
         let button = document.createElement('button');
@@ -134,7 +153,8 @@ class UserInterface {
             this.gameEndingResult.outerHTML = "<p>" + arceus.getCurrentContextText() + "</p><p>You finished your adventure in " + this.getFormatedTime(timeLeft) + "!</p>";
         }
         this.stopTimer();
-        var pointsToRemoveFromWastedTime = (this.initialTimer - this.questionTimer) * 2;
+        this.getStoryMultiplier();
+        var pointsToRemoveFromWastedTime = Math.round((this.initialTimer - this.questionTimer) * this.storyMultiplier);
         arceus.removePoints(pointsToRemoveFromWastedTime);
         this.elementHide(this.gameContainer);
         this.gameFinalPoints.innerHTML = "<strong>" + arceus.getPoints() + "</strong>";

@@ -13,6 +13,11 @@ class Arceus {
         this.arrayOfPreviousContexts = [];
     }
 
+    getStoryIndex() {
+        var story = this.story;
+        return story.getStoryIndex();
+    }
+
     getCurrentChoices() {
         return this.story.getChoice(this.currentChoicesIndex);
     }
