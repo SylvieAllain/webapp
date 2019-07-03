@@ -6,36 +6,37 @@ var choices4 = [];
 var choices5 = [];
 var choices6 = [];
 var choices7 = [];
-choices1.push(new Choice("Open The Customer Cloud Platform and look at his sources", 1, 1, 0));
+choices1.push(new Choice("Open The Customer Cloud Platform and look at his sources", 1, 1, 8));
 choices1.push(new Choice("Ask for more information such as which source and for how long this has happened", 2, 2, 0));
-choices1.push(new Choice("Send the customer some documentation on how to set a refresh schedule", 0, 3, 0));
-choices1.push(new Choice("Log into Kibana to look at logs", 0, 4, 0));
+choices1.push(new Choice("Send the customer some documentation on how to set a refresh schedule", 0, 3, 16));
+choices1.push(new Choice("Log into Kibana to look at logs", 0, 4, 16));
 
 choices2.push(new Choice("Ask the customer which of the 2 sources is the one not indexing.", 2, 5, 0));
 choices2.push(new Choice("Tell the customer your observation regarding the 2 sources in error.", 3, 6, 0));
-choices2.push(new Choice("Launch a Rebuild on both sources to try and resolve the issue.", 1, 7, 0));
+choices2.push(new Choice("Launch a Rebuild on both sources to try and resolve the issue.", 1, 7, 31));
 
 choices3.push(new Choice("Look at Kibana logs for their KB sources with the date of the error", 4, 8, 0));
-choices3.push(new Choice("Look at the log browser in their organization", 2, 9, 10));
-choices3.push(new Choice("Look at the source configuration to see if there's anything wrong with it", 2, 9, 0));
-choices3.push(new Choice("Click on the 'Required Rebuild' button on the source", 2, 10, 0));
+choices3.push(new Choice("Look at the log browser in their organization", 2, 9, 16));
+choices3.push(new Choice("Look at the source configuration to see if there's anything wrong with it", 2, 9, 16));
+choices3.push(new Choice("Click on the 'Required Rebuild' button on the source", 2, 10, 16));
 
-choices4.push(new Choice("Split your case so that we keep issue separated", 2, 11, 0));
+choices4.push(new Choice("Split your case so that we keep issue separated", 2, 11, 8));
 choices4.push(new Choice("Cancel all current operation on both sources and trigger a Rebuild", 3, 12, 999999999999999999999999999));
 choices4.push(new Choice("Look at the Error code and date of the error to confirm if there's a pattern", 4, 14, 0));
 
-choices5.push(new Choice("You Notify the customer that the issue was due to the Crawling Server not being available", 4, 15, 0));
-choices5.push(new Choice("Tell the customer that it was a temporary issue. Cancel the current Rebuild or Resume it's operation to resolve the issue", 5, 16, 0));
+choices5.push(new Choice("You Notify the customer that the issue was due to the Crawling Server not being available", 4, 15, 16));
+choices5.push(new Choice("Tell the customer that it was a temporary issue. Cancel the current Rebuild or Resume it's operation to resolve the issue", 5, 16, 8));
 choices5.push(new Choice("See if there were any planned maintenance for Salesforce at the specified time since the 503 error happened on a Salesforce source.", 6, 17, 0));
-choices5.push(new Choice("You look into the 503 Issue with the R&D team", 4, 18, 0));
+choices5.push(new Choice("You look into the 503 Issue with the R&D team", 4, 18, 16));
 
-choices6.push(new Choice("Investigate the 503 Error with the R&D Team.", 5, 18, 0));
-choices6.push(new Choice("Explain the 503 Error code to the customer and what it means.", 5, 19, 0));
+choices6.push(new Choice("Investigate the 503 Error with the R&D Team.", 5, 18, 16));
+choices6.push(new Choice("Explain the 503 Error code to the customer and what it means.", 5, 19, 16));
 choices6.push(new Choice("Look at the Salesforce Status and Maintenance page to confirm if the server could have been unavailable", 6, 17, 0));
 
 choices7.push(new Choice("Tell the customer that the issue happened due to a Salesforce Maintenance. Provide the link to the known issue. Then tell him he needs to either resume the current operation or cancel it and start a new one.", 6, 20, 0));
 choices7.push(new Choice("Tell the customer that the issue happened due to a Salesforce Maintenance. Provide the link to the known issue.  Then tell him that you've Canceled the current operation and started a Rebuild.", 6, 21, 99999999999999));
-choices7.push(new Choice("Tell the customer that the issue happened due to a Salesforce Maintenance. Provide the link to the known issue. Then tell the customer to start a Rebuild.", 6, 22, 5));
+choices7.push(new Choice("Tell the customer that the issue happened due to a Salesforce Maintenance. Provide the link to the known issue. Then tell the customer to start a Rebuild.", 6, 22, 16));
+
 choices.push(choices1);
 choices.push(choices2);
 choices.push(choices3);

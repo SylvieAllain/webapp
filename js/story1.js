@@ -5,32 +5,32 @@ var choices3 = [];
 var choices4 = [];
 var choices5 = [];
 var choices6 = [];
-choices1.push(new Choice("Ask for additional details about the behavior", 0, 1, 0));
+choices1.push(new Choice("Ask for additional details about the behavior", 0, 1, 12));
 choices1.push(new Choice("Open the Client's Search Page", 1, 2, 0));
 choices1.push(new Choice("Open the Client's Cloud Organization", 2, 3, 0));
-choices1.push(new Choice("Send the Client general documentation regarding Query Suggestions", 0, 4, 0));
+choices1.push(new Choice("Send the Client general documentation regarding Query Suggestions", 0, 4, 24));
 
-choices2.push(new Choice("Use the Searchbox to send as many queries as you can in the shortest amount of time posssible in order to train the model", 2, 5, 0));
+choices2.push(new Choice("Use the Searchbox to send as many queries as you can in the shortest amount of time posssible in order to train the model", 2, 5, 12));
 choices2.push(new Choice("Open the Developer Tools", 3, 2, 0));
 choices2.push(new Choice("Open the Client's Cloud Organization instead", 2, 3, 0));
 
 
 choices3.push(new Choice("Open the Client's Search Page instead", 1, 2, 0));
 choices3.push(new Choice("Inspect the Model", 2, 6, 0));
-choices3.push(new Choice("Browse to \"Model Testing\"", 2, 7, 0));
+choices3.push(new Choice("Browse to \"Model Testing\"", 2, 7, 12));
 choices3.push(new Choice("Edit the Model's JSON in order to manually enter test candidates", 2, 8, 99999999999999999999999999));
 
-choices4.push(new Choice("Look in the source code to make sure the component is defined properly", 3, 9, 0));
+choices4.push(new Choice("Look in the source code to make sure the component is defined properly", 3, 9, 6));
 choices4.push(new Choice("Open the network tab", 4, 2, 0));
-choices4.push(new Choice("Look for errors in the Console", 3, 10, 0));
+choices4.push(new Choice("Look for errors in the Console", 3, 10, 6));
 
 choices5.push(new Choice("Inspect the request that queries the Query Suggestions model", 1, 11, 0));
 choices5.push(new Choice("Inspect the request that sends the analytics event related to the search", 1, 12, 0));
 
 choices6.push(new Choice("The SearchHub filter values are different on the event that feeds the model VS the event that grabs suggestions from the model. The client must ensure that both values are the same.", 5, 14, 0));
-choices6.push(new Choice("The client is testing the model with a keyword that is not part of the candidates. The client must ensure that they're using the right keyword.", 5, 15, 0));
-choices6.push(new Choice("Even though there are candidates on the model, there is not enough data to provide suggestions. The model must be trained for a longer period of time in order to obtain suggestions", 5, 16, 0));
-choices6.push(new Choice("Results are being provided for an anoymous user, while the candidates have been trained by a specific user. Query suggestions are provided according to the user.", 5, 17, 0));
+choices6.push(new Choice("The client is testing the model with a keyword that is not part of the candidates. The client must ensure that they're using the right keyword.", 5, 15, 6));
+choices6.push(new Choice("Even though there are candidates on the model, there is not enough data to provide suggestions. The model must be trained for a longer period of time in order to obtain suggestions", 5, 16, 6));
+choices6.push(new Choice("Results are being provided for an anoymous user, while the candidates have been trained by a specific user. Query suggestions are provided according to the user.", 5, 17, 12));
 
 choices.push(choices1);
 choices.push(choices2);
