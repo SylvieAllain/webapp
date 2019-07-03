@@ -10,7 +10,7 @@ choices1.push(new Choice("Open the Client's Search Page", 1, 2, 0));
 choices1.push(new Choice("Open the Client's Cloud Organization", 2, 3, 0));
 choices1.push(new Choice("Send the Client general documentation regarding Query Suggestions", 0, 4, 24));
 
-choices2.push(new Choice("Use the Searchbox to send as many queries as you can in the shortest amount of time posssible in order to train the model", 2, 5, 12));
+choices2.push(new Choice("Use the Searchbox to send as many queries as you can in the shortest amount of time posssible in order to train the model", 1, 5, 12));
 choices2.push(new Choice("Open the Developer Tools", 3, 2, 0));
 choices2.push(new Choice("Open the Client's Cloud Organization instead", 2, 3, 0));
 
@@ -18,7 +18,7 @@ choices2.push(new Choice("Open the Client's Cloud Organization instead", 2, 3, 0
 choices3.push(new Choice("Open the Client's Search Page instead", 1, 2, 0));
 choices3.push(new Choice("Inspect the Model", 2, 6, 0));
 choices3.push(new Choice("Browse to \"Model Testing\"", 2, 7, 12));
-choices3.push(new Choice("Edit the Model's JSON in order to manually enter test candidates", 2, 8, 99999999999999999999999999));
+choices3.push(new Choice("Edit the Model's JSON in order to manually enter test candidates", 2, 8, 9999));
 
 choices4.push(new Choice("Look in the source code to make sure the component is defined properly", 3, 9, 6));
 choices4.push(new Choice("Open the network tab", 4, 2, 0));

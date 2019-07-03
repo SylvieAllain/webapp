@@ -21,7 +21,7 @@ choices3.push(new Choice("Look at the source configuration to see if there's any
 choices3.push(new Choice("Click on the 'Required Rebuild' button on the source", 2, 10, 16));
 
 choices4.push(new Choice("Split your case so that we keep issue separated", 2, 11, 8));
-choices4.push(new Choice("Cancel all current operation on both sources and trigger a Rebuild", 3, 12, 999999999999999999999999999));
+choices4.push(new Choice("Cancel all current operation on both sources and trigger a Rebuild", 3, 12, 9999));
 choices4.push(new Choice("Look at the Error code and date of the error to confirm if there's a pattern", 4, 14, 0));
 
 choices5.push(new Choice("You Notify the customer that the issue was due to the Crawling Server not being available", 4, 15, 16));
@@ -34,7 +34,7 @@ choices6.push(new Choice("Explain the 503 Error code to the customer and what it
 choices6.push(new Choice("Look at the Salesforce Status and Maintenance page to confirm if the server could have been unavailable", 6, 17, 0));
 
 choices7.push(new Choice("Tell the customer that the issue happened due to a Salesforce Maintenance. Provide the link to the known issue. Then tell him he needs to either resume the current operation or cancel it and start a new one.", 6, 20, 0));
-choices7.push(new Choice("Tell the customer that the issue happened due to a Salesforce Maintenance. Provide the link to the known issue.  Then tell him that you've Canceled the current operation and started a Rebuild.", 6, 21, 99999999999999));
+choices7.push(new Choice("Tell the customer that the issue happened due to a Salesforce Maintenance. Provide the link to the known issue.  Then tell him that you've Canceled the current operation and started a Rebuild.", 6, 21, 99999));
 choices7.push(new Choice("Tell the customer that the issue happened due to a Salesforce Maintenance. Provide the link to the known issue. Then tell the customer to start a Rebuild.", 6, 22, 16));
 
 choices.push(choices1);

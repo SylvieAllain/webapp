@@ -5,10 +5,10 @@ var choices3 = [];
 var choices4 = [];
 choices1.push(new Choice("Open customer environment and look at the source", 0, 1, 32));
 choices1.push(new Choice("Ask for more information like source name and org name", 1, 2, 0));
-choices1.push(new Choice("Send a link from Google to the super deflection KB", 0, 6, 60000)); //might have to change the next context if the 2 context in comments arent comments anymore
+choices1.push(new Choice("Send a link from Google to the super deflection KB", 0, 6, 9999));
 choices1.push(new Choice("Let the client know the next refresh should have it.", 0, 3, 47));
 
-choices2.push(new Choice("Tell client the document is present and you can see it, no issue", 0, 7, 99999999));
+choices2.push(new Choice("Tell client the document is present and you can see it, no issue", 0, 7, 9999));
 choices2.push(new Choice("Ask the client why is the document secured instead of public", 1, 2, 47));
 choices2.push(new Choice("Ask what identity/email they have in their search", 2, 4, 0));
 choices2.push(new Choice("Ask if the user should have access or not in Salesforce", 1, 2, 32));
@@ -16,12 +16,12 @@ choices2.push(new Choice("Ask if the user should have access or not in Salesforc
 choices3.push(new Choice("Ask client for a delegated access", 3, 5, 0));
 choices3.push(new Choice("Tell client to change the filter on their page", 2, 4, 47));
 choices3.push(new Choice("Even if the user should have access to the document it might be filtered out ", 2, 4, 32));
-choices3.push(new Choice("Anonymous user is not a real user hence why you are not seeing the document", 0, 8, 9999999999999));
+choices3.push(new Choice("Anonymous user is not a real user hence why you are not seeing the document", 0, 8, 9999));
 
 choices4.push(new Choice("Send email of the modification to be done", 0, 9, 47));
 choices4.push(new Choice("Go on meeting with customer to fix the filter with them", 0, 10, 0));
 choices4.push(new Choice("Send KB to the client about the modification that should be done", 0, 11, 32));
-choices4.push(new Choice("You do modification directly in their prod", 0, 12, 9999999999));
+choices4.push(new Choice("You do modification directly in their prod", 0, 12, 9999));
 
 choices.push(choices1);
 choices.push(choices2);
@@ -40,8 +40,6 @@ context.push(new Context("Client agreed to wait it out and then ping because the
 context.push(new Context("Clients tell you the user anonymous@coveo.com.", false, false));
 //context 3
 context.push(new Context("Ask client for a delegated access.", false, false));
-//context.push(new Context("Tell client to change the filter on their page.", true, false, 2));
-//context.push(new Context("Even if the user should have access to the document it might be filtered out .", true, false, 2));
 //ending
 context.push(new Context("Client is unhappy and think GSA was better", false, true));
 context.push(new Context("You didn't solve the issue and the customer is unsatisfied", false, true));
