@@ -141,9 +141,6 @@ class UserInterface {
     }
 
     endAdventure() {
-        if (this.flappeo.isClicked()) {
-            arceus.removePoints(-50);
-        }
         if (this.questionTimer <= 0) {
             arceus.setPointsToZero();
             this.gameEndingResult.innerHTML = "Time's up! You couldn't resolve the problem in time, the case has been assigned to another agent.";
