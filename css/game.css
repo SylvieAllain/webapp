@@ -45,7 +45,7 @@
 
 .box-super-urgent {
 	animation-name: box-super-urgent;
-    animation-duration: 1s;
+    animation-duration: 1.0s;
 	animation-iteration-count: infinite;
     animation-timing-function: linear;
 }
@@ -480,7 +480,7 @@
 }
 
 @keyframes box-urgent {
-    50% {transform: scale(1.05)}
+    50% {transform: scale(1.025)}
 }
 
 @keyframes coveo-logo-phase-1 {

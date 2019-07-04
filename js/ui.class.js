@@ -66,6 +66,7 @@ class UserInterface {
                 this.regroupAnimation(button);
                 setTimeout(() => {
                     arceus.getPrevious();
+                    this.isTheEnd = true;
                     this.displayNextChoices();
                     this.startTimer();
                 }, 400);
@@ -234,7 +235,9 @@ class UserInterface {
 				$(this).dequeue();
 			}).delay(250).queue(function() {
                 self.displayNextChoices();
-                self.startTimer();
+                if (!self.isTheEnd) {
+                    self.startTimer();
+                }
 				$(this).dequeue();
 			}).delay(250).queue(function() {
                 self.gameContainer.classList.remove('choices-box-appear');
@@ -432,7 +435,7 @@ class UserInterface {
                 this.questionTimer--;
                 if (this.questionTimer <= 0) {
                     this.questionTimer = 0;
-                } else if (this.questionTimer <= 30 && !this.questionShaking) {
+                } else if (this.questionTimer <= 20 && !this.questionShaking) {
                     this.enableSuperUrgentMode();
                 } else if (this.questionTimer <= 90 && !this.questionZooming) {
                     this.enableUrgentMode();
