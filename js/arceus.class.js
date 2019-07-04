@@ -45,7 +45,7 @@ class Arceus {
                     if (this.hintsFound == this.getHintsCount()) {
                         allHintsFound = true;
                         nextContextIndex = 13;
-                        nextChoicesIndex = 5;
+                        nextChoicesIndex = 6;
                     }
                     break;
                 case 4:

@@ -5,6 +5,7 @@ var choices3 = [];
 var choices4 = [];
 var choices5 = [];
 var choices6 = [];
+var choices7 = [];
 choices1.push(new Choice("Ask for additional details about the behavior", 0, 1, 12));
 choices1.push(new Choice("Open the Client's Search Page", 1, 2, 0));
 choices1.push(new Choice("Open the Client's Cloud Organization", 2, 3, 0));
@@ -24,13 +25,14 @@ choices4.push(new Choice("Look in the source code to make sure the component is 
 choices4.push(new Choice("Open the network tab", 4, 2, 0));
 choices4.push(new Choice("Look for errors in the Console", 3, 10, 6));
 
-choices5.push(new Choice("Inspect the request that queries the Query Suggestions model", 1, 11, 0));
-choices5.push(new Choice("Inspect the request that sends the analytics event related to the search", 1, 12, 0));
+choices5.push(new Choice("Inspect the request that queries the Query Suggestions model", 5, 11, 0));
 
-choices6.push(new Choice("The SearchHub filter values are different on the event that feeds the model VS the event that grabs suggestions from the model. The client must ensure that both values are the same.", 5, 14, 0));
-choices6.push(new Choice("The client is testing the model with a keyword that is not part of the candidates. The client must ensure that they're using the right keyword.", 5, 15, 6));
-choices6.push(new Choice("Even though there are candidates on the model, there is not enough data to provide suggestions. The model must be trained for a longer period in order to obtain suggestions", 5, 16, 6));
-choices6.push(new Choice("Results are being provided for an anonymous user, while the candidates have been trained by a specific user. Query suggestions are provided according to the user.", 5, 17, 12));
+choices6.push(new Choice("Inspect the request that sends the analytics event related to the search", 1, 12, 0));
+
+choices7.push(new Choice("The SearchHub filter values are different on the event that feeds the model VS the event that grabs suggestions from the model. The client must ensure that both values are the same.", 5, 14, 0));
+choices7.push(new Choice("The client is testing the model with a keyword that is not part of the candidates. The client must ensure that they're using the right keyword.", 5, 15, 6));
+choices7.push(new Choice("Even though there are candidates on the model, there is not enough data to provide suggestions. The model must be trained for a longer period in order to obtain suggestions", 5, 16, 6));
+choices7.push(new Choice("Results are being provided for an anonymous user, while the candidates have been trained by a specific user. Query suggestions are provided according to the user.", 5, 17, 12));
 
 choices.push(choices1);
 choices.push(choices2);
@@ -38,6 +40,7 @@ choices.push(choices3);
 choices.push(choices4);
 choices.push(choices5);
 choices.push(choices6);
+choices.push(choices7);
 ////////////////////////////////////////////////
 var context = [];
 var storyIndex = 1;
@@ -59,8 +62,11 @@ context.push(new Context("The component appears to be defined properly in the so
 context.push(new Context("There are no errors in the console when reproducing the problematic scenario.", false, false));
 //context 5
 context.push(new Context("You can see 2 things: <ol><li>The query parameter is the expected value that the user enters in the SearchBox</li><li>The SearchHub parameter is equal to \"MySearchPage\"<br> The object that is returned by the model is an empty object of the expected type, which means that the Query Suggestions model doesn't provide any suggestions for the parameter above.</li></ol>", true, false));
-context.push(new Context("All parameters are as expected on the request. The SearchHub value is equal to \"MySearchHub\".", true, false));
+
 //context 6
+context.push(new Context("All parameters are as expected on the request. The SearchHub value is equal to \"MySearchHub\".", true, false));
+
+//context 7
 context.push(new Context("You have now gathered enough information to formulate a resolution attempt to the client. Which of the following recommendations will you choose?", false, false));
 //ending
 context.push(new Context("This solves the issue, the client thanks you very much and confirms you can close the case!", false, true));
