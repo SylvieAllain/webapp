@@ -23,7 +23,7 @@ choices2.push(new Choice("Do you have indexed documents that contain the searche
 choices2.push(new Choice("Please open another case saying that you see no results", 0, 8, 9999));
 
 choices3.push(new Choice("Is your title field searchable?", 2, 9, 4));
-choices3.push(new Choice("Ask customer about permissions on documents", 2, 10, 4));
+choices3.push(new Choice("Ask customer about the permissions on the documents", 2, 10, 4));
 choices3.push(new Choice("Suggest a meeting", 0, 11, 0));
 
 choices4.push(new Choice("Test this expression on customer’s non-prod org", 8, 12, 0));
@@ -42,7 +42,7 @@ choices7.push(new Choice("Ask for extra logs to buy extra time while you think a
 choices7.push(new Choice("Open a bug report with the R&D department.", 0, 19, 9999));
 
 //choices 8-9 are the same just diffrent routes for previous
-choices8.push(new Choice("Test this expression on customer’s non-prod org", 11, 12, 0));
+choices8.push(new Choice("Test this expression on the customer’s non-prod org", 11, 12, 0));
 choices8.push(new Choice("Ask about “displayOnSearch=1” on a slack channel", 0, 20, 9999));
 choices8.push(new Choice("Tell customer that displayOnSearch=1 returns no result in nonProd org", 0, 21, 9999));
 
@@ -86,7 +86,7 @@ context.push(new Context("I see no results", false, false));
 context.push(new Context("Yes, it says No results.", false, false, 0));
 context.push(new Context("Is this a joke to you ?<p><span class='text-action'>[Customer calls their CSM]</span></p><p class='text-important'>You’re in trouble.</p>", false, true, 0));
 context.push(new Context("*Customer sends log.* You find nothing weird.", false, false, 0));
-context.push(new Context("\Of course. Please test this for yourself on \”dev.mysearch.site\”\”. Testing the live website makes you realize that the query looks for documents that match the expression \“displayOnSearch=1\”", false, false, 0));
+context.push(new Context("Of course. Please test this for yourself on \”dev.mysearch.site\”. Testing the live website makes you realize that the query looks for documents that match the expression \“displayOnSearch=1\”", false, false, 0));
 
 //context 2
 context.push(new Context("Q: testCQ : Source=mySourceAQ : displayOnSearch=1Org : myTrialOrg2", false, false));
