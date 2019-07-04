@@ -29,10 +29,10 @@ choices5.push(new Choice("Inspect the request that queries the Query Suggestions
 
 choices6.push(new Choice("Inspect the request that sends the analytics event related to the search", 1, 12, 0));
 
-choices7.push(new Choice("The SearchHub filter values are different on the event that feeds the model VS the event that grabs suggestions from the model. The client must ensure that both values are the same.", 5, 14, 0));
-choices7.push(new Choice("The client is testing the model with a keyword that is not part of the candidates. The client must ensure that they're using the right keyword.", 5, 15, 6));
-choices7.push(new Choice("Even though there are candidates on the model, there is not enough data to provide suggestions. The model must be trained for a longer period in order to obtain suggestions", 5, 16, 6));
-choices7.push(new Choice("Results are being provided for an anonymous user, while the candidates have been trained by a specific user. Query suggestions are provided according to the user.", 5, 17, 12));
+choices7.push(new Choice("The SearchHub filter values are different on the event that feeds the model VS the event that grabs suggestions from the model. The client must ensure that both values are the same.", 6, 14, 0));
+choices7.push(new Choice("The client is testing the model with a keyword that is not part of the candidates. The client must ensure that they're using the right keyword.", 6, 15, 6));
+choices7.push(new Choice("Even though there are candidates on the model, there is not enough data to provide suggestions. The model must be trained for a longer period in order to obtain suggestions", 6, 16, 6));
+choices7.push(new Choice("Results are being provided for an anonymous user, while the candidates have been trained by a specific user. Query suggestions are provided according to the user.", 6, 17, 12));
 
 choices.push(choices1);
 choices.push(choices2);
