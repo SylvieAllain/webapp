@@ -1,6 +1,6 @@
 class UserInterface {
 	constructor() {
-        this.initialTimer = 180;
+        this.initialTimer = 20;
         this.choiceButtons = [];
         this.isTheEnd = false;
         this.setElements();
@@ -66,7 +66,6 @@ class UserInterface {
                 this.regroupAnimation(button);
                 setTimeout(() => {
                     arceus.getPrevious();
-                    this.isTheEnd = true;
                     this.displayNextChoices();
                     this.startTimer();
                 }, 400);
