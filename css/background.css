@@ -7,7 +7,7 @@
 	content: '';
 	background-color: transparent;
 	background-image: url('../image/background2.png');
-	opacity: 0.3;
+	opacity: 0.5;
 }
 
 #background, #background-over {

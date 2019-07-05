@@ -97,7 +97,7 @@ class UserInterface {
             setTimeout(function() {
                 this.gameHint.classList.remove('game-hint-disappear');
             }.bind(this), 250);
-        }.bind(this), 2000);
+        }.bind(this), 4500);
     }
 
     displayNextChoices() {
