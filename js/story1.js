@@ -6,6 +6,7 @@ var choices4 = [];
 var choices5 = [];
 var choices6 = [];
 var choices7 = [];
+
 choices1.push(new Choice("Ask for additional details about the behavior", 0, 1, 12));
 choices1.push(new Choice("Open the Client's Search Page", 1, 2, 0));
 choices1.push(new Choice("Open the Client's Cloud Organization", 2, 3, 0));
@@ -41,33 +42,40 @@ choices.push(choices4);
 choices.push(choices5);
 choices.push(choices6);
 choices.push(choices7);
-////////////////////////////////////////////////
+
+
 var context = [];
 var storyIndex = 1;
 //initial context
 context.push(new Context("A customer is reporting that their Query Suggestions component is not providing any suggestions. What do you do first?", false, false,));
+
 //context 1
 context.push(new Context("Client explains that they are creating it for a new development environment. It seems that the model has candidates, but they are not displayed on the Search Page.", false, false));
 context.push(new Context("You are on the Client's Search Page and you can see that the Query Suggestions are not provided when typing various letters in the Search Box.", false, false));
 context.push(new Context("You are on the Client's Cloud Organization. You browse to \"Machine Learning > Models\" and you can see the corresponding Query Suggestion model.", false, false));
 context.push(new Context("The client responds that everything is setup correctly and that it is still not working.", false, false));
+
 //context 2
 context.push(new Context("This is a trap, you should not do that", false, false));
+
 //context 3
 context.push(new Context("You can see that the Model has candidates. The only SearchHub filter value that is trained on the model is \"MySearchHub\".", true, false));
 context.push(new Context("You are on the Model Testing page where you can test the Query Suggestions model directly. You can see that Query Suggestions are provided when typing various letters in the Search Box.", false, false));
 context.push(new Context("This breaks everything!", false, true));
+
 //context 4
 context.push(new Context("The component appears to be defined properly in the source code.", false, false));
 context.push(new Context("There are no errors in the console when reproducing the problematic scenario.", false, false));
+
 //context 5
-context.push(new Context("You can see 2 things: <ol><li>The query parameter is the expected value that the user enters in the SearchBox</li><li>The SearchHub parameter is equal to \"MySearchPage\"<br> The object that is returned by the model is an empty object of the expected type, which means that the Query Suggestions model doesn't provide any suggestions for the parameter above.</li></ol>", true, false));
+context.push(new Context("You can see 2 things: <ol><li>The query parameter is the expected value that the user enters in the SearchBox</li><li>The SearchHub parameter is equal to \"MyFirstSearchPage\"<br> The object that is returned by the model is an empty object of the expected type, which means that the Query Suggestions model doesn't provide any suggestions for the parameter above.</li></ol>", true, false));
 
 //context 6
 context.push(new Context("All parameters are as expected on the request. The SearchHub value is equal to \"MySearchHub\".", true, false));
 
 //context 7
 context.push(new Context("You have now gathered enough information to formulate a resolution attempt to the client. Which of the following recommendations will you choose?", false, false));
+
 //ending
 context.push(new Context("This solves the issue, the client thanks you very much and confirms you can close the case!", false, true));
 context.push(new Context("The client sends you a screenshot as proof that the keyword is part of the candidates. This is not the right cause to this issue.", false, false));

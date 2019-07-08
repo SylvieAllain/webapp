@@ -6,8 +6,9 @@ var choices4 = [];
 var choices5 = [];
 var choices6 = [];
 var choices7 = [];
+
 choices1.push(new Choice("Open the Customer Cloud Platform and look at his sources", 1, 1, 8));
-choices1.push(new Choice("Ask for more information such; as which source is not being indexed and for how long this has been going on for", 2, 2, 0));
+choices1.push(new Choice("Ask for more information such as which source is not being indexed and for how long this has been going on for", 2, 2, 0));
 choices1.push(new Choice("Send the customer some documentation on how to set a refresh schedule", 0, 3, 16));
 choices1.push(new Choice("Log into Kibana and look at the logs", 0, 4, 16));
 
@@ -44,36 +45,44 @@ choices.push(choices4);
 choices.push(choices5);
 choices.push(choices6);
 choices.push(choices7);
-////////////////////////////////////////////////
+
+
 var context = [];
 var storyIndex = 2;
 //initial context
 context.push(new Context("A customer is reporting that the latest content of it's Salesforce source is not being indexed.", false, false));
+
 //context 1
 context.push(new Context("You notice that the customer has 3 different Salesforce sources. And that 2 of them are currently paused in errors.", false, false));
 context.push(new Context("The customer tells you that his 'Knowledge' source doesn't seem to index the new Kb.", false, false));
 context.push(new Context("The Customer tells you that a schedule is already set on the source.", false, false));
 context.push(new Context("There's just too much information and you've lost about 30 minutes trying to look at all the logs for the past 3 days in the customer org without finding anything.", false, false));
+
 //context 2
 context.push(new Context("The customer tells you that his KB Source is currently the one causing an issue.", false, false));
 context.push(new Context("The customer tells you that he didn't know and would like you to resolve both sources in error.", false, false));
 context.push(new Context("Nothing happens, the source state doesn't change and remains 'Paused on Error',", false, false));
+
 //context 3
 context.push(new Context("You noticed that the source entered this state after a 503 Service Unavailable Error.", false, false));
 context.push(new Context("You do not seem to be able to find anything relevant.", false, false));
 context.push(new Context("Nothing happens, the source state doesn't change and remains 'Paused on Error'.", false, false));
+
 //context 4
 context.push(new Context("Both issues were related so you'll do double the work for nothing. But lets keep going.", false, false));
 context.push(new Context("Someone in the customer organization had changes made to the case source and the new condition made it so that almost all content was deleted in Production.", false, true));
 context.push(new Context("Customer escalates the issue into a higher one and escalates the case. You created work for the ops team which needs to restore a backup and you made a change you weren't allowed to.", false, true));
 context.push(new Context("Both issues happened on the same day, within 1 minute of themselves and the Error Code in the Activity Browser is the same ERROR: 503 Service Unavailable.", false, false));
+
 //context 5
 context.push(new Context("The customer does not fully understand and mentions that there were no reports on their side. They want more info and the issue is not resolved.", false, false));
 context.push(new Context("The customer follows your instructions and the issue is resolved, but they want to know the root cause of the issue.", false, false));
 context.push(new Context("You notice that Salesforce had a planned maintenance with disruption of services (Specifically SOQL and REST API services) at the date of the issue.", false, false));
 context.push(new Context("R&D tells you that there weren't any issues with our Crawling servers and that the 503 happened on the Customer Side. Probably a Maintenance at large or on the customer side.", false, false));
+
 //context 6
 context.push(new Context("The customer lets you know that they understand what a 503 means, but that they didn't receive user reports stating that the Salesforce instance was unavailable at said time.", false, false));
+
 //ending
 context.push(new Context("You've resolved the issue and the customer is happy to know the root cause. You can close the case.", false, true));
 context.push(new Context("You've resolved the issue; however, the customer doesn't like that you triggered an unauthorized rebuild in is production org and if there is any issue after the rebuild could come back with its legal team against us.", false, true));
