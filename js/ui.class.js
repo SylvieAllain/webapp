@@ -111,6 +111,14 @@ class UserInterface {
         }
     }
 
+    displayReplayButton() {
+        if (this.atcoveo.textContent.length > 0) {
+            this.replayButton.style.visibility = 'visible';
+        } else {
+            this.replayButton.style.visibility = 'hidden';
+        }
+    }
+
     elementDisplayFlex(element) {
         element.style.display = "flex";
     }
@@ -157,6 +165,8 @@ class UserInterface {
         this.gameFinalPoints.innerHTML = "<strong>" + arceus.getPoints() + "</strong>";
         this.elementDisplayFlex(this.gamePointsContainer);
         this.gamePointsContainer.classList.add('game-points-container-appear');
+
+        this.atcoveo.addEventListener("keypress", () => {this.displayReplayButton()});
     }
 
     fallingElementsAnimation(animatedElements) {
@@ -270,6 +280,48 @@ class UserInterface {
         }.bind(this));
     }
 
+    saveResult() {
+        let usersData = [];
+
+        if (localStorage.hasOwnProperty('support_elevate')) {
+            try {
+                usersData = JSON.parse(localStorage.getItem('support_elevate'));
+            } catch {
+                usersData = [];
+            }
+        }
+
+        if (!Array.isArray(usersData)) {
+            usersData = [];
+        }
+
+        let user = this.atcoveo.textContent;
+
+        let userData = {
+            user: user + "@coveo.com",
+            points: arceus.getPoints(),
+            date: Date.now()
+        }
+
+        if (!usersData.push(userData)) {
+            usersData = [];
+            usersData.push(userdata);
+        }
+
+        localStorage.setItem('support_elevate', JSON.stringify(usersData));
+
+        $.ajax({
+            type: "POST",
+            url: "./register.php",
+            data: userData,
+            success: function(response) {
+                console.log(response);
+            }
+        });
+    }
+
+    empt
+
     setChoicesButtons() {
         this.clearButtons();
         arceus.getChoices().forEach(function(choice) {
@@ -344,6 +396,9 @@ class UserInterface {
         }.bind(this));
 
         this.replayButton.addEventListener('click', function() {
+
+            this.saveResult();
+
             let animatedElements = [];
             let elements = this.gamePointsContainer.children;
             
