@@ -14,16 +14,16 @@ class UserInterface {
         var storyIndex = arceus.getStoryIndex();
         switch (storyIndex) {
             case 1:
-                this.storyMultiplier = 0.44;
+                this.storyMultiplier = 0.94;
                 break;
             case 2:
-                this.storyMultiplier = 0.55;
+                this.storyMultiplier = 1.05;
                 break;
             case 4:
-                this.storyMultiplier = 1.6;
+                this.storyMultiplier = 2.1;
                 break;
             default:
-                this.storyMultiplier = 1;
+                this.storyMultiplier = 1.5;
                 break;
         }
     }
