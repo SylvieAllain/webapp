@@ -1,6 +1,6 @@
 class UserInterface {
 	constructor() {
-        this.initialTimer = 20;
+        this.initialTimer = 180;
         this.choiceButtons = [];
         this.isTheEnd = false;
         this.setElements();
@@ -14,13 +14,13 @@ class UserInterface {
         var storyIndex = arceus.getStoryIndex();
         switch (storyIndex) {
             case 1:
-                this.storyMultiplier = 0.7;
+                this.storyMultiplier = 0.44;
                 break;
-            case 3:
-                this.storyMultiplier = 2;
+            case 2:
+                this.storyMultiplier = 0.55;
                 break;
             case 4:
-                this.storyMultiplier = 2.3;
+                this.storyMultiplier = 1.6;
                 break;
             default:
                 this.storyMultiplier = 1;
