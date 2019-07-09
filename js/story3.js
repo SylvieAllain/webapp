@@ -9,7 +9,7 @@ choices1.push(new Choice("Ask for more information like source and org name", 1,
 choices1.push(new Choice("Send a link from Google to the super deflection KB", 0, 3, 9999));
 choices1.push(new Choice("Let the client know the next refresh should have it.", 0, 4, 47));
 
-choices2.push(new Choice("Tell client the document is present, and you can see it, thus there is no issue", 0, 5, 9999));
+choices2.push(new Choice("Tell the client the document is present, and you can see it, thus there is no issue", 0, 5, 9999));
 choices2.push(new Choice("Ask the client why the document secured instead of public", 1, 6, 47));
 choices2.push(new Choice("Ask what identity/email they have in their search", 2, 7, 0));
 choices2.push(new Choice("Ask if the user should have access in Salesforce", 1, 8, 32));
