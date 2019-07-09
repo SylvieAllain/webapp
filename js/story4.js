@@ -10,14 +10,13 @@ var choices8 = [];
 var choices9 = [];
 var choices10 = [];
 var choices11 = [];
-var choices12 = [];
 
 choices1.push(new Choice("Do you see an error message?", 1, 1, 5));
 choices1.push(new Choice("Are you sure you want to get results in the first place?", 0, 2, 9999));
 choices1.push(new Choice("Please send logs", 1, 3, 4));
 choices1.push(new Choice("Is your search page accessible from outside your network?", 3, 4, 0));
 
-choices2.push(new Choice("Could you send me the query for this search and confirm the orgID and sourceName?", 10, 5, 0));
+choices2.push(new Choice("Could you send me the query for this search and confirm the orgID and sourceName?", 9, 5, 0));
 choices2.push(new Choice("Could you please confirm your org / source name?", 4, 6, 5));
 choices2.push(new Choice("Do you have indexed documents that contain the searched keyword?", 2, 7, 6));
 choices2.push(new Choice("Please open another case saying that you see no results", 0, 8, 9999));
@@ -42,7 +41,7 @@ choices7.push(new Choice("Ask for extra logs to buy extra time while you think a
 choices7.push(new Choice("Open a bug report with the R&D department.", 0, 19, 9999));
 
 //choices 8-9 are the same just diffrent routes for previous
-choices8.push(new Choice("Test this expression on the customer’s non-prod org", 11, 12, 0));
+choices8.push(new Choice("Test this expression on the customer’s non-prod org", 10, 12, 0));
 choices8.push(new Choice("Ask about “displayOnSearch=1” on a slack channel", 0, 20, 9999));
 choices8.push(new Choice("Tell customer that displayOnSearch=1 returns no result in nonProd org", 0, 21, 9999));
 
@@ -55,14 +54,9 @@ choices10.push(new Choice("Check with the Client Success Manager to see if the c
 choices10.push(new Choice("Trigger a full rebuild on the trial org to see if there is any change on their site.", 0, 24, 9999));
 choices10.push(new Choice("Test the full query on the trial org mentioned by the customer.", 0, 25, 0));
 
-choices11.push(new Choice("Mention to the customer that trial orgs don’t come with free support and close the case.", 0, 22, 9999));
-choices11.push(new Choice("Check with the Client Success Manager to see if the customer can get free support", 0, 23, 6));
-choices11.push(new Choice("Trigger a full rebuild on the trial org to see if there is any change on their site.", 0, 24, 9999));
-choices11.push(new Choice("Test the full query on the trial org mentioned by the customer.", 0, 25, 0));
-
-choices12.push(new Choice("Tell the customer that there is no match for their displayOnSearch=1 on their customerNonProdOrg1 content browser", 0, 26, 6));
-choices12.push(new Choice("Check if there is a match for @displayOnSearch (without a specific value) on their non-prod org", 0, 12, 6));
-choices12.push(new Choice("See if there is a match in their prod org, just in case", 0, 28, 6));
+choices11.push(new Choice("Tell the customer that there is no match for their displayOnSearch=1 on their customerNonProdOrg1 content browser", 0, 26, 6));
+choices11.push(new Choice("Check if there is a match for @displayOnSearch (without a specific value) on their non-prod org", 0, 12, 6));
+choices11.push(new Choice("See if there is a match in their prod org, just in case", 0, 28, 6));
 
 choices.push(choices1);
 choices.push(choices2);
@@ -75,8 +69,6 @@ choices.push(choices8);
 choices.push(choices9);
 choices.push(choices10);
 choices.push(choices11);
-choices.push(choices12);
-
 
 var context = [];
 

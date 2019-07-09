@@ -35,7 +35,7 @@ choices6.push(new Choice("Explain the 503 Error code to the customer and what it
 choices6.push(new Choice("Look at the Salesforce Status and Maintenance page to confirm if the server could have been unavailable", 6, 17, 0));
 
 choices7.push(new Choice("Tell the customer that the issue happened due to a Salesforce Maintenance. Provide the link to the known issue. Then tell him he needs to either resume the current operation or cancel it and start a new one.", 6, 20, 0));
-choices7.push(new Choice("Tell the customer that the issue happened due to a Salesforce Maintenance. Provide the link to the known issue.  Then tell him that you've Canceled the current operation and started a Rebuild.", 6, 21, 99999));
+choices7.push(new Choice("Tell the customer that the issue happened due to a Salesforce Maintenance. Provide the link to the known issue.  Then tell him that you've canceled the current operation and started a Rebuild.", 6, 21, 99999));
 choices7.push(new Choice("Tell the customer that the issue happened due to a Salesforce Maintenance. Provide the link to the known issue. Then tell the customer to start a Rebuild.", 6, 22, 16));
 
 choices.push(choices1);
@@ -78,7 +78,7 @@ context.push(new Context("Both issues happened on the same day, within 1 minute 
 context.push(new Context("The customer does not fully understand and mentions that there were no reports on their side. They want more info and the issue is not resolved.", false, false));
 context.push(new Context("The customer follows your instructions and the issue is resolved, but they want to know the root cause of the issue.", false, false));
 context.push(new Context("You notice that Salesforce had a planned maintenance with disruption of services (Specifically SOQL and REST API services) at the date of the issue.", false, false));
-context.push(new Context("R&D tells you that there weren't any issues with our Crawling servers and that the 503 happened on the Customer Side. Probably a Maintenance at large or on the customer side.", false, false));
+context.push(new Context("R&D tells you that there weren't any issues with our Crawling servers and that the 503 happened on the Customer Side. Probably a maintenance at large or on the customer side.", false, false));
 
 //context 6
 context.push(new Context("The customer lets you know that they understand what a 503 means, but that they didn't receive user reports stating that the Salesforce instance was unavailable at said time.", false, false));
