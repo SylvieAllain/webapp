@@ -12,7 +12,7 @@ choices1.push(new Choice("Open the Client's Search Page", 1, 2, 0));
 choices1.push(new Choice("Open the Client's Cloud Organization", 2, 3, 0));
 choices1.push(new Choice("Send the Client general documentation regarding Query Suggestions", 0, 4, 24));
 
-choices2.push(new Choice("Use the Searchbox to send as many queries as you can in the shortest amount of time posssible in order to train the model", 1, 5, 12));
+choices2.push(new Choice("Use the Searchbox to send as many queries as you can in the shortest amount of time possible in order to train the model", 1, 5, 12));
 choices2.push(new Choice("Open the Developer Tools", 3, 2, 0));
 choices2.push(new Choice("Open the Client's Cloud Organization instead", 2, 3, 0));
 
