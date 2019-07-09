@@ -37,7 +37,7 @@ context.push(new Context("I can't seem to find my knowledge article called \"Sup
 
 //context 1
 context.push(new Context("You don’t have this information just yet.", false, false));
-context.push(new Context("You can check in the Content browser; you can see the document.", false, false));
+context.push(new Context("You check in the Content Browser and you can see the document.", false, false));
 context.push(new Context("The client is unhappy and thinks GSA was better", false, true));
 context.push(new Context("Client agreed to wait it out and then ping because the issue is still there.", false, false));
 
@@ -45,10 +45,10 @@ context.push(new Context("Client agreed to wait it out and then ping because the
 context.push(new Context("You didn't solve the issue and the customer is unsatisfied", false, true));
 context.push(new Context("The customer is confused by your question. He mentions that it is a public Knowledge Article.", false, false));
 context.push(new Context("The client tells you the user anonymous@coveo.com.", false, false));
-context.push(new Context("The customer mentions that the KB is public and therefore all user should have access", false, false));
+context.push(new Context("The customer mentions that the KB is public and therefore all users should have access", false, false));
 
 //context 3
-context.push(new Context("You notice that the KBs are filtered out by by their ‘Constant Expression’ within the user token.", false, false));
+context.push(new Context("You notice that the KBs are filtered out by their ‘Constant Expression’ within the user token.", false, false));
 context.push(new Context("You haven’t confirmed the issue and the customer does not know which filter you are referring to.", false, false));
 context.push(new Context("The customer doesn’t know where the filter is set and how to modify it.", false, false));
 context.push(new Context("Anonymous user is a valid user within Salesforce and should have access to the article. The customer escalates the case.", false, true));
@@ -56,7 +56,7 @@ context.push(new Context("Anonymous user is a valid user within Salesforce and s
 //ending
 context.push(new Context("The issue is solved but the client would have liked to have a personal interaction with you.", false, true));
 context.push(new Context("The issue is solved, and the client is really happy that you took the time to personally meet with them and guide them through the process.", false, true));
-context.push(new Context("This solves the issue, but the client would of appreciated if you would of taken the time to meet with them personally and guide them through the process.", false, true));
+context.push(new Context("This solves the issue, but the client would have appreciated if you would of taken the time to meet with them personally and guide them through the process.", false, true));
 context.push(new Context("This does solve the issue, but the client is angry that you went in the prod yourself and a lawsuit could be incoming for breach of contract.", false, true));
 
 let hint = "ALWAYS ask for more information about the client's org before making any changes!";
