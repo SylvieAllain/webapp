@@ -30,7 +30,7 @@ choices4.push(new Choice("Ask about displayOnSearch field to the customer", 5, 1
 choices4.push(new Choice("Tell the customer that his query seems to be filtering results out", 5, 13, 4));
 
 choices5.push(new Choice("Suggest a meeting", 9, 11, 0));
-choices5.push(new Choice("What would be the full query that does not produce results?", 9, 5, 6));
+choices5.push(new Choice("What would be the full query that does not produce results?", 9, 15, 6));
 choices5.push(new Choice("Try rebuilding all your sources", 9, 16, 9999));
 
 choices6.push(new Choice("Ok", 0, 11, 0));
@@ -46,7 +46,7 @@ choices8.push(new Choice("Ask about “displayOnSearch=1” on a slack channel",
 choices8.push(new Choice("Tell customer that displayOnSearch=1 returns no result in nonProd org", 0, 21, 9999));
 
 choices9.push(new Choice("Ask about “displayOnSearch=1” on a slack channel", 0, 20, 9999));
-choices9.push(new Choice("Tell customer that displayOnSearch=1 returns no result in nonProd org", 0, 21, 0));
+choices9.push(new Choice("Tell customer that displayOnSearch=1 returns no result in nonProd org", 0, 21, 9999));
 
 //choices 10-11 are the same just diffrent routes for previous
 choices10.push(new Choice("Mention to the customer that trial orgs don’t come with free support and close the case.", 0, 22, 9999));
@@ -55,8 +55,8 @@ choices10.push(new Choice("Trigger a full rebuild on the trial org to see if the
 choices10.push(new Choice("Test the full query on the trial org mentioned by the customer.", 0, 25, 0));
 
 choices11.push(new Choice("Tell the customer that there is no match for their displayOnSearch=1 on their customerNonProdOrg1 content browser", 0, 26, 6));
-choices11.push(new Choice("Check if there is a match for @displayOnSearch (without a specific value) on their non-prod org", 0, 12, 6));
-choices11.push(new Choice("See if there is a match in their prod org, just in case", 0, 28, 6));
+choices11.push(new Choice("Check if there is a match for @displayOnSearch (without a specific value) on their non-prod org", 10, 12, 6));
+choices11.push(new Choice("See if there is a match in their prod org, just in case", 10, 27, 6));
 
 choices.push(choices1);
 choices.push(choices2);
@@ -82,8 +82,8 @@ context.push(new Context("<p><span class='text-action'>[Customer sends log]</spa
 context.push(new Context("Of course. Please test this for yourself on \”dev.mysearch.site\”. Testing the live website makes you realize that the query looks for documents that match the expression \“displayOnSearch=1\”", false, false, 0));
 
 //context 2
-context.push(new Context("Q: testCQ : Source=mySourceAQ : displayOnSearch=1Org : myTrialOrg2", false, false));
-context.push(new Context("Org : myTrialOrg2Source name : mySource(mySource contains public items).", false, false));
+context.push(new Context("Q: testCQ: Source=mySource <br> AQ: displayOnSearch=1 <br> Org: myTrialOrg2", false, false));
+context.push(new Context("Org: myTrialOrg2Source name <br> mySource(mySource contains public items).", false, false));
 context.push(new Context("Yes, all my documents have the same title as my keyword.", false, false));
 context.push(new Context("<span class='text-action'> [Customer calls their CSM] </span></p><p class='text-important'>You’re in trouble. </p>", false, true));
 
@@ -101,7 +101,7 @@ context.push(new Context("Customer says that this field is set on all items in t
 context.push(new Context("Customer is confused about this statement and requests a meeting to discuss this further.", false, false));
 
 //context 5
-context.push(new Context("Q: testCQ : Source=mySourceAQ : displayOnSearch=1", false, false));
+context.push(new Context("Q: test <br>CQ: Source=mySource <br> AQ: displayOnSearch=1", false, false));
 context.push(new Context("You die while hitting send.", false, true));
 
 //context 6

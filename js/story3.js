@@ -56,7 +56,7 @@ context.push(new Context("Anonymous user is a valid user within Salesforce and s
 //ending
 context.push(new Context("The issue is solved but the client would have liked to have a personal interaction with you.", false, true));
 context.push(new Context("The issue is solved, and the client is really happy that you took the time to personally meet with them and guide them through the process.", false, true));
-context.push(new Context("This solves the issue, but the client would have appreciated if you would of taken the time to meet with them personally and guide them through the process.", false, true));
+context.push(new Context("This solves the issue, but the client would of appreciated it if you would of taken the time to meet with them personally and guide them through the process.", false, true));
 context.push(new Context("This does solve the issue, but the client is angry that you went in the prod yourself and a lawsuit could be incoming for breach of contract.", false, true));
 
 let hint = "ALWAYS ask for more information about the client's org before making any changes!";
